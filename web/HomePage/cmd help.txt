@@ -1,0 +1,6 @@
+cmd help:
+git add web/hello.html
+git status
+git commit -m "added hello world page"
+git push heroku master
+git push github master

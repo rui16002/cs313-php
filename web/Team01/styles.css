@@ -1,0 +1,27 @@
+div {
+    height: 100px;
+}
+
+.mymargin{	
+	margin: 10px;
+}
+
+#div01 {	
+    background-color: red;
+}
+
+#div02 {	
+    background-color: green;
+}
+
+#div03 {	
+    background-color: blue;
+}
+
+.hoverbold:hover {
+	font-weight: bold;
+}
+
+.hidden {
+    visibility: hidden;
+}
