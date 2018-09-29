@@ -1,14 +1,10 @@
-.container {
-      padding: 80px 120px;
-  }
-
  .person {
-    border: 5px solid rgba(0,0,0,.25);
+    border: 5px solid transparent;
     width: 200px;
 }
 
  .person:hover {
-    border: 5px solid transparent;
+    border: 5px solid rgba(0,0,0,.25);
     opacity: 0.7;
 }
 
@@ -32,10 +28,10 @@ body {
 }
 
 .col-sm-4{
-    padding: 10px;
+    padding: 5px;
 }
 
-.col-sm-4:hover {
+.container-fluid.row.col-sm-4:hover {
     background-color: #888888;
     color: #ffffff;
 }
