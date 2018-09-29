@@ -12,17 +12,17 @@
 
 </head>
 <body>
-	<div class="jumbotron text-center">
-	<h1>CS-313</h1>
-  	<p><em>Web Engineering II</em></p>
-  	<p>
-  		<?php
+  <div class="jumbotron text-center">
+  <h1>CS-313</h1>
+    <p><em>Web Engineering II</em></p>
+    <p>
+      <?php
 $mydate=getdate(date("U"));
 echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
 ?>
 
-  	</p>
-  	</div>
+    </p>
+    </div>
   <div class="row">
     <div class="col-sm-2 profile text-center">
       <p><br><strong>Martin Fierro</strong></p><br>
