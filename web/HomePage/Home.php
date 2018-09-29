@@ -24,12 +24,12 @@ echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
 ?>
     </p>
     </div>
-  <div class="row">
-    <div class="col-sm-4 profile text-center">
-      <p><br><strong>Martin Fierro</strong></p><br>
+  <div class="row profile">
+    <div class="col-sm-4 text-center">
+      <p><strong>Martin Fierro</strong></p>
       <img src="martinfierro.jpg" class="img-circle person" alt="Martin Fierro">
     </div>
-    <div class="col-sm-8 profile text-center">      
+    <div class="col-sm-8 text-center">      
       <p>Martín Fierro, also known as El Gaucho Martín Fierro, is a 2,316-line epic poem by the Argentine writer José Hernández. The poem was originally published in two parts, El Gaucho Martín Fierro and La Vuelta de Martín Fierro.</p>
     </div>
     </div>

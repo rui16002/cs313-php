@@ -44,3 +44,6 @@ body {
     background-color: #999999;
 }
 
+.row {
+    margin-right: 0;
+}
