@@ -15,7 +15,8 @@
   <div class="jumbotron text-center">
   <h1>CS-313</h1>
     <p><em>Web Engineering II</em></p>
-    <p class="time">
+    </div>
+     <p class="time">
       <?php
 date_default_timezone_set('America/Boise');
 echo(strftime("BYU time: %Y. %B %d. %A. %X %Z <br>"));
@@ -23,14 +24,13 @@ date_default_timezone_set('Europe/Madrid');
 echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
 ?>
     </p>
-    </div>
   <div class="row profile">
     <div class="col-sm-4 text-center">
       <img src="martinfierro.jpg" class="img-circle person" alt="Martin Fierro">
     </div>
     <div class="col-sm-8 text-center">   
       <h3><strong>Martin Fierro</strong></h3>   
-      <h4>Martín Fierro, also known as El Gaucho Martín Fierro, is a 2,316-line epic poem by the Argentine writer José Hernández. The poem was originally published in two parts, El Gaucho Martín Fierro and La Vuelta de Martín Fierro.</h4>
+      <h5>Martín Fierro, also known as El Gaucho Martín Fierro, is a 2,316-line epic poem by the Argentine writer José Hernández. The poem was originally published in two parts, El Gaucho Martín Fierro and La Vuelta de Martín Fierro.</h5>
     </div>
     </div>
 <!-- Container (Assignments Section) -->
@@ -38,17 +38,17 @@ echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
   <h3>Assignment index</h3>
   <br>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 01</h4>
       <p>Comming soon...</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 02</h4>
       <p>Comming soon...</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 03</h4>
       <p>Comming soon...</p>
@@ -56,17 +56,17 @@ echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
   </div>
   <br><br>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 04</h4>
       <p>Comming soon...</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 05</h4>
       <p>Comming soon...</p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
       <h4>Assignment 06</h4>
       <p>Comming soon...</p>

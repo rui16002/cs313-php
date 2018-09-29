@@ -31,7 +31,7 @@ body {
     padding: 5px;
 }
 
-.container-fluid.row.col-sm-4:hover {
+.assignment:hover {
     background-color: #888888;
     color: #ffffff;
 }
