@@ -15,7 +15,7 @@
   <div class="jumbotron text-center">
   <h1>CS-313</h1>
     <p><em>Web Engineering II</em></p>
-    <p>
+    <p class="time">
       <?php
 date_default_timezone_set('America/Boise');
 echo(strftime("BYU time: %Y. %B %d. %A. %X %Z <br>"));
@@ -26,16 +26,16 @@ echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
     </div>
   <div class="row profile">
     <div class="col-sm-4 text-center">
-      <p><strong>Martin Fierro</strong></p>
       <img src="martinfierro.jpg" class="img-circle person" alt="Martin Fierro">
     </div>
-    <div class="col-sm-8 text-center">      
-      <p>Martín Fierro, also known as El Gaucho Martín Fierro, is a 2,316-line epic poem by the Argentine writer José Hernández. The poem was originally published in two parts, El Gaucho Martín Fierro and La Vuelta de Martín Fierro.</p>
+    <div class="col-sm-8 text-center">   
+      <h3><strong>Martin Fierro</strong></h3>   
+      <h4>Martín Fierro, also known as El Gaucho Martín Fierro, is a 2,316-line epic poem by the Argentine writer José Hernández. The poem was originally published in two parts, El Gaucho Martín Fierro and La Vuelta de Martín Fierro.</h4>
     </div>
     </div>
 <!-- Container (Assignments Section) -->
 <div class="container-fluid text-center">
-  <h4>Assignment index</h4>
+  <h3>Assignment index</h3>
   <br>
   <div class="row">
     <div class="col-sm-4">
