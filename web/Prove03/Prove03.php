@@ -40,13 +40,21 @@
   </div>
 </nav>
 
-<!--?php
+<?php
+
+// define variables and set to empty values
+$nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
+$name = $address = $city = $state = $zipCode = "";
+
 //Read the XML first
-$xml=simplexml_load_file("content.xml") or die("Error: Cannot create object");
+$xml=simplexml_load_file("content.xml")
 if ($xml === false) {
 //save a global var with the state in order to skip the execution of the script at the end
     echo "<h1>Sorry it seems our kitchen is on fire</h1>";
     echo "<h2>We couldn't save our precious food for you to taste</h2>";
+        foreach(libxml_get_errors() as $error) {
+        echo "<br>", $error->message;
+    }
   }
   else
   {
@@ -81,10 +89,6 @@ echo "</div>";
 echo "<div id="extras" class="extras">";
 echo "</div>";
 echo "<div id="cart" class="cart">";
-
-// define variables and set to empty values
-$nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
-$name = $address = $city = $state = $zipCode = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -146,10 +150,10 @@ if (empty($_POST["zipCode"])) {
   }
 }
 
-?-->
+?>
   <h2>Complete la compra</h2>
   <p><span class="error">* campo requerido</span></p>
-  <!--form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="name">Name</label>
   <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
   <span class="error">* <?php echo $nameErr;?></span><br>
@@ -166,7 +170,7 @@ if (empty($_POST["zipCode"])) {
   <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
   <span class="error">* <?php echo $zipCodeErr;?></span><br>
   <input type="submit" name="submit" value="Submit"> 
-</form-->
+</form>
 </div>
 
 <!--div id="promociones" class="Promociones">
@@ -200,7 +204,7 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Sign Up</button>
   </form>
 </footer>
-<!--?php 
+<?php 
 if ($xml === false)
 {
   echo "<h2>Couldn't load content</h2>";
@@ -209,6 +213,6 @@ else
 {
   echo "<script type="text/javascript">displayContent("pizzas");</script>";
 }
-?-->
+?>
 </body>
 </html>
