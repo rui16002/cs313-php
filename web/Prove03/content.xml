@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+  <pizza>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Margarita</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Primavera</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Jamon y Morron</name>
+      <price>5</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Tropical</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Pepperoni</name>
+      <price>5</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella</description>
+      <img>pizza.jpg</img>
+      <name>Vegetariana</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella + pollo</description>
+      <img>pizza.jpg</img>
+      <name>De granja</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella + Ternera</description>
+      <img>pizza.jpg</img>
+      <name>Del campo</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Salsa + Muzzarella + Jamon y anchoas</description>
+      <img>pizza.jpg</img>
+      <name>Del mar</name>
+      <price>6</price>
+    </type>
+  </pizza>
+  <entrante>
+    <type>
+      <description>bastones de queso parmesano</description>
+      <img>entrante.jpg</img>
+      <name>bastones a la parmesana</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Patatas con salsa brava</description>
+      <img>entrante.jpg</img>
+      <name>Patatas bravas</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Pechuguitas de pollo rebozadas</description>
+      <img>entrante.jpg</img>
+      <name>Pechuguitas de pollo</name>
+      <price>5</price>
+    </type>
+  </entrante>
+  <postre>
+    <type>
+      <description>Tiramisu italiano</description>
+      <img>postre.jpg</img>
+      <name>Tiramisu</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Helado de Chocolate con vainilla</description>
+      <img>postre.jpg</img>
+      <name>Helado</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Frutas varias</description>
+      <img>postre.jpg</img>
+      <name>Ensalada de fruta</name>
+      <price>5</price>
+    </type>
+  </postre>
+  <bebida>
+    <type>
+      <description>Jugo de Naranja</description>
+      <img>bebida.jpg</img>
+      <name>Naranja</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Jugo de Limon</description>
+      <img>bebida.jpg</img>
+      <name>Limon</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Jugo de fresa con arandanos</description>
+      <img>bebida.jpg</img>
+      <name>Fresa</name>
+      <price>5</price>
+    </type>
+  </bebida>
+  <extra>
+    <type>
+      <description>Salsa de queso azul</description>
+      <img>extra.jpg</img>
+      <name>Roquefort</name>
+      <price>3</price>
+    </type>
+    <type>
+      <description>Salsa de ajo</description>
+      <img>extra.jpg</img>
+      <name>Alioli</name>
+      <price>4</price>
+    </type>
+    <type>
+      <description>Salsa Argentina</description>
+      <img>extra.jpg</img>
+      <name>Criolla</name>
+      <price>5</price>
+    </type>
+  </extra>
+</items>
