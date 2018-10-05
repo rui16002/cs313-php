@@ -200,6 +200,15 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Sign Up</button>
   </form>
 </footer>
-<script type="text/javascript">displayContent("pizzas");</script>
+<?php 
+if ($xml === false)
+{
+  echo "<h2>Couldn't load content</h2>";
+}
+else
+{
+  echo "<script type="text/javascript">displayContent("pizzas");</script>";
+}
+?>
 </body>
 </html>
