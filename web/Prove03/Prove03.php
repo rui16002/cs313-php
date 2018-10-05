@@ -46,7 +46,8 @@
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
-//Read the XML first
+$xml = false;
+/*/Read the XML first
 $xml=simplexml_load_file("content.xml");
 if ($xml === false) {
 //save a global var with the state in order to skip the execution of the script at the end
@@ -149,7 +150,7 @@ if (empty($_POST["zipCode"])) {
   return $data;
   }
  }
-}
+}*/
 
 ?>
   <h2>Complete la compra</h2>
