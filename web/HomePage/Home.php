@@ -40,8 +40,8 @@ echo(strftime("My time: %Y. %B %d. %A. %X %Z"));
   <div class="row">
     <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
-      <h4>Assignment 01</h4>
-      <p>Comming soon...</p>
+      <a href="../Prove03/Prove03.php"><h4>Prove 03</h4>
+      <p>Our first PHP assignment</p></a>
     </div>
     <div class="col-sm-4 assignment">
       <span class="glyphicon glyphicon-wrench logo-small"></span>
