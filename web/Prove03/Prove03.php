@@ -47,7 +47,7 @@ $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
 //Read the XML first
-$xml=simplexml_load_file("content.xml")
+$xml=simplexml_load_file("content.xml");
 if ($xml === false) {
 //save a global var with the state in order to skip the execution of the script at the end
     echo "<h1>Sorry it seems our kitchen is on fire</h1>";
@@ -90,7 +90,7 @@ echo "<div id="extras" class="extras">";
 echo "</div>";
 echo "<div id="cart" class="cart">";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -148,7 +148,7 @@ if (empty($_POST["zipCode"])) {
   $data = htmlspecialchars($data);
   return $data;
   }
-}
+}*/
 
 ?>
   <h2>Complete la compra</h2>
