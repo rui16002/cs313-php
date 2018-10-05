@@ -47,7 +47,7 @@ $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
 $xml = false;
-/*/Read the XML first
+//Read the XML first
 $xml=simplexml_load_file("content.xml");
 if ($xml === false) {
 //save a global var with the state in order to skip the execution of the script at the end
@@ -59,98 +59,8 @@ if ($xml === false) {
   }
   else
   {
-echo "<div id="entrantes" class="entrantes">";
-  //$item-number = 0;
-  //foreach($xml->entrante->children() as $entrante) { 
-  //$item-number++;
-  ////If I have already 3 item in a row
-  //if ($item-number % 3 == 1)
-  //{
-    ////close the previous row if there was one open
-    ////Add a new row
-  //}
-  //else
-  //{
-    ////keep adding elements to the existing row
-  //}
-  ////close the last row
-      //echo $entrante->nombre . ", ";
-      //echo $entrante->descripcion . ", ";
-      //echo $entrante->imagen . ", ";
-      //echo $entrante->precio . "<br>";
-       //}
-
-echo "</div>";
-echo "<div id="pizzas" class="pizzas">";
-echo "</div>";
-echo "<div id="bebidas" class="bebidas">";
-echo "</div>";
-echo "<div id="postres" class="postres">";
-echo "</div>";
-echo "<div id="extras" class="extras">";
-echo "</div>";
-echo "<div id="cart" class="cart">";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "Only letters and white space allowed"; 
-    }
-  }
-  
-if (empty($_POST["address"])) {
-    $addressErr = "Address is required";
-  } else {
-    $address = test_input($_POST["address"]);
-    // check if address only contains letters, numbers and whitespace
-    if (!preg_match("/^[a-zA-Z0-9 ]*$/",$address)) {
-      $addressErr = "Only letters, numbers and white space allowed"; 
-    }
-  }
-    
-  if (empty($_POST["city"])) {
-    $cityErr = "City is required";
-  } else {
-    $city = test_input($_POST["city"]);
-    // check if city only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$city)) {
-      $cityErr = "Only letters and white space allowed"; 
-    }
-  }
-
-if (empty($_POST["state"])) {
-    $stateErr = "State is required";
-  } else {
-    $state = test_input($_POST["state"]);
-    // check if state only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$state)) {
-      $stateErr = "Only letters and white space allowed"; 
-    }
-  }
-
-if (empty($_POST["zipCode"])) {
-    $zipCodeErr = "Zip Code is required";
-  } else {
-    $zipCode = test_input($_POST["zipCode"]);
-    // check if zipCode only contains numbers
-    if (!preg_match("/^[0-9]*$/",$state)) {
-      $stateErr = "Only numbers allowed"; 
-    }
-  }
-
-  function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-  }
- }
-}*/
+echo "<h2>It Worked</h2>";
+}
 
 ?>
   <h2>Complete la compra</h2>
@@ -206,7 +116,7 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Sign Up</button>
   </form>
 </footer>
-<?php 
+<!--?php 
 if ($xml === false)
 {
   echo "<h2>Couldn't load content</h2>";
@@ -215,6 +125,6 @@ else
 {
   echo "<script type="text/javascript">displayContent("pizzas");</script>";
 }
-?>
+?-->
 </body>
 </html>
