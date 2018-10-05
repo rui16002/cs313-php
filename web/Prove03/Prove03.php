@@ -90,7 +90,7 @@ echo "<div id="extras" class="extras">";
 echo "</div>";
 echo "<div id="cart" class="cart">";
 
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -148,7 +148,8 @@ if (empty($_POST["zipCode"])) {
   $data = htmlspecialchars($data);
   return $data;
   }
-}*/
+ }
+}
 
 ?>
   <h2>Complete la compra</h2>
