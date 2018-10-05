@@ -60,26 +60,26 @@ if ($xml === false) {
   else
   {
 echo "<div id="entrantes" class="entrantes">";
-/*  $item-number = 0;
-  foreach($xml->entrante->children() as $entrante) { 
-  $item-number++;
-  //If I have already 3 item in a row
-  if ($item-number % 3 == 1)
-  {
-    //close the previous row if there was one open
-    //Add a new row
-  }
-  else
-  {
-    //keep adding elements to the existing row
-  }
-  //close the last row
-      echo $entrante->nombre . ", ";
-      echo $entrante->descripcion . ", ";
-      echo $entrante->imagen . ", ";
-      echo $entrante->precio . "<br>";
-       }
-*/
+  //$item-number = 0;
+  //foreach($xml->entrante->children() as $entrante) { 
+  //$item-number++;
+  ////If I have already 3 item in a row
+  //if ($item-number % 3 == 1)
+  //{
+    ////close the previous row if there was one open
+    ////Add a new row
+  //}
+  //else
+  //{
+    ////keep adding elements to the existing row
+  //}
+  ////close the last row
+      //echo $entrante->nombre . ", ";
+      //echo $entrante->descripcion . ", ";
+      //echo $entrante->imagen . ", ";
+      //echo $entrante->precio . "<br>";
+       //}
+
 echo "</div>";
 echo "<div id="pizzas" class="pizzas">";
 echo "</div>";
