@@ -27,8 +27,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#" onclick="displayContent('entrante');">Entrantes</a></li>
-        <li><a href="#" onclick="displayContent('pizza');">Pizzas</a></li>
+        <li><a href="#" onclick="displayContent('entrante');">Entrantes</a></li>
+        <li class="active"><a href="#" onclick="displayContent('pizza');">Pizzas</a></li>
         <li><a href="#" onclick="displayContent('bebida');">Bebidas</a></li>
         <li><a href="#" onclick="displayContent('postre');">Postres</a></li>
         <li><a href="#" onclick="displayContent('extra');">Extras</a></li>
@@ -40,7 +40,7 @@
   </div>
 </nav>
 
-<?php
+<!--?php
 //Read the XML first
 $xml=simplexml_load_file("content.xml") or die("Error: Cannot create object");
 if ($xml === false) {
@@ -146,10 +146,10 @@ if (empty($_POST["zipCode"])) {
   }
 }
 
-?>
+?-->
   <h2>Complete la compra</h2>
   <p><span class="error">* campo requerido</span></p>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <!--form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="name">Name</label>
   <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
   <span class="error">* <?php echo $nameErr;?></span><br>
@@ -166,7 +166,7 @@ if (empty($_POST["zipCode"])) {
   <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
   <span class="error">* <?php echo $zipCodeErr;?></span><br>
   <input type="submit" name="submit" value="Submit"> 
-</form>
+</form-->
 </div>
 
 <!--div id="promociones" class="Promociones">
@@ -200,7 +200,7 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Sign Up</button>
   </form>
 </footer>
-<?php 
+<!--?php 
 if ($xml === false)
 {
   echo "<h2>Couldn't load content</h2>";
@@ -209,6 +209,6 @@ else
 {
   echo "<script type="text/javascript">displayContent("pizzas");</script>";
 }
-?>
+?-->
 </body>
 </html>
