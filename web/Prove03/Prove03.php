@@ -93,8 +93,8 @@ if (empty($_POST["zipCode"])) {
   } else {
     $zipCode = test_input($_POST["zipCode"]);
     // check if zipCode only contains numbers
-    if (!preg_match("/^[0-9]*$/",$state)) {
-      $stateErr = "Only numbers allowed"; 
+    if (!preg_match("/^[0-9]*$/",$zipCode)) {
+      $zipCodeErr = "Only numbers allowed"; 
     }
   }
 
