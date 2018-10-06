@@ -30,11 +30,11 @@ session_start();
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#" onclick="displayContent('entrante');">Entrantes</a></li>
-        <li class="active"><a href="#" onclick="displayContent('pizza');">Pizzas</a></li>
-        <li><a href="#" onclick="displayContent('bebida');">Bebidas</a></li>
-        <li><a href="#" onclick="displayContent('postre');">Postres</a></li>
-        <li><a href="#" onclick="displayContent('extra');">Extras</a></li>
+        <li><a href="#" onclick="displayContent('entrantes');">Entrantes</a></li>
+        <li class="active"><a href="#" onclick="displayContent('pizzas');">Pizzas</a></li>
+        <li><a href="#" onclick="displayContent('bebidas');">Bebidas</a></li>
+        <li><a href="#" onclick="displayContent('postres');">Postres</a></li>
+        <li><a href="#" onclick="displayContent('extras');">Extras</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
@@ -65,8 +65,10 @@ if ($xml === false) {
   <?php echo "<h2>entrantes</h2>";?>
 </div>
 <div id="pizzas" class="pizzas">
-  <?php echo "<h2>pizzas</h2>";
-  echo $xml;?>
+  <?php echo "<h2>pizzas</h2><span>";
+  print_r($xml);
+echo "</span";?>
+  
 </div>
 <div id="bebidas" class="bebidas">
   <?php echo "<h2>bebidas</h2>";?>
