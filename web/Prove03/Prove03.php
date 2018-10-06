@@ -62,13 +62,32 @@ if ($xml === false) {
 ?>
 
 <div id="entrantes" class="entrantes">
-  <?php echo "<h2>entrantes</h2>";?>
+  <div class="container">    
+  <div class="row">
+    <?php foreach($xml->entrante->children() as $types) {
+      echo "<div class='col-sm-4' onclick='shopItem(".$types.")'>";
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        }
+      ?>
+  </div>    
+  </div>
 </div>
 <div id="pizzas" class="pizzas">
   <div class="container">    
   <div class="row">
     <?php foreach($xml->pizza->children() as $types) {
-      echo "<div class='col-sm-3'>";
+      echo "<div class='col-sm-4' onclick='shopItem(".$types.")'>";
        echo "<div class='panel panel-default'>";
         echo "<div class='panel-heading text-center'>".$types->name."</div>";
         echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
@@ -87,13 +106,70 @@ if ($xml === false) {
   </div>
 </div>  
 <div id="bebidas" class="bebidas">
-  <?php echo "<h2>bebidas</h2>";?>
+  <div class="container">    
+  <div class="row">
+    <?php foreach($xml->bebida->children() as $types) {
+      echo "<div class='col-sm-4' onclick='shopItem(".$types.")'>";
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        }
+      ?>
+  </div>    
+  </div>
 </div>
 <div id="postres" class="postres">
-  <?php echo "<h2>postres</h2>";?>
+  <div class="container">    
+  <div class="row">
+    <?php foreach($xml->postre->children() as $types) {
+      echo "<div class='col-sm-4' onclick='shopItem(".$types.")'>";
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        }
+      ?>
+  </div>    
+  </div>
 </div>
 <div id="extras" class="extras">
-  <?php echo "<h2>extras</h2>";?>
+  <div class="container">    
+  <div class="row">
+    <?php foreach($xml->extra->children() as $types) {
+      echo "<div class='col-sm-4' onclick='shopItem(".$types.")'>";
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        }
+      ?>
+  </div>    
+  </div>
 </div>
 
 <?php
@@ -169,7 +245,16 @@ if (empty($_POST["zipCode"])) {
     <div class="col-sm-12 form-title">
      <h3>Complete la compra</h3>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-6">
+      <div class="container">
+      <h4>Su compra</h4>   
+       <div class="row shopping_cart">
+        
+      </div>
+      <h6>Click sobre un item para quitar</h6>
+    </div>
+    </div>
+    <div class="col-sm-6">
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="name">Name</label>
   <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
