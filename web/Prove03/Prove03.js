@@ -81,5 +81,5 @@ frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
-col.onclick = removeItem(id, item);
+col.setAttribute("onclick",removeItem(id, item));
 }
