@@ -46,8 +46,10 @@ session_start();
 <?php 
 //Read the XML first
 $couldgetcontent = false;
-$xml=simplexml_load_file("content.xml");
-if ($xml === false) {
+if (!$couldgetcontent){
+$_SESSION["xml"]=simplexml_load_file("content.xml");
+}
+if ($_SESSION["xml"] === false) {
 //save a global var with the state in order to skip the execution of the script at the end
     echo "<h1>Sorry it seems our kitchen is on fire</h1>";
     echo "<h2>We couldn't save our precious food for you to taste</h2>";
@@ -88,7 +90,7 @@ HereDocString;
     <?php 
     if ($couldgetcontent)
     {
-      printItems($xml->entrante);
+      printItems($_SESSION["xml"]->entrante);
     }
       ?>
   </div>    
@@ -100,7 +102,7 @@ HereDocString;
     <?php 
     if ($couldgetcontent)
     {
-      printItems($xml->pizza);
+      printItems($_SESSION["xml"]->pizza);
     }
       ?>
   </div>    
@@ -112,7 +114,7 @@ HereDocString;
     <?php
     if ($couldgetcontent)
     { 
-      printItems($xml->bebida);
+      printItems($_SESSION["xml"]->bebida);
     }
       ?>
   </div>    
@@ -124,7 +126,7 @@ HereDocString;
     <?php 
     if ($couldgetcontent)
     {
-      printItems($xml->postre);
+      printItems($_SESSION["xml"]->postre);
     }
       ?>
   </div>    
@@ -136,14 +138,60 @@ HereDocString;
     <?php 
     if ($couldgetcontent)
     {
-      printItems($xml->extra);
+      printItems($_SESSION["xml"]->extra);
     }
-      ?>
+    ?>
   </div>    
   </div>
 </div>
+<div id="cart" class="cart">
+  <div class="container">    
+   <div class="row">
+    <div class="col-sm-12 form-title">
+     <h3>Complete la compra</h3>
+    </div>
+    <div class="col-sm-7">
+      <h4>Su compra</h4>   
+       <div class="row" id="shopping_cart">        
+      </div>
+      <h5>Click sobre un item para quitar</h5>
+    </div>
+    <div class="col-sm-5">
+      <h4>Información de envio</h4>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <label for="name">Nombre</label>
+  <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
+  <span class="error">* <?php echo $nameErr;?></span><br><br>
+  <label for="streetAddress">Dirección</label>
+  <input type="text" placeholder="<?php echo $address;?>" id="address" name="address">
+  <span class="error">* <?php echo $addressErr;?></span><br><br>
+  <label for="city">Ciudad</label>
+  <input type="text" placeholder="<?php echo $city;?>" id="city" name="city">
+  <span class="error">* <?php echo $cityErr;?></span><br><br>
+  <label for="state">Estado</label>
+  <input type="text" placeholder="<?php echo $state;?>" id="state" name="state">
+  <span class="error">* <?php echo $stateErr;?></span><br><br>
+  <label for="zipCode">CP</label>
+  <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
+  <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
+  <input type="submit" name="submit" value="Submit"> <br><br>
+  <p><span class="error">* Campo requerido</span></p>
+</form>
+</div>
+</div>
+</div>
+</div>
 
-<?php
+<br><br>
+<footer class="container-fluid text-center">
+  <p>Based on example in W3School</p>  
+  <form class="form-inline">Promociones:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Suscribirse</button>
+  </form>
+</footer>
+  <script type="text/javascript">displayContent("pizzas");</script>
+  <?php
 //------------------------------Handle Form -----------------------------------
 // define variables and set to empty values
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
@@ -210,52 +258,5 @@ if (empty($_POST["zipCode"])) {
  }
 
 ?>
-<div id="cart" class="cart">
-  <div class="container">    
-   <div class="row">
-    <div class="col-sm-12 form-title">
-     <h3>Complete la compra</h3>
-    </div>
-    <div class="col-sm-7">
-      <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">        
-      </div>
-      <h5>Click sobre un item para quitar</h5>
-    </div>
-    <div class="col-sm-5">
-      <h4>Información de envio</h4>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <label for="name">Nombre</label>
-  <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
-  <span class="error">* <?php echo $nameErr;?></span><br><br>
-  <label for="streetAddress">Dirección</label>
-  <input type="text" placeholder="<?php echo $address;?>" id="address" name="address">
-  <span class="error">* <?php echo $addressErr;?></span><br><br>
-  <label for="city">Ciudad</label>
-  <input type="text" placeholder="<?php echo $city;?>" id="city" name="city">
-  <span class="error">* <?php echo $cityErr;?></span><br><br>
-  <label for="state">Estado</label>
-  <input type="text" placeholder="<?php echo $state;?>" id="state" name="state">
-  <span class="error">* <?php echo $stateErr;?></span><br><br>
-  <label for="zipCode">CP</label>
-  <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
-  <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
-  <input type="submit" name="submit" value="Submit"> <br><br>
-  <p><span class="error">* Campo requerido</span></p>
-</form>
-</div>
-</div>
-</div>
-</div>
-
-<br><br>
-<footer class="container-fluid text-center">
-  <p>Based on example in W3School</p>  
-  <form class="form-inline">Promociones:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Suscribirse</button>
-  </form>
-</footer>
-  <script type="text/javascript">displayContent("pizzas");</script>
 </body>
 </html>
