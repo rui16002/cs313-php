@@ -67,22 +67,23 @@ if ($xml === false) {
 <div id="pizzas" class="pizzas">
   <div class="container">    
   <div class="row">
-    <div class="col-sm-4">      
-      <div class="panel panel-default">
-        <div class="panel-heading text-center"><?php echo $xml->pizza->type[0]->name; ?></div>
-        <div class="panel-body"><img src="<?php echo $xml->pizza->type[0]->img; ?>" class="img-responsive" alt="Image"></div>
-        <div class="panel-footer">
-         <div class="row">
-          <div class="col-sm-12 description"><?php echo $xml->pizza->type[0]->description; ?></div>
-          <div class="col-sm-6 oldprice"></div>
-          <div class="col-sm-6 newprice"><?php echo $xml->pizza->type[0]->price; ?></div>
-         </div>
-        </div>
-      </div>    
-    </div>
-  </div>  
-</div>
-</div>
+    <?php foreach($xml->pizza->children() as $types) {
+      echo "<div class='col-sm-3'>";
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        }
+      ?>
+  </div>    
+  </div>
+</div>  
 <div id="bebidas" class="bebidas">
   <?php echo "<h2>bebidas</h2>";?>
 </div>
