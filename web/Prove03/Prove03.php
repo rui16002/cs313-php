@@ -65,10 +65,23 @@ if ($xml === false) {
   <?php echo "<h2>entrantes</h2>";?>
 </div>
 <div id="pizzas" class="pizzas">
-  <?php echo "<h2>pizzas</h2><span>";
-  print_r($xml);
-echo "</span";?>
-  
+  <div class="container">    
+  <div class="row">
+    <div class="col-sm-4">      
+      <div class="panel panel-default">
+        <div class="panel-heading text-center"><?php $xml->pizza->type[0]->name; ?></div>
+        <div class="panel-body"><img src="<?php $xml->pizza->type[0]->img; ?>" class="img-responsive" alt="Image"></div>
+        <div class="panel-footer">
+         <div class="row">
+          <div class="col-sm-12 description"><?php $xml->pizza->type[0]->description; ?></div>
+          <div class="col-sm-6 oldprice"></div>
+          <div class="col-sm-6 newprice"><?php $xml->pizza->type[0]->price; ?></div>
+         </div>
+        </div>
+      </div>    
+    </div>
+  </div>  
+</div>
 </div>
 <div id="bebidas" class="bebidas">
   <?php echo "<h2>bebidas</h2>";?>
@@ -178,29 +191,6 @@ if (empty($_POST["zipCode"])) {
 </div>
 </div>
 
-<!--div id="promociones" class="Promociones">
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      
-      <div class="panel panel-default">
-        <div class="panel-heading text-center">Pizza Margarita</div>
-        <div class="panel-body"><img src="pizza.jpg" class="img-responsive" alt="Image"></div>
-        <div class="panel-footer">
-         <div class="row">
-          <div class="col-sm-12 description">Salsa + Muzzarella</div>
-          <div class="col-sm-6 oldprice">€ 18</div>
-          <div class="col-sm-6 newprice">€ 15</div>
-         </div>
-        </div>
-      </div>
-    
-    </div>
-
-  </div>
-</div>
-
-</div-->
 <br><br>
 <footer class="container-fluid text-center">
   <p>Online Store Copyright</p>  
