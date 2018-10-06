@@ -33,17 +33,16 @@ function removeItem(id, item)
   container.removeChild(child);
 }
 
-function shopItem(itemName, itemDescription, itemImg, itemPrice)
+function shopItem(item)
 {
  //Add it to the list
- var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
  shopping_cart.push(item);
  //Create a card in the Shopping cart
  container = document.getElementById("shopping_cart");
- description = document.createTextNode(itemDescription);
- price = document.createTextNode(itemPrice);
- name = document.createTextNode(itemName);
- id = itemName + shopping_cart.length;
+ description = document.createTextNode(item.description);
+ price = document.createTextNode(item.price);
+ name = document.createTextNode(item.name);
+ id = item.name + shopping_cart.length;
 
 col = document.createElement("div");
 col.setAttribute("class","col-sm-4");
@@ -59,7 +58,7 @@ body.setAttribute("class","panel-body");
 img = document.createElement("img");
 img.setAttribute("class", "img-responsive");
 img.setAttribute("alt", "Image");
-img.setAttribute("src", itemImg);
+img.setAttribute("src", item.img);
 footer = document.createElement("div");
 footer.setAttribute("class", "panel-footer");
 frow = document.createElement("div");
