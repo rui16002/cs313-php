@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,19 +62,20 @@ if ($xml === false) {
 ?>
 
 <div id="entrantes" class="entrantes">
-  <?php echo "entrantes";?>
+  <?php echo "<h2>entrantes</h2>";?>
 </div>
 <div id="pizzas" class="pizzas">
-  <?php echo "pizzas";?>
+  <?php echo "<h2>pizzas</h2>";
+  echo $xml;?>
 </div>
 <div id="bebidas" class="bebidas">
-  <?php echo "bebidas";?>
+  <?php echo "<h2>bebidas</h2>";?>
 </div>
 <div id="postres" class="postres">
-  <?php echo "postres";?>
+  <?php echo "<h2>postres</h2>";?>
 </div>
 <div id="extras" class="extras">
-  <?php echo "extras";?>
+  <?php echo "<h2>extras</h2>";?>
 </div>
 
 <?php
@@ -142,8 +146,12 @@ if (empty($_POST["zipCode"])) {
 
 ?>
 <div id="cart" class="cart">
-  <h2>Complete la compra</h2>
-  <p><span class="error">* campo requerido</span></p>
+  <div class="container">    
+   <div class="row">
+    <div class="col-sm-12 form-title">
+     <h3>Complete la compra</h3>
+    </div>
+    <div class="col-sm-8">
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="name">Name</label>
   <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
@@ -161,7 +169,11 @@ if (empty($_POST["zipCode"])) {
   <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
   <span class="error">* <?php echo $zipCodeErr;?></span><br>
   <input type="submit" name="submit" value="Submit"> 
+  <p><span class="error">* campo requerido</span></p>
 </form>
+</div>
+</div>
+</div>
 </div>
 
 <!--div id="promociones" class="Promociones">
