@@ -69,13 +69,13 @@ if ($xml === false) {
   <div class="row">
     <div class="col-sm-4">      
       <div class="panel panel-default">
-        <div class="panel-heading text-center"><?php $xml->pizza->type[0]->name; ?></div>
-        <div class="panel-body"><img src="<?php $xml->pizza->type[0]->img; ?>" class="img-responsive" alt="Image"></div>
+        <div class="panel-heading text-center"><?php echo $xml->pizza->type[0]->name; ?></div>
+        <div class="panel-body"><img src="<?php echo $xml->pizza->type[0]->img; ?>" class="img-responsive" alt="Image"></div>
         <div class="panel-footer">
          <div class="row">
-          <div class="col-sm-12 description"><?php $xml->pizza->type[0]->description; ?></div>
+          <div class="col-sm-12 description"><?php echo $xml->pizza->type[0]->description; ?></div>
           <div class="col-sm-6 oldprice"></div>
-          <div class="col-sm-6 newprice"><?php $xml->pizza->type[0]->price; ?></div>
+          <div class="col-sm-6 newprice"><?php echo $xml->pizza->type[0]->price; ?></div>
          </div>
         </div>
       </div>    
