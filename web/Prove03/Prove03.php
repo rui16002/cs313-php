@@ -63,9 +63,9 @@ if ($xml === false) {
 function printItems($list)
 {
 foreach($list->children() as $types) {
-       echo '<div class="col-sm-4" onclick="shopItem(';
-       echo "'".$types->name."', '".$types->description."', '".$types->img."', '".$types->price."')";
-       echo '">';
+echo <<< HereDocString
+<div class="col-sm-4" onclick="shopItem('$types->name', '$types->description', '$types->img', '$types->price')">
+HereDocString;
        echo "<div class='panel panel-default'>";
         echo "<div class='panel-heading text-center'>".$types->name."</div>";
         echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
