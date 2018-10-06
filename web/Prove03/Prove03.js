@@ -42,7 +42,7 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  //Create a card in the Shopping cart
  var container = document.getElementById("shopping_cart");
  var description = document.createTextNode(itemDescription);
- var price = document.createTextNode(itemPrice);
+ var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
  var id = itemName + shopping_cart.length;
 

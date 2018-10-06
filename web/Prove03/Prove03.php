@@ -37,7 +37,7 @@ session_start();
         <li><a href="#" onclick="displayContent('extras');">Extras</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>
+        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
       </ul>
     </div>
   </div>
@@ -86,7 +86,10 @@ HereDocString;
   <div class="container">    
   <div class="row">
     <?php 
+    if ($couldgetcontent)
+    {
       printItems($xml->entrante);
+    }
       ?>
   </div>    
   </div>
@@ -95,7 +98,10 @@ HereDocString;
   <div class="container">    
   <div class="row">
     <?php 
+    if ($couldgetcontent)
+    {
       printItems($xml->pizza);
+    }
       ?>
   </div>    
   </div>
@@ -103,8 +109,11 @@ HereDocString;
 <div id="bebidas" class="bebidas">
   <div class="container">    
   <div class="row">
-    <?php 
+    <?php
+    if ($couldgetcontent)
+    { 
       printItems($xml->bebida);
+    }
       ?>
   </div>    
   </div>
@@ -113,7 +122,10 @@ HereDocString;
   <div class="container">    
   <div class="row">
     <?php 
+    if ($couldgetcontent)
+    {
       printItems($xml->postre);
+    }
       ?>
   </div>    
   </div>
@@ -122,7 +134,10 @@ HereDocString;
   <div class="container">    
   <div class="row">
     <?php 
+    if ($couldgetcontent)
+    {
       printItems($xml->extra);
+    }
       ?>
   </div>    
   </div>
@@ -201,34 +216,32 @@ if (empty($_POST["zipCode"])) {
     <div class="col-sm-12 form-title">
      <h3>Complete la compra</h3>
     </div>
-    <div class="col-sm-6">
-      <div class="container">
+    <div class="col-sm-7">
       <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">
-        
+       <div class="row" id="shopping_cart">        
       </div>
-      <h6>Click sobre un item para quitar</h6>
+      <h5>Click sobre un item para quitar</h5>
     </div>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
+      <h4>Información de envio</h4>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <label for="name">Name</label>
+  <label for="name">Nombre</label>
   <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
-  <span class="error">* <?php echo $nameErr;?></span><br>
-  <label for="streetAddress">Address</label>
+  <span class="error">* <?php echo $nameErr;?></span><br><br>
+  <label for="streetAddress">Dirección</label>
   <input type="text" placeholder="<?php echo $address;?>" id="address" name="address">
-  <span class="error">* <?php echo $addressErr;?></span><br>
-  <label for="city">City</label>
+  <span class="error">* <?php echo $addressErr;?></span><br><br>
+  <label for="city">Ciudad</label>
   <input type="text" placeholder="<?php echo $city;?>" id="city" name="city">
-  <span class="error">* <?php echo $cityErr;?></span><br>
-  <label for="state">State</label>
+  <span class="error">* <?php echo $cityErr;?></span><br><br>
+  <label for="state">Estado</label>
   <input type="text" placeholder="<?php echo $state;?>" id="state" name="state">
-  <span class="error">* <?php echo $stateErr;?></span><br>
-  <label for="zipCode">Zip Code</label>
+  <span class="error">* <?php echo $stateErr;?></span><br><br>
+  <label for="zipCode">CP</label>
   <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
-  <span class="error">* <?php echo $zipCodeErr;?></span><br>
-  <input type="submit" name="submit" value="Submit"> 
-  <p><span class="error">* campo requerido</span></p>
+  <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
+  <input type="submit" name="submit" value="Submit"> <br><br>
+  <p><span class="error">* Campo requerido</span></p>
 </form>
 </div>
 </div>
@@ -237,10 +250,10 @@ if (empty($_POST["zipCode"])) {
 
 <br><br>
 <footer class="container-fluid text-center">
-  <p>Online Store Copyright</p>  
-  <form class="form-inline">Get deals:
+  <p>Based on example in W3School</p>  
+  <form class="form-inline">Promociones:
     <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Sign Up</button>
+    <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
   <script type="text/javascript">displayContent("pizzas");</script>
