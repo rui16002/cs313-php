@@ -27,10 +27,10 @@ function displayContent(whichone) {
 
 function removeItem(id, item)
 {
-  shopping_cart.splice( shopping_cart.indexOf(item), 1 );
   container = document.getElementById("shopping_cart");
   child = document.getElementById(id);
   container.removeChild(child);
+  shopping_cart.splice( shopping_cart.indexOf(item), 1 );
 }
 
 function shopItem(itemName, itemDescription, itemImg, itemPrice)
