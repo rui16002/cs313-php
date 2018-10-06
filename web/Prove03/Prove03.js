@@ -48,7 +48,6 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
 col = document.createElement("div");
 col.setAttribute("class","col-sm-4");
 col.setAttribute("id",id);
-col.onclick = removeItem(id, item);
 panel = document.createElement("div");
 panel.setAttribute("class","panel panel-default");
 heading = document.createElement("div");
@@ -82,4 +81,5 @@ frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
+col.onclick = removeItem(id, item);
 }
