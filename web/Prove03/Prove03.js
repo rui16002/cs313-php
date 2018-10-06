@@ -83,5 +83,5 @@ frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
-col.setAttribute("onclick", "removeItem("+id+", "+itemName+", "+itemDescription+", "+itemImg+", "+itemPrice+");");
+col.setAttribute("onclick", "removeItem('"+id+"', '"+itemName+"', '"+itemDescription+"', '"+itemImg+"', '"+itemPrice+"');");
 }
