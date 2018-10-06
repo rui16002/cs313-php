@@ -204,7 +204,7 @@ if (empty($_POST["zipCode"])) {
     <div class="col-sm-6">
       <div class="container">
       <h4>Su compra</h4>   
-       <div class="row shopping_cart">
+       <div class="row" id="shopping_cart">
         
       </div>
       <h6>Click sobre un item para quitar</h6>
