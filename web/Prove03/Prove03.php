@@ -59,14 +59,13 @@ if ($xml === false) {
   {
     $couldgetcontent = true;
   }
-?>
 
-<div id="entrantes" class="entrantes">
-  <div class="container">    
-  <div class="row">
-    <?php foreach($xml->entrante->children() as $types) {
-      $type = array("name"=> $types->name, "description"=>$types->description, "price"=>$types->price);
-      echo "<div class='col-sm-4' onclick='shopItem(".$type.")'>";
+function printItems($list)
+{
+foreach($list->children() as $types) {
+       echo '<div class="col-sm-4" onclick="shopItem(';
+       echo "'".$types->name."', '".$types->description."', '".$types->img."', '".$types->price."')";
+       echo '">';
        echo "<div class='panel panel-default'>";
         echo "<div class='panel-heading text-center'>".$types->name."</div>";
         echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
@@ -80,6 +79,14 @@ if ($xml === false) {
         echo "</div>";
         echo "</div>";
         }
+}
+?>
+
+<div id="entrantes" class="entrantes">
+  <div class="container">    
+  <div class="row">
+    <?php 
+      printItems($xml->entrante);
       ?>
   </div>    
   </div>
@@ -87,22 +94,8 @@ if ($xml === false) {
 <div id="pizzas" class="pizzas">
   <div class="container">    
   <div class="row">
-    <?php foreach($xml->pizza->children() as $types) {
-      $type = array("name"=> $types->name, "description"=>$types->description, "price"=>$types->price);
-      echo "<div class='col-sm-4' onclick='shopItem(".$type.")'>";
-       echo "<div class='panel panel-default'>";
-        echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
-        echo "<div class='panel-footer'>";
-         echo "<div class='row'>";
-          echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          echo "<div class='col-sm-6 oldprice'></div>";
-          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        }
+    <?php 
+      printItems($xml->pizza);
       ?>
   </div>    
   </div>
@@ -110,22 +103,8 @@ if ($xml === false) {
 <div id="bebidas" class="bebidas">
   <div class="container">    
   <div class="row">
-    <?php foreach($xml->bebida->children() as $types) {
-      $type = array("name"=> $types->name, "description"=>$types->description, "price"=>$types->price);
-      echo "<div class='col-sm-4' onclick='shopItem(".$type.")'>";
-       echo "<div class='panel panel-default'>";
-        echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
-        echo "<div class='panel-footer'>";
-         echo "<div class='row'>";
-          echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          echo "<div class='col-sm-6 oldprice'></div>";
-          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        }
+    <?php 
+      printItems($xml->bebida);
       ?>
   </div>    
   </div>
@@ -133,22 +112,8 @@ if ($xml === false) {
 <div id="postres" class="postres">
   <div class="container">    
   <div class="row">
-    <?php foreach($xml->postre->children() as $types) {
-      $type = array("name"=> $types->name, "description"=>$types->description, "price"=>$types->price);
-      echo "<div class='col-sm-4' onclick='shopItem(".$type.")'>";
-       echo "<div class='panel panel-default'>";
-        echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
-        echo "<div class='panel-footer'>";
-         echo "<div class='row'>";
-          echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          echo "<div class='col-sm-6 oldprice'></div>";
-          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        }
+    <?php 
+      printItems($xml->postre);
       ?>
   </div>    
   </div>
@@ -156,22 +121,8 @@ if ($xml === false) {
 <div id="extras" class="extras">
   <div class="container">    
   <div class="row">
-    <?php foreach($xml->extra->children() as $types) {
-      $type = array("name"=> $types->name, "description"=>$types->description, "price"=>$types->price);
-      echo "<div class='col-sm-4' onclick='shopItem(".$type.")'>";
-       echo "<div class='panel panel-default'>";
-        echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        echo "<div class='panel-body'><img src='".$types->img."' class='img-responsive' alt='Image'></div>";
-        echo "<div class='panel-footer'>";
-         echo "<div class='row'>";
-          echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          echo "<div class='col-sm-6 oldprice'></div>";
-          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        }
+    <?php 
+      printItems($xml->extra);
       ?>
   </div>    
   </div>
