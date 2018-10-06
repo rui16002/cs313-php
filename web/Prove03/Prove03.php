@@ -79,6 +79,8 @@ if ($xml === false) {
           echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
          echo "</div>";
         echo "</div>";
+        echo "</div>";
+        echo "</div>";
         }
       ?>
   </div>    
