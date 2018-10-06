@@ -25,8 +25,9 @@ function displayContent(whichone) {
 
 
 
-function removeItem(id, item)
+function removeItem(id, itemName, itemDescription, itemImg, itemPrice)
 {
+  var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
   container = document.getElementById("shopping_cart");
   child = document.getElementById(id);
   container.removeChild(child);
@@ -75,11 +76,12 @@ newp.appendChild(price);
 col.appendChild(panel);
 panel.appendChild(heading);
 panel.appendChild(body);
+body.appendChild(img);
 panel.appendChild(footer);
 footer.appendChild(frow);
 frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
-col.setAttribute("onclick",removeItem(id, item));
+col.setAttribute("onclick", "removeItem("+id+", "+itemName+", "+itemDescription+", "+itemImg+", "+itemPrice+");");
 }
