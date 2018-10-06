@@ -1,6 +1,3 @@
-var content_loaded = false;
-var shopping_cart = [];
-
 /*Load content on the screen depending on the tab selected*/
 function displayContent(whichone) {
   document.getElementById("pizzas").setAttribute("style", "display: none");
@@ -23,32 +20,44 @@ function displayContent(whichone) {
     document.getElementById("cart").setAttribute("style", "display: block");
 }
 
-
-
 function removeItem(id, itemName, itemDescription, itemImg, itemPrice)
 {
-  var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
+  var item = {id = itemId, name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
   container = document.getElementById("shopping_cart");
   child = document.getElementById(id);
   container.removeChild(child);
-  shopping_cart.splice( shopping_cart.indexOf(item), 1 );
+    <?php array_splice($_SESSION["shopping_cart"], array_search(item, $_SESSION["shopping_cart"];, 1 );?>
 }
+
+function savePurchase()
+{
+  var container = document.getElementById("shopping_cart");
+  <?php $_SESSION["shopping_cart"] = container; ?>
+}
+
+function retrievePurchase()
+{
+  var container = document.getElementById("shopping_cart");
+  container.innnerHTML = <?php echo $_SESSION["shopping_cart"]; ?>
+}
+
 
 function shopItem(itemName, itemDescription, itemImg, itemPrice)
 {
- //Add it to the list
- var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
- shopping_cart.push(item);
  //Create a card in the Shopping cart
  var container = document.getElementById("shopping_cart");
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
- var id = itemName + shopping_cart.length;
+ var itemId = itemName + <?php sizeof($_SESSION["shopping_cart"]);?>;
+
+  //Add it to the list
+ var item = {id = itemId, name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
+<?php array_push($_SESSION["shopping_cart"], item );?>
 
 var col = document.createElement("div");
 col.setAttribute("class","col-sm-4");
-col.setAttribute("id",id);
+col.setAttribute("id", itemId);
 var panel = document.createElement("div");
 panel.setAttribute("class","panel panel-default");
 var heading = document.createElement("div");

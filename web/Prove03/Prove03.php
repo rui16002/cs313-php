@@ -44,6 +44,12 @@ session_start();
 </nav>
 
 <?php 
+
+if (!$_SESSION["shopping_cart"] === false)
+{
+  //Do nothing, it means this is the first time-------------------------------------------------------------------------
+}
+
 //Read the XML first
 $couldgetcontent = false;
 if (!$couldgetcontent){
@@ -61,6 +67,8 @@ if ($_SESSION["xml"] === false) {
   {
     $couldgetcontent = true;
   }
+}
+
 
 function printItems($list)
 {
@@ -152,7 +160,7 @@ HereDocString;
     </div>
     <div class="col-sm-7">
       <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">        
+       <div class="row" id="shopping_cart" onchange="savePurchase()">        
       </div>
       <h5>Click sobre un item para quitar</h5>
     </div>
@@ -160,19 +168,19 @@ HereDocString;
       <h4>Información de envio</h4>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <label for="name">Nombre</label>
-  <input type="text" placeholder="<?php echo $name;?>" id="name" name="name">
+  <input type="text" value="<?php echo $name;?>" id="name" name="name">
   <span class="error">* <?php echo $nameErr;?></span><br><br>
   <label for="streetAddress">Dirección</label>
-  <input type="text" placeholder="<?php echo $address;?>" id="address" name="address">
+  <input type="text" value="<?php echo $address;?>" id="address" name="address">
   <span class="error">* <?php echo $addressErr;?></span><br><br>
   <label for="city">Ciudad</label>
-  <input type="text" placeholder="<?php echo $city;?>" id="city" name="city">
+  <input type="text" value="<?php echo $city;?>" id="city" name="city">
   <span class="error">* <?php echo $cityErr;?></span><br><br>
   <label for="state">Estado</label>
-  <input type="text" placeholder="<?php echo $state;?>" id="state" name="state">
+  <input type="text" value="<?php echo $state;?>" id="state" name="state">
   <span class="error">* <?php echo $stateErr;?></span><br><br>
   <label for="zipCode">CP</label>
-  <input type="text" placeholder="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
+  <input type="text" value="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
   <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
   <input type="submit" name="submit" value="Submit"> <br><br>
   <p><span class="error">* Campo requerido</span></p>
@@ -191,6 +199,7 @@ HereDocString;
   </form>
 </footer>
   <script type="text/javascript">displayContent("pizzas");</script>
+
   <?php
 //------------------------------Handle Form -----------------------------------
 // define variables and set to empty values
