@@ -44,12 +44,6 @@ session_start();
 </nav>
 
 <?php 
-
-if (!$_SESSION["shopping_cart"] === false)
-{
-  //Do nothing, it means this is the first time-------------------------------------------------------------------------
-}
-
 //Read the XML first
 $couldgetcontent = false;
 if (!$couldgetcontent){
@@ -67,8 +61,6 @@ if ($_SESSION["xml"] === false) {
   {
     $couldgetcontent = true;
   }
-}
-
 
 function printItems($list)
 {
@@ -160,7 +152,7 @@ HereDocString;
     </div>
     <div class="col-sm-7">
       <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart" onchange="savePurchase()">        
+       <div class="row" id="shopping_cart">        
       </div>
       <h5>Click sobre un item para quitar</h5>
     </div>
@@ -199,7 +191,6 @@ HereDocString;
   </form>
 </footer>
   <script type="text/javascript">displayContent("pizzas");</script>
-
   <?php
 //------------------------------Handle Form -----------------------------------
 // define variables and set to empty values
