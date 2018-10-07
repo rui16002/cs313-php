@@ -65,8 +65,9 @@ if ($_SESSION["xml"] === false) {
 function printItems($list)
 {
 foreach($list->children() as $types) {
+  $id = $types->name + sizeof($_SESSION["shopping_cart"]);
 echo <<< HereDocString
-<div class="col-sm-4" onclick="shopItem('$types->name', '$types->description', '$types->img', '$types->price')">
+<div class="col-sm-4" onclick="shopItem('$id','$types->name', '$types->description', '$types->img', '$types->price')">
 HereDocString;
        echo "<div class='panel panel-default'>";
         echo "<div class='panel-heading text-center'>".$types->name."</div>";

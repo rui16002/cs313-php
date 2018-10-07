@@ -55,7 +55,7 @@ function removeItem(id, itemName, itemDescription, itemImg, itemPrice)
   removePurchasedItemFromSession(item);
 }
 
-function shopItem(itemName, itemDescription, itemImg, itemPrice)
+function shopItem(id, itemName, itemDescription, itemImg, itemPrice)
 {
  //Add it to the list
  var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
@@ -65,7 +65,6 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
- var id = itemName + <?php echo sizeof($_SESSION["shopping_cart"]); ?>
 
 var col = document.createElement("div").setAttribute("class","col-sm-4").setAttribute("id",id);
 var panel = document.createElement("div").setAttribute("class","panel panel-default");
