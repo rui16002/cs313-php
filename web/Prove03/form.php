@@ -12,7 +12,7 @@
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
