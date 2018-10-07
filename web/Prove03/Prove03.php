@@ -174,7 +174,7 @@ HereDocString;
   </form>
 </footer>
   <?php
-  if (false)   //Load form as default
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
   {
    echo '<script type="text/javascript">displayContent("cart");</script>';
   }
