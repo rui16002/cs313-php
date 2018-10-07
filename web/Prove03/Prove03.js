@@ -23,7 +23,7 @@ function displayContent(whichone) {
 }
 
 function savePurchasedItemInSession(item) {
-  var xhttp = new XMLHttpRequest();
+ /* var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
@@ -31,11 +31,11 @@ function savePurchasedItemInSession(item) {
   };
   xhttp.open("POST", "Prove03.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("purchasedItem=" +item);
+  xhttp.send("purchasedItem=" +item);*/
 }
 
 function removePurchasedItemFromSession(item) {
-  var xhttp = new XMLHttpRequest();
+ /* var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("demo").innerHTML = this.responseText;
@@ -43,7 +43,7 @@ function removePurchasedItemFromSession(item) {
   };
   xhttp.open("POST", "Prove03.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("removedItem=" +item);
+  xhttp.send("removedItem=" +item);*/
 }
 
 function removeItem(id, itemName, itemDescription, itemImg, itemPrice)

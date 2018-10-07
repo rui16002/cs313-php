@@ -146,7 +146,7 @@ HereDocString;
 </div>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // collect value of input field
     $purchasedItem = $_POST['purchasedItem'];
     if (!empty($purchasedItem)) {
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<span>--------------------------------------------</span><br>";
     echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
     echo "<span>--------------------------------------------</span><br>";
-}
+}*/
 ?>
 
  <?php
