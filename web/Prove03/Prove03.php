@@ -170,9 +170,6 @@ $name = $address = $city = $state = $zipCode = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  //Load form as default
-  echo '<script type="text/javascript">displayContent("cart");</script>';
-
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -229,6 +226,9 @@ if (empty($_POST["zipCode"])) {
   $data = htmlspecialchars($data);
   return $data;
   }
+
+    //Load form as default
+  echo '<script type="text/javascript">displayContent("cart");</script>';
  }
  else
  {

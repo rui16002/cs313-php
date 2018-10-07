@@ -63,7 +63,7 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
- var id = "purchase" + new Date();
+ var id = "purchase" + new Date().getTime();
 
 var col = document.createElement("div");
 col.setAttribute("class","col-sm-4");
@@ -84,13 +84,13 @@ footer.setAttribute("class", "panel-footer");
 var frow = document.createElement("div");
 setAttribute("class", "row");
 var desc = document.createElement("div");
-setAttribute("class", "col-sm-12 description");
-appendChild(description);
+desc.setAttribute("class", "col-sm-12 description");
+desc.appendChild(description);
 var oldp = document.createElement("div");
-setAttribute("class", "col-sm-6 oldprice");
+oldp.setAttribute("class", "col-sm-6 oldprice");
 var newp = document.createElement("div");
-setAttribute("class", "col-sm-6 newprice");
-appendChild(price);
+newp.setAttribute("class", "col-sm-6 newprice");
+newp.appendChild(price);
 
 col.appendChild(panel);
 panel.appendChild(heading);
