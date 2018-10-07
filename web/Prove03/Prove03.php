@@ -165,6 +165,14 @@ HereDocString;
 </div>
 </div>
 <br>
+<br>
+<footer class="container-fluid text-center">
+  <p>Based on example in W3School</p>  
+  <form class="form-inline">Promociones:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Suscribirse</button>
+  </form>
+</footer>
   <?php
   if (false)   //Load form as default
   {
@@ -175,14 +183,6 @@ HereDocString;
    echo '<script type="text/javascript">displayContent("pizzas");</script>';
   }
 ?>
-<br>
-<footer class="container-fluid text-center">
-  <p>Based on example in W3School</p>  
-  <form class="form-inline">Promociones:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Suscribirse</button>
-  </form>
-</footer>
     <div id='itemCount'></div>
 </body>
 </html>
