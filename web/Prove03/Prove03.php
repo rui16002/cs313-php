@@ -154,16 +154,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   //----------------------------------------------------------------------------
     // collect value of input field
+    echo "<span>--------------------------------------------</span><br>";
     if (!(empty($_POST["purchasedItem"]))) {
         array_push($_SESSION["shopping_cart"], $_POST["purchasedItem"]);
+    echo "<span> purchased item: ".$_POST["purchasedItem"]."</span><br>";
     }
 
     if (!(empty($_POST["removedItem"]))) {
-        //array_splice($_SESSION["shopping_cart"],array_search($_POST["removedItem"],$_SESSION["shopping_cart"]),1);
+      $item2remove = array_search($_POST["removedItem"],$_SESSION["shopping_cart"]);
+        //array_splice($_SESSION["shopping_cart"],$item2remove,1);
+      echo "<span> removed item: ".$_POST["removedItem"]."</span><br>";
+      echo "<span> item 2 remove: ".$item2remove."</span><br>";
     }
-    echo "<span>--------------------------------------------</span><br>";
-    echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
-    echo "<div id='itemCount'></div><br>";
+
+    echo "<span> shopping cart: ".$_SESSION["shopping_cart"]."</span><br>";
     echo "<span>--------------------------------------------</span><br>";
   //----------------------------------------------------------------------------
 
@@ -278,5 +282,6 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
+    <div id='itemCount'></div>
 </body>
 </html>
