@@ -144,53 +144,25 @@ HereDocString;
   </div>    
   </div>
 </div>
-<div id="cart" class="cart">
-  <div class="container">    
-   <div class="row">
-    <div class="col-sm-12 form-title">
-     <h3>Complete la compra</h3>
-    </div>
-    <div class="col-sm-7">
-      <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">        
-      </div>
-      <h5>Click sobre un item para quitar</h5>
-    </div>
-    <div class="col-sm-5">
-      <h4>Información de envio</h4>
-  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <label for="name">Nombre</label>
-  <input type="text" value="<?php echo $name;?>" id="name" name="name">
-  <span class="error">* <?php echo $nameErr;?></span><br><br>
-  <label for="streetAddress">Dirección</label>
-  <input type="text" value="<?php echo $address;?>" id="address" name="address">
-  <span class="error">* <?php echo $addressErr;?></span><br><br>
-  <label for="city">Ciudad</label>
-  <input type="text" value='<?php echo $city;?>' id="city" name="city">
-  <span class="error">* <?php echo $cityErr;?></span><br><br>
-  <label for="state">Estado</label>
-  <input type="text" value='<?php echo $state;?>' id="state" name="state">
-  <span class="error">* <?php echo $stateErr;?></span><br><br>
-  <label for="zipCode">CP</label>
-  <input type="text" value='<?php echo $zipCode;?>' id="zipCode" name="zipCode">
-  <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
-  <input type="submit" name="submit" value="Submit"> <br><br>
-  <p><span class="error">* Campo requerido</span></p>
-</form>
-</div>
-</div>
-</div>
-</div>
 
-<br><br>
-<footer class="container-fluid text-center">
-  <p>Based on example in W3School</p>  
-  <form class="form-inline">Promociones:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Suscribirse</button>
-  </form>
-</footer>
-  <?php
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $purchasedItem = $_POST['purchasedItem'];
+    if (!empty($purchasedItem)) {
+        array_push($_SESSION["shopping_cart"], $purchasedItem)
+    }
+    $removedItem = $_POST['removedItem'];
+    if (!empty($removedItem)) {
+        array_splice($_SESSION["shopping_cart"],array_search($removedItem,$_SESSION["shopping_cart"]),1);
+    }
+    echo "<span>--------------------------------------------</span><br>";
+    echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
+    echo "<span>--------------------------------------------</span><br>";
+}
+?>
+
+ <?php
 //------------------------------Handle Form -----------------------------------
 // define variables and set to empty values
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
@@ -264,5 +236,50 @@ if (empty($_POST["zipCode"])) {
  }
 
 ?>
+<div id="cart" class="cart">
+  <div class="container">    
+   <div class="row">
+    <div class="col-sm-12 form-title">
+     <h3>Complete la compra</h3>
+    </div>
+    <div class="col-sm-7">
+      <h4>Su compra</h4>   
+       <div class="row" id="shopping_cart">        
+      </div>
+      <h5>Click sobre un item para quitar</h5>
+    </div>
+    <div class="col-sm-5">
+      <h4>Información de envio</h4>
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <label for="name">Nombre</label>
+  <input type="text" value="<?php echo $name;?>" id="name" name="name">
+  <span class="error">* <?php echo $nameErr;?></span><br><br>
+  <label for="streetAddress">Dirección</label>
+  <input type="text" value="<?php echo $address;?>" id="address" name="address">
+  <span class="error">* <?php echo $addressErr;?></span><br><br>
+  <label for="city">Ciudad</label>
+  <input type="text" value="<?php echo $city;?>" id="city" name="city">
+  <span class="error">* <?php echo $cityErr;?></span><br><br>
+  <label for="state">Estado</label>
+  <input type="text" value="<?php echo $state;?>" id="state" name="state">
+  <span class="error">* <?php echo $stateErr;?></span><br><br>
+  <label for="zipCode">CP</label>
+  <input type="text" value="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
+  <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
+  <input type="submit" name="submit" value="Submit"> <br><br>
+  <p><span class="error">* Campo requerido</span></p>
+</form>
+</div>
+</div>
+</div>
+</div>
+<br><br>
+<footer class="container-fluid text-center">
+  <p>Based on example in W3School</p>  
+  <form class="form-inline">Promociones:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Suscribirse</button>
+  </form>
+</footer>
 </body>
 </html>
