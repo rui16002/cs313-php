@@ -154,12 +154,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   //----------------------------------------------------------------------------
     // collect value of input field
-    if (!empty($_POST['purchasedItem'])) {
-        array_push($_SESSION["shopping_cart"], $_POST['purchasedItem'])
+    if (!(empty($_POST["purchasedItem"])) {
+        array_push($_SESSION["shopping_cart"], $_POST["purchasedItem"])
     }
-    
-    if (!empty($_POST['removedItem'])) {
-        array_splice($_SESSION["shopping_cart"],array_search($_POST['removedItem'],$_SESSION["shopping_cart"]),1);
+
+    if (!(empty($_POST["removedItem"])) {
+        array_splice($_SESSION["shopping_cart"],array_search($_POST["removedItem"],$_SESSION["shopping_cart"]),1);
     }
     echo "<span>--------------------------------------------</span><br>";
     echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
