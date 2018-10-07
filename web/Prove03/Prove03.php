@@ -145,8 +145,14 @@ HereDocString;
   </div>
 </div>
 
-<?php
-/*if ($_SERVER["REQUEST_METHOD"] === "POST") {
+ <?php
+// define variables and set to empty values
+$nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
+$name = $address = $city = $state = $zipCode = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+  //----------------------------------------------------------------------------
     // collect value of input field
     $purchasedItem = $_POST['purchasedItem'];
     if (!empty($purchasedItem)) {
@@ -159,16 +165,7 @@ HereDocString;
     echo "<span>--------------------------------------------</span><br>";
     echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
     echo "<span>--------------------------------------------</span><br>";
-}*/
-?>
-
- <?php
-//------------------------------Handle Form -----------------------------------
-// define variables and set to empty values
-$nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
-$name = $address = $city = $state = $zipCode = "";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  //----------------------------------------------------------------------------
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
