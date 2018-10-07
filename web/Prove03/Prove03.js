@@ -82,7 +82,7 @@ img.setAttribute("src", itemImg);
 var footer = document.createElement("div");
 footer.setAttribute("class", "panel-footer");
 var frow = document.createElement("div");
-setAttribute("class", "row");
+frow.setAttribute("class", "row");
 var desc = document.createElement("div");
 desc.setAttribute("class", "col-sm-12 description");
 desc.appendChild(description);
