@@ -146,7 +146,7 @@ HereDocString;
 </div>
 
 <?php
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
+/*if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // collect value of input field
     $purchasedItem = $_POST['purchasedItem'];
     if (!empty($purchasedItem)) {
@@ -168,7 +168,7 @@ HereDocString;
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -227,14 +227,18 @@ if (empty($_POST["zipCode"])) {
   return $data;
   }
 
+}
+
+?>
+<?php
     //Load form as default
+ if(0==0);
   echo '<script type="text/javascript">displayContent("cart");</script>';
  }
  else
  {
   echo '<script type="text/javascript">displayContent("pizzas");</script>';
  }
-
 ?>
 <div id="cart" class="cart">
   <div class="container">    
