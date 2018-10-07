@@ -67,3 +67,8 @@
 .hidden {
   display: none;
 }
+
+.li:hover {
+  background: #080808;
+  color: #fff;
+}

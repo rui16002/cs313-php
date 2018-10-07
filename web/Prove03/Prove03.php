@@ -31,7 +31,7 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="#" onclick="displayContent('entrantes');">Entrantes</a></li>
-        <li class="active"><a href="#" onclick="displayContent('pizzas');">Pizzas</a></li>
+        <li><a href="#" onclick="displayContent('pizzas');">Pizzas</a></li>
         <li><a href="#" onclick="displayContent('bebidas');">Bebidas</a></li>
         <li><a href="#" onclick="displayContent('postres');">Postres</a></li>
         <li><a href="#" onclick="displayContent('extras');">Extras</a></li>
@@ -166,13 +166,13 @@ HereDocString;
   <input type="text" value="<?php echo $address;?>" id="address" name="address">
   <span class="error">* <?php echo $addressErr;?></span><br><br>
   <label for="city">Ciudad</label>
-  <input type="text" value="<?php echo $city;?>" id="city" name="city">
+  <input type="text" value='<?php echo $city;?>' id="city" name="city">
   <span class="error">* <?php echo $cityErr;?></span><br><br>
   <label for="state">Estado</label>
-  <input type="text" value="<?php echo $state;?>" id="state" name="state">
+  <input type="text" value='<?php echo $state;?>' id="state" name="state">
   <span class="error">* <?php echo $stateErr;?></span><br><br>
   <label for="zipCode">CP</label>
-  <input type="text" value="<?php echo $zipCode;?>" id="zipCode" name="zipCode">
+  <input type="text" value='<?php echo $zipCode;?>' id="zipCode" name="zipCode">
   <span class="error">* <?php echo $zipCodeErr;?></span><br><br>
   <input type="submit" name="submit" value="Submit"> <br><br>
   <p><span class="error">* Campo requerido</span></p>
@@ -190,7 +190,6 @@ HereDocString;
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-  <script type="text/javascript">displayContent("pizzas");</script>
   <?php
 //------------------------------Handle Form -----------------------------------
 // define variables and set to empty values
@@ -198,6 +197,9 @@ $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  //Load form as default
+  echo '<script type="text/javascript">displayContent("cart");</script>';
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -255,6 +257,10 @@ if (empty($_POST["zipCode"])) {
   $data = htmlspecialchars($data);
   return $data;
   }
+ }
+ else
+ {
+  echo '<script type="text/javascript">displayContent("pizzas");</script>';
  }
 
 ?>
