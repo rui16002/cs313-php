@@ -232,7 +232,7 @@ if (empty($_POST["zipCode"])) {
 ?>
 <?php
     //Load form as default
- if(0==0);
+ if(0==0)
   echo '<script type="text/javascript">displayContent("cart");</script>';
  }
  else
