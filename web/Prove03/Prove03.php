@@ -37,7 +37,7 @@ session_start();
         <li><a href="#" onclick="displayContent('extras');">Extras</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span><span id="itemCount" class="badge">0</span> Carrito</a></li>
+        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">0</span> Carrito</a></li>
       </ul>
     </div>
   </div>
@@ -155,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   //----------------------------------------------------------------------------
     // collect value of input field
     if (!(empty($_POST["purchasedItem"]))) {
-        //array_push($_SESSION["shopping_cart"], $_POST["purchasedItem"])
+        array_push($_SESSION["shopping_cart"], $_POST["purchasedItem"]);
     }
 
     if (!(empty($_POST["removedItem"]))) {
@@ -163,6 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     echo "<span>--------------------------------------------</span><br>";
     echo "<span>".$_SESSION["shopping_cart"]."</span><br>";
+    echo "<div id='itemCount'></div><br>";
     echo "<span>--------------------------------------------</span><br>";
   //----------------------------------------------------------------------------
 
