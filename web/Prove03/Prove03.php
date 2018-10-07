@@ -158,16 +158,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!(empty($_POST["purchasedItem"]))) {
         array_push($_SESSION["shopping_cart"], $_POST["purchasedItem"]);
     echo "<span> purchased item: ".$_POST["purchasedItem"]."</span><br>";
+    $_SESSION["purchasedItem"] = $_POST["purchasedItem"];
     }
 
     if (!(empty($_POST["removedItem"]))) {
       $item2remove = array_search($_POST["removedItem"],$_SESSION["shopping_cart"]);
         //array_splice($_SESSION["shopping_cart"],$item2remove,1);
       echo "<span> removed item: ".$_POST["removedItem"]."</span><br>";
+      $_SESSION["removedItem"] = $_POST["removedItem"];
       echo "<span> item 2 remove: ".$item2remove."</span><br>";
+      $_SESSION["item2remove"] = $item2remove;
     }
 
-    echo "<span> shopping cart: ".$_SESSION["shopping_cart"]."</span><br>";
+    echo "<span> session: ";
+    print_r($_SESSION);
+    echo "</span><br>";
     echo "<span>--------------------------------------------</span><br>";
   //----------------------------------------------------------------------------
 
