@@ -37,7 +37,7 @@ session_start();
         <li><a href="#" onclick="displayContent('extras');">Extras</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span> Carrito</a></li>
+        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span><span id="itemCount" class="badge">0</span> Carrito</a></li>
       </ul>
     </div>
   </div>

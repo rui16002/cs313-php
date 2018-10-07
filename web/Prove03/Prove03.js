@@ -1,4 +1,5 @@
 /*Load content on the screen depending on the tab selected*/
+itemCount=0;
 function displayContent(whichone) {
   document.getElementById("pizzas").setAttribute("style", "display: none");
   document.getElementById("entrantes").setAttribute("style", "display: none");
@@ -24,7 +25,7 @@ function savePurchasedItemInSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = this.responseText;
     }
   };
   xhttp.open("POST", "Prove03.php", true);
@@ -36,7 +37,7 @@ function removePurchasedItemFromSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = this.responseText;
     }
   };
   xhttp.open("POST", "Prove03.php", true);
