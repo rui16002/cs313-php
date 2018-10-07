@@ -63,9 +63,10 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
- var id = "purchased01";
+ var id = "purchase" + new Date();
 
-var col = document.createElement("div").setAttribute("class","col-sm-4");
+var col = document.createElement("div");
+col.setAttribute("class","col-sm-4");
 col.setAttribute("id",id);
 var panel = document.createElement("div").setAttribute("class","panel panel-default");
 var heading = document.createElement("div").setAttribute("class","panel-heading text-center").appendChild(name);
