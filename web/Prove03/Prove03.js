@@ -1,4 +1,4 @@
-var shopping_cart = [];
+var itemCount = 0;
 
 /*Load content on the screen depending on the tab selected*/
 function displayContent(whichone) {
@@ -55,7 +55,7 @@ function removeItem(id, itemName, itemDescription, itemImg, itemPrice)
   removePurchasedItemFromSession(item);
 }
 
-function shopItem(id, itemName, itemDescription, itemImg, itemPrice)
+function shopItem(itemName, itemDescription, itemImg, itemPrice)
 {
  //Add it to the list
  var item = {name: itemName, description: itemDescription, img:itemImg, price:itemPrice};
@@ -66,7 +66,7 @@ function shopItem(id, itemName, itemDescription, itemImg, itemPrice)
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
 
-var col = document.createElement("div").setAttribute("class","col-sm-4").setAttribute("id",id);
+var col = document.createElement("div").setAttribute("class","col-sm-4").setAttribute("id", itemCount);
 var panel = document.createElement("div").setAttribute("class","panel panel-default");
 var heading = document.createElement("div").setAttribute("class","panel-heading text-center").appendChild(name);
 var body = document.createElement("div").setAttribute("class","panel-body");
@@ -87,5 +87,6 @@ frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
-col.setAttribute("onclick", "removeItem('"+id+"', '"+itemName+"', '"+itemDescription+"', '"+itemImg+"', '"+itemPrice+"');");
+col.setAttribute("onclick", "removeItem('"+itemCount+"', '"+itemName+"', '"+itemDescription+"', '"+itemImg+"', '"+itemPrice+"');");
+itemCount++;
 }

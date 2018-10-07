@@ -46,6 +46,7 @@ session_start();
 <?php 
 //Read the XML first
 $couldgetcontent = false;
+$itemCount = 0;
 if (!$couldgetcontent){
 $_SESSION["xml"]=simplexml_load_file("content.xml");
 }
@@ -65,9 +66,8 @@ if ($_SESSION["xml"] === false) {
 function printItems($list)
 {
 foreach($list->children() as $types) {
-  $id = $types->name + sizeof($_SESSION["shopping_cart"]);
 echo <<< HereDocString
-<div class="col-sm-4" onclick="shopItem('$id','$types->name', '$types->description', '$types->img', '$types->price')">
+<div class="col-sm-4" onclick="shopItem('$types->name', '$types->description', '$types->img', '$types->price')">
 HereDocString;
        echo "<div class='panel panel-default'>";
         echo "<div class='panel-heading text-center'>".$types->name."</div>";
@@ -171,9 +171,6 @@ $name = $address = $city = $state = $zipCode = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  //Load form as default
-  echo '<script type="text/javascript">displayContent("cart");</script>';
-
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -231,11 +228,6 @@ if (empty($_POST["zipCode"])) {
   return $data;
   }
  }
- else
- {
-  echo '<script type="text/javascript">displayContent("pizzas");</script>';
- }
-
 ?>
 <div id="cart" class="cart">
   <div class="container">    
@@ -282,5 +274,14 @@ if (empty($_POST["zipCode"])) {
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
+<?php
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  //Load form as default
+  echo '<script type="text/javascript">displayContent("cart");</script>';
+ else
+ {
+  echo '<script type="text/javascript">displayContent("pizzas");</script>';
+ }
+ ?>
 </body>
 </html>
