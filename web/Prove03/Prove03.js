@@ -65,24 +65,18 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
- var id = itemName + shopping_cart.length;
+ var id = itemName + <?php echo sizeof($_SESSION["shopping_cart"]); ?>
 
-var col = document.createElement("div").setAttribute("class","col-sm-4");
-col.setAttribute("id",id);
+var col = document.createElement("div").setAttribute("class","col-sm-4").setAttribute("id",id);
 var panel = document.createElement("div").setAttribute("class","panel panel-default");
-var heading = document.createElement("div").setAttribute("class","panel-heading text-center");
-heading.appendChild(name);
+var heading = document.createElement("div").setAttribute("class","panel-heading text-center").appendChild(name);
 var body = document.createElement("div").setAttribute("class","panel-body");
-var img = document.createElement("img").setAttribute("class", "img-responsive");
-img.setAttribute("alt", "Image");
-img.setAttribute("src", itemImg);
+var img = document.createElement("img").setAttribute("class", "img-responsive").setAttribute("alt", "Image").setAttribute("src", itemImg);
 var footer = document.createElement("div").setAttribute("class", "panel-footer");
 var frow = document.createElement("div").setAttribute("class", "row");
-var desc = document.createElement("div").setAttribute("class", "col-sm-12 description");
-desc.appendChild(description);
+var desc = document.createElement("div").setAttribute("class", "col-sm-12 description").appendChild(description);
 var oldp = document.createElement("div").setAttribute("class", "col-sm-6 oldprice");
-var newp = document.createElement("div").setAttribute("class", "col-sm-6 newprice");
-newp.appendChild(price);
+var newp = document.createElement("div").setAttribute("class", "col-sm-6 newprice").appendChild(price);
 
 col.appendChild(panel);
 panel.appendChild(heading);
