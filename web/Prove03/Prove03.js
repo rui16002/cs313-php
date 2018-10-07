@@ -1,5 +1,3 @@
-var itemCount = 0;
-
 /*Load content on the screen depending on the tab selected*/
 function displayContent(whichone) {
   document.getElementById("pizzas").setAttribute("style", "display: none");
@@ -65,8 +63,9 @@ function shopItem(itemName, itemDescription, itemImg, itemPrice)
  var description = document.createTextNode(itemDescription);
  var price = document.createTextNode(itemPrice + " €");
  var name = document.createTextNode(itemName);
+ var id = "purchased01";
 
-var col = document.createElement("div").setAttribute("class","col-sm-4").setAttribute("id", itemCount);
+var col = document.createElement("div").setAttribute("class","col-sm-4").col.setAttribute("id",id);
 var panel = document.createElement("div").setAttribute("class","panel panel-default");
 var heading = document.createElement("div").setAttribute("class","panel-heading text-center").appendChild(name);
 var body = document.createElement("div").setAttribute("class","panel-body");
@@ -87,6 +86,5 @@ frow.appendChild(desc);
 frow.appendChild(oldp);
 frow.appendChild(newp);
 container.appendChild(col);
-col.setAttribute("onclick", "removeItem('"+itemCount+"', '"+itemName+"', '"+itemDescription+"', '"+itemImg+"', '"+itemPrice+"');");
-itemCount++;
+col.setAttribute("onclick", "removeItem('"+id+"', '"+itemName+"', '"+itemDescription+"', '"+itemImg+"', '"+itemPrice+"');");
 }
