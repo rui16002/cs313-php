@@ -167,11 +167,11 @@ HereDocString;
 // define variables and set to empty values
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
-$formSent = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $formSent = true;
+  //Load form as default
+  echo '<script type="text/javascript">displayContent("cart");</script>';
 
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
@@ -230,11 +230,6 @@ if (empty($_POST["zipCode"])) {
   return $data;
   }
  }
- ?>
- <?php 
-if($formSent)
-  //Load form as default
-    echo '<script type="text/javascript">displayContent("cart");</script>';)
  else
  {
   echo '<script type="text/javascript">displayContent("pizzas");</script>';
