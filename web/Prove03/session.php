@@ -7,7 +7,7 @@ session_start();
   <title>Session</title>
 </head>
 <body>
-  <?php
+  <!--?php
     // collect value of input field
     if (!(empty($_REQUEST["purchasedItem"]))) {
       $purchasedItem = $_REQUEST["purchasedItem"];
@@ -23,6 +23,14 @@ session_start();
       }
      echo json_encode($_SESSION["shopping_cart"]);
     }
-  ?>
+  ?-->
+  <?php
+  echo $_SESSION["favcolor"];
+  echo $_SESSION["favanimal"];
+  // Set session variables
+$_SESSION["favcolor"] = "green";
+$_SESSION["favanimal"] = "cat";
+echo "Session variables are set.";
+?>
 </body>
 </html>
