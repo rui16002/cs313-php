@@ -46,10 +46,11 @@ session_start();
 <?php 
 //Read the XML first
 $couldgetcontent = false;
+$xml = "";
 if (!$couldgetcontent){
-$_SESSION["xml"]=simplexml_load_file("content.xml");
+$xml=simplexml_load_file("content.xml");
 }
-if ($_SESSION["xml"] === false) {
+if ($xml === false) {
 //save a global var with the state in order to skip the execution of the script at the end
     echo "<h1>Sorry it seems our kitchen is on fire</h1>";
     echo "<h2>We couldn't save our precious food for you to taste</h2>";
@@ -84,82 +85,89 @@ HereDocString;
 }
 ?>
 
-<div id="entrantes" class="entrantes">
+<div id="entrantes" class="entrantes section">
   <div class="container">    
   <div class="row">
     <?php 
     if ($couldgetcontent)
     {
-      printItems($_SESSION["xml"]->entrante);
+      printItems($xml->entrante);
     }
       ?>
   </div>    
   </div>
 </div>
-<div id="pizzas" class="pizzas">
+<div id="pizzas" class="pizzas section">
   <div class="container">    
   <div class="row">
     <?php 
     if ($couldgetcontent)
     {
-      printItems($_SESSION["xml"]->pizza);
+      printItems($xml->pizza);
     }
       ?>
   </div>    
   </div>
 </div>  
-<div id="bebidas" class="bebidas">
+<div id="bebidas" class="bebidas section">
   <div class="container">    
   <div class="row">
     <?php
     if ($couldgetcontent)
     { 
-      printItems($_SESSION["xml"]->bebida);
+      printItems($xml->bebida);
     }
       ?>
   </div>    
   </div>
 </div>
-<div id="postres" class="postres">
+<div id="postres" class="postres section">
   <div class="container">    
   <div class="row">
     <?php 
     if ($couldgetcontent)
     {
-      printItems($_SESSION["xml"]->postre);
+      printItems($xml->postre);
     }
       ?>
   </div>    
   </div>
 </div>
-<div id="extras" class="extras">
+<div id="extras" class="extras section">
   <div class="container">    
   <div class="row">
     <?php 
     if ($couldgetcontent)
     {
-      printItems($_SESSION["xml"]->extra);
+      printItems($xml->extra);
     }
     ?>
   </div>    
   </div>
 </div>
 
-<div id="cart" class="cart">
+<div id="cart" class="cart section">
   <div class="container">    
    <div class="row">
     <div class="col-sm-12 form-title">
      <h3>Complete la compra</h3>
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-4">
       <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">        
+       <div class="row" id="shopping_cart">     
       </div>
       <h5>Click sobre un item para quitar</h5>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <h4>Información de envio</h4>
   <?php include 'form.php'; ?>
+</div>
+    <div class="col-sm-4">
+      <h4>Resultado de la compra</h4>
+      <div id="purchaseResult">
+        <h5>Aun tienes hambre</h5>
+        <img class="img-responsive" alt="Image" src="hungry.jpg">
+      </div>
 </div>
 </div>
 </div>
@@ -183,6 +191,10 @@ HereDocString;
    echo '<script type="text/javascript">displayContent("pizzas");</script>';
   }
 ?-->
-    <div id='itemCount'></div>
+    <div id='itemCount'>
+      <?php
+print_r($_SESSION);
+?>
+    </div>
 </body>
 </html>

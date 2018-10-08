@@ -71,3 +71,7 @@
 .a:hover {
   background: #080808;
 }
+
+.section {
+  display: none;
+}
