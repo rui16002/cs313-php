@@ -8,7 +8,8 @@ session_start();
 </head>
 <body>
   <?php
-    $_SESSION["shopping_cart"] = array();
+
+  //  $_SESSION["shopping_cart"] = array();
     // collect value of input field
     if (!(empty($_REQUEST["purchasedItem"]))) {
       $purchasedItem = $_REQUEST["purchasedItem"];
