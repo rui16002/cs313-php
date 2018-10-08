@@ -165,7 +165,7 @@ HereDocString;
     <div class="col-sm-3">
       <h4>Resultado de la compra</h4>
       <div id="purchaseResult">
-          <?php
+          <!--?php
   if (purchaseCompleted) {
   {
    print_r($_SESSION);
@@ -175,7 +175,7 @@ HereDocString;
    echo "<h5>Aun tienes hambre</h5>";
    echo "<img class='img-responsive' alt='Image' src='hungry.jpg'>";
   }
-?>
+?-->
 
       </div>
 </div>
