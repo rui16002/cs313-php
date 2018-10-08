@@ -22,16 +22,6 @@ if (empty($_POST["name"])) {
       $nameErr = "Only letters and white space allowed"; 
     }
   }
-  
-if (empty($_POST["address"])) {
-    $addressErr = "Address is required";
-  } else {
-    $address = test_input($_POST["address"]);
-    // check if address only contains letters, numbers and whitespace
-    if (!preg_match("/^[a-zA-Z0-9 ]*$/",$address)) {
-      $addressErr = "Only letters, numbers and white space allowed"; 
-    }
-  }
     
   if (empty($_POST["city"])) {
     $cityErr = "City is required";
@@ -50,16 +40,6 @@ if (empty($_POST["state"])) {
     // check if state only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z ]*$/",$state)) {
       $stateErr = "Only letters and white space allowed"; 
-    }
-  }
-
-if (empty($_POST["zipCode"])) {
-    $zipCodeErr = "Zip Code is required";
-  } else {
-    $zipCode = test_input($_POST["zipCode"]);
-    // check if zipCode only contains numbers
-    if (!preg_match("/^[0-9]*$/",$zipCode)) {
-      $zipCodeErr = "Only numbers allowed"; 
     }
   }
 
