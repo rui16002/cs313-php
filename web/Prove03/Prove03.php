@@ -1,3 +1,7 @@
+
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +16,9 @@
 
 </head>
 <body>
+    <?php
+    $_SESSION["shopping_cart"] = array();
+    ?>
 <div class="page-header">
  <img src="logo.jpg" class="img-responsive logo" alt="Logo">
 </div>
