@@ -15,6 +15,9 @@ session_start();
 
 </head>
 <body>
+  <?php 
+    $_SESSION["shopping_cart"] = array('test' => 1);
+  ?>
 <div class="page-header">
  <img src="logo.jpg" class="img-responsive logo" alt="Logo">
 </div>
