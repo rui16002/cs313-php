@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       //  array_splice($_SESSION["shopping_cart"],$item2remove,1);
      // }
      echo $_POST["removedItem"];
+   }
 
 
 if (empty($_POST["name"])) {
