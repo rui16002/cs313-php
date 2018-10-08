@@ -25,11 +25,9 @@ session_start();
     }
   ?-->
   <?php
-  echo $_SESSION["favcolor"];
-  echo $_SESSION["favanimal"];
+  print_r($_SESSION);
   // Set session variables
-$_SESSION["favcolor"] = "green";
-$_SESSION["favanimal"] = "cat";
+$_SESSION["shopping_cart"] = array();
 echo "Session variables are set.";
 ?>
 </body>
