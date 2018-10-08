@@ -2,8 +2,13 @@
 // define variables and set to empty values
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
 $name = $address = $city = $state = $zipCode = "";
+$purchaseCompleted = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $purchaseCompleted = true;
+
+include 'form.php';
+
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -54,7 +59,7 @@ if (empty($_POST["zipCode"])) {
     }
   }
   }
-  
+
   function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);

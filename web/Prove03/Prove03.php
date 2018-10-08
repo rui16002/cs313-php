@@ -152,21 +152,31 @@ HereDocString;
     <div class="col-sm-12 form-title">
      <h3>Complete la compra</h3>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h4>Su compra</h4>   
        <div class="row" id="shopping_cart">     
       </div>
       <h5>Click sobre un item para quitar</h5>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h4>Información de envio</h4>
   <?php include 'form.php'; ?>
 </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <h4>Resultado de la compra</h4>
       <div id="purchaseResult">
-        <h5>Aun tienes hambre</h5>
-        <img class="img-responsive" alt="Image" src="hungry.jpg">
+          <?php
+  if (purchaseCompleted) {
+  {
+   print_r($_SESSION);
+  }
+ else
+  {
+   echo "<h5>Aun tienes hambre</h5>";
+   echo "<img class='img-responsive' alt='Image' src='hungry.jpg'>";
+  }
+?>
+
       </div>
 </div>
 </div>
@@ -181,8 +191,8 @@ HereDocString;
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-  <!--?php
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  <?php
+  if (purchaseCompleted) {
   {
    echo '<script type="text/javascript">displayContent("cart");</script>';
   }
@@ -190,7 +200,7 @@ HereDocString;
   {
    echo '<script type="text/javascript">displayContent("pizzas");</script>';
   }
-?-->
+?>
     <div id='itemCount'>
       <?php
 print_r($_SESSION);
