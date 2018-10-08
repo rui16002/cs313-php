@@ -186,10 +186,7 @@ HereDocString;
   </form>
 </footer>
 <script type="text/javascript">displayContent("pizzas");</script>
-    <div id='itemCount'>
-      <?php
-print_r($_SESSION);
-?>
+    <div id='itemCount' class="hidden">
     </div>
 </body>
 </html>

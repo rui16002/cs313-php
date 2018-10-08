@@ -20,11 +20,37 @@ function displayContent(whichone) {
     document.getElementById("cart").setAttribute("style", "display: block");
 }
 
+function listItems(xhttp){
+  var list = JSON.parse(xhttp);
+  var totalPrice = 0;
+  var purchasedItems = document.createElement("div");
+  document.getElementById("purchaseResult").appendChild(purchasedItems);
+  for (var i = list.length - 1; i >= 0; i--) {
+    var span = document.createElement("span");
+    var br = document.createElement("br");
+    var text = document.createTextNode("1 "+ list[i].name);
+    span.appendChild(text);
+    purchasedItems.appendChild(span);
+    purchasedItems.appendChild(br);
+    totalPrice+=list[i].price;
+  }
+    var span = document.createElement("span");
+    var text = document.createTextNode("Precio total: "+ totalPrice);
+    var br = document.createElement("br");
+    span.appendChild(text);
+    purchasedItems.appendChild(span);
+    purchasedItems.appendChild(br);
+    var info = document.createElement("span");
+    var infotxt = document.createTextNode("The items will be sent to the address indicated in the form");
+    info.appendChild(infotxt);
+    purchasedItems.appendChild(info);
+}
+
 function savePurchasedItemInSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("itemCount").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = listItems(this.responseText);
     }
   };
   xhttp.open("POST", "session.php", true);
@@ -36,7 +62,7 @@ function removePurchasedItemFromSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("itemCount").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = listItems(this.responseText);
     }
   };
   xhttp.open("POST", "session.php", true);
