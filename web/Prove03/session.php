@@ -22,7 +22,7 @@
 <h2>The XMLHttpRequest Object</h2>
 
 <button type="button"
-onclick="loadDoc('ajax_info.txt', myFunction)">Change Content
+onclick="loadDoc('session.php', myFunction)">Change Content
 </button>
 </div>
 
