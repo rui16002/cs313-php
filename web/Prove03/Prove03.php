@@ -165,18 +165,8 @@ HereDocString;
     <div class="col-sm-3">
       <h4>Resultado de la compra</h4>
       <div id="purchaseResult">
-          <!--?php
-  if (purchaseCompleted) {
-  {
-   print_r($_SESSION);
-  }
- else
-  {
-   echo "<h5>Aun tienes hambre</h5>";
-   echo "<img class='img-responsive' alt='Image' src='hungry.jpg'>";
-  }
-?-->
-
+        <h5>Aun tienes hambre</h5>
+        <img class='img-responsive' alt='Image' src='hungry.jpg'>
       </div>
 </div>
 </div>
@@ -191,16 +181,7 @@ HereDocString;
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-  <!--?php
-  if (purchaseCompleted) {
-  {
-   echo '<script type="text/javascript">displayContent("cart");</script>';
-  }
- else
-  {
-   echo '<script type="text/javascript">displayContent("pizzas");</script>';
-  }
-?-->
+<script type="text/javascript">displayContent("pizzas");</script>
     <div id='itemCount'>
       <?php
 print_r($_SESSION);
