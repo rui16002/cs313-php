@@ -12,11 +12,13 @@ session_start();
     // collect value of input field
     if (!(empty($_REQUEST["purchasedItem"]))) {
       $purchasedItem = $_REQUEST["purchasedItem"];
+      echo $purchasedItem;
       //array_push($_SESSION["shopping_cart"], $purchasedItem);      
     }
 
     if (!(empty($_REQUEST["removedItem"]))) {
       $removedItem = $_REQUEST["removedItem"];
+      echo $removedItem;
       //$item2remove = array_search($removedItem,$_SESSION["shopping_cart"], true);
       //if (!($item2remove === false))
       {
