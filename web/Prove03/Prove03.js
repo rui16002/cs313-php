@@ -27,7 +27,7 @@ function savePurchasedItemInSession(item) {
       document.getElementById("itemCount").innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "Prove03.php", true);
+  xhttp.open("POST", "session.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("purchasedItem=" +item);
 }
@@ -39,7 +39,7 @@ function removePurchasedItemFromSession(item) {
       document.getElementById("itemCount").innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "Prove03.php", true);
+  xhttp.open("POST", "session.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("removedItem=" +item);
 }
