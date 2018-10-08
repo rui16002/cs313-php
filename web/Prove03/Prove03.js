@@ -24,7 +24,7 @@ function savePurchasedItemInSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-    //  document.getElementById("itemCount").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = this.getAllResponseHeaders();
     }
   };
   xhttp.open("POST", "Prove03.php", true);
@@ -36,7 +36,7 @@ function removePurchasedItemFromSession(item) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-   //   document.getElementById("itemCount").innerHTML = this.responseText;
+      document.getElementById("itemCount").innerHTML = this.getAllResponseHeaders();;
     }
   };
   xhttp.open("POST", "Prove03.php", true);
