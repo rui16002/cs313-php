@@ -173,8 +173,8 @@ HereDocString;
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-  <?php
-  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  <!--?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
   {
    echo '<script type="text/javascript">displayContent("cart");</script>';
   }
@@ -182,7 +182,7 @@ HereDocString;
   {
    echo '<script type="text/javascript">displayContent("pizzas");</script>';
   }
-?>
+?-->
     <div id='itemCount'></div>
 </body>
 </html>

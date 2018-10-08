@@ -54,13 +54,13 @@ if (empty($_POST["zipCode"])) {
     }
   }
   }
+  
   function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
-
-}
+  }
 ?>
 
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
