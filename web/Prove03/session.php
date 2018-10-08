@@ -12,8 +12,7 @@ session_start();
     // collect value of input field
     if (!(empty($_REQUEST["purchasedItem"]))) {
       $purchasedItem = $_REQUEST["purchasedItem"];
-      echo $purchasedItem;
-      //array_push($_SESSION["shopping_cart"], $purchasedItem);      
+      array_push($_SESSION["shopping_cart"], $purchasedItem);      
     }
 
     if (!(empty($_REQUEST["removedItem"]))) {
@@ -26,7 +25,6 @@ session_start();
       }
     }
      echo json_encode($_SESSION["shopping_cart"]);
-     print_r($_SESSION);
   ?>
 
 </body>
