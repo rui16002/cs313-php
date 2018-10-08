@@ -1,3 +1,12 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Session</title>
+</head>
+<body>
   <?php
     // collect value of input field
     if (!(empty($_REQUEST["purchasedItem"]))) {
@@ -15,3 +24,5 @@
      echo json_encode($_SESSION["shopping_cart"]);
     }
   ?>
+</body>
+</html>
