@@ -17,10 +17,10 @@ session_start();
     if (!(empty($_REQUEST["removedItem"]))) {
       $removedItem = $_REQUEST["removedItem"];
       echo $removedItem;
-      //$item2remove = array_search($removedItem,$_SESSION["shopping_cart"], true);
-      //if (!($item2remove === false))
+      $item2remove = array_search($removedItem,$_SESSION["shopping_cart"], true);
+      if (!($item2remove === false))
       {
-     //   array_splice($_SESSION["shopping_cart"],$item2remove,1);
+        array_splice($_SESSION["shopping_cart"],$item2remove,1);
       }
     }
      echo json_encode($_SESSION["shopping_cart"]);
