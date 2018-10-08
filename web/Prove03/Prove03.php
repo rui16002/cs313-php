@@ -191,7 +191,7 @@ HereDocString;
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-  <?php
+  <!--?php
   if (purchaseCompleted) {
   {
    echo '<script type="text/javascript">displayContent("cart");</script>';
@@ -200,7 +200,7 @@ HereDocString;
   {
    echo '<script type="text/javascript">displayContent("pizzas");</script>';
   }
-?>
+?-->
     <div id='itemCount'>
       <?php
 print_r($_SESSION);
