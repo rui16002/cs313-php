@@ -7,8 +7,6 @@ $purchaseCompleted = false;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $purchaseCompleted = true;
 
-include 'form.php';
-
 if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
