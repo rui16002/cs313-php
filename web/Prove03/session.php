@@ -1,4 +1,4 @@
-<?php
+  <?php
   //----------------------------------------------------------------------------
     // collect value of input field
     if (!(empty($_POST["purchasedItem"]))) {
@@ -9,8 +9,8 @@
       $item2remove = array_search($_POST["removedItem"],$_SESSION["shopping_cart"], true);
       if (!($item2remove === false))
       {
-        array_splice($_SESSION["shopping_cart"],$item2remove,1); //Not working
+        array_splice($_SESSION["shopping_cart"],$item2remove,1);
       }
     }
   //----------------------------------------------------------------------------
-?>
+  ?>

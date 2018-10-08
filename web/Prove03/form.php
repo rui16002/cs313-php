@@ -1,12 +1,3 @@
-<!DOCTYPE HTML>  
-<html>
-<head>
-<style>
-.error {color: #FF0000;}
-</style>
-</head>
-<body>  
-
 <?php
 // define variables and set to empty values
 $nameErr = $addressErr = $cityErr = $stateErr = $zipCodeErr = "";
@@ -91,19 +82,3 @@ if (empty($_POST["zipCode"])) {
   <input type="submit" name="submit" value="Submit"> <br><br>
   <p><span class="error">* Campo requerido</span></p>
 </form>
-
-<?php
-echo "<h2>Your Input:</h2>";
-echo $name;
-echo "<br>";
-echo $address;
-echo "<br>";
-echo $city;
-echo "<br>";
-echo $state;
-echo "<br>";
-echo $zipCode;
-?>
-
-</body>
-</html>
