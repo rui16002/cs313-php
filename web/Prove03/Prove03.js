@@ -29,7 +29,7 @@ function savePurchasedItemInSession(item) {
   };
   xhttp.open("POST", "session.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("purchasedItem=" +JSON.stringify(arr));
+  xhttp.send("purchasedItem=" +JSON.stringify(item));
 }
 
 function removePurchasedItemFromSession(item) {
@@ -41,7 +41,7 @@ function removePurchasedItemFromSession(item) {
   };
   xhttp.open("POST", "session.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("removedItem=" +JSON.stringify(arr));
+  xhttp.send("removedItem=" +JSON.stringify(item));
 }
 
 function removeItem(id, itemName, itemDescription, itemImg, itemPrice)
