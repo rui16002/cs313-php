@@ -47,28 +47,7 @@ session_start();
   </div>
 </nav>
 
-<?php 
-include 'DBConnection.php';
-
-function printItems($list, $icon)
-{
-//foreach($list->children() as $types) {
-      //echo '<div class="col-sm-4">';
-       //echo "<div class='panel panel-default'>";
-        //echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        //echo "<div class='panel-body'><span class='glyphicon glyphicon-'".$icon."></div>";
-        //echo "<div class='panel-footer'>";
-         //echo "<div class='row'>";
-          //echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          //echo "<div class='col-sm-6 oldprice'></div>";
-          //echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         //echo "</div>";
-        //echo "</div>";
-        //echo "</div>";
-        //echo "</div>";
-        //}
-}
-?>
+<?php require 'DBConnection.php';?>
 
 <div id="clientes" class="clientes section">
 </div>
@@ -148,6 +127,27 @@ function printItems($list, $icon)
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
+<?php 
+
+function printItems($list, $icon)
+{
+foreach($list->children() as $types) {
+      echo '<div class="col-sm-4">';
+       echo "<div class='panel panel-default'>";
+        echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        echo "<div class='panel-body'><span class='glyphicon glyphicon-'".$icon."></div>";
+        echo "<div class='panel-footer'>";
+         echo "<div class='row'>";
+          echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          echo "<div class='col-sm-6 oldprice'></div>";
+          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+        }
+}
+ ?>
 <script type="text/javascript">displayContent("principales");</script>
     </div>
 </body>
