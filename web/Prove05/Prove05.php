@@ -32,9 +32,13 @@ session_start();
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="#" onclick="displayContent('entrantes');">Entrantes</a></li>
-        <li><a href="#" onclick="displayContent('principales');">Pricipales</a></li>
+        <li><a href="#" onclick="displayContent('principales');">Principales</a></li>
         <li><a href="#" onclick="displayContent('bebidas');">Bebidas</a></li>
         <li><a href="#" onclick="displayContent('postres');">Postres</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
+        <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">0</span> Carrito</a></li>
@@ -48,21 +52,21 @@ include 'DBConnection.php';
 
 function printItems($list, $icon)
 {
-foreach($list->children() as $types) {
-      echo '<div class="col-sm-4">';
-       echo "<div class='panel panel-default'>";
-        echo "<div class='panel-heading text-center'>".$types->name."</div>";
-        echo "<div class='panel-body'><span class='glyphicon glyphicon-'".$icon."></div>";
-        echo "<div class='panel-footer'>";
-         echo "<div class='row'>";
-          echo "<div class='col-sm-12 description'>".$types->description."</div>";
-          echo "<div class='col-sm-6 oldprice'></div>";
-          echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
-         echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        }
+//foreach($list->children() as $types) {
+      //echo '<div class="col-sm-4">';
+       //echo "<div class='panel panel-default'>";
+        //echo "<div class='panel-heading text-center'>".$types->name."</div>";
+        //echo "<div class='panel-body'><span class='glyphicon glyphicon-'".$icon."></div>";
+        //echo "<div class='panel-footer'>";
+         //echo "<div class='row'>";
+          //echo "<div class='col-sm-12 description'>".$types->description."</div>";
+          //echo "<div class='col-sm-6 oldprice'></div>";
+          //echo "<div class='col-sm-6 newprice'>".$types->price." €</div>";
+         //echo "</div>";
+        //echo "</div>";
+        //echo "</div>";
+        //echo "</div>";
+        //}
 }
 ?>
 
