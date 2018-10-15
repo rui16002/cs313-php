@@ -1,0 +1,77 @@
+ /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .oldprice {
+      color: grey;
+      text-decoration: line-through;
+      text-align: center;
+    }
+
+    .newprice {
+      color: black;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .description {
+      color: white;
+      text-align: center;
+      background: crimson;
+    }
+
+    .logo {
+      width:200px;
+    }
+    
+    .panel-default {
+      border: 1px solid rgba(0,200,0,.5);
+      box-shadow: 0 0 25px rgba(0,0,0,.25);
+    }
+
+    .panel-heading {
+      font-weight: bold;
+    }
+
+    .panel-default:hover {
+      outline: rgba(0,200,0,.5) solid 3px;
+      outline-offset: 3px;
+    }
+
+    .panel-default:active {
+      outline: rgba(200,0,0,.5) solid 5px;
+      outline-offset: 5px;
+    }
+
+    .panel-body {
+    padding: 0;
+}
+
+.error {
+    color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.a:hover {
+  background: #080808;
+}
+
+.section {
+  display: none;
+}

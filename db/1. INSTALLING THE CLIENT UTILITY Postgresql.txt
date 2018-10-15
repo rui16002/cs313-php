@@ -1,0 +1,54 @@
+1. INSTALLING THE CLIENT UTILITY Postgresql
+	password: rui16002
+	port: 5432
+	Default locale
+	
+	Installation Directory: C:\Program Files\PostgreSQL10
+	Server Installation Directory: C:\Program Files\PostgreSQL10
+	Data Directory: C:\Program Files\PostgreSQL10\data
+	Database Port: 5432
+	Database Superuser: postgres
+	Operating System Account: NT AUTHORITY\NetworkService
+	Database Service: postgresql-x64-10
+	Command Line Tools Installation Directory: C:\Program Files\PostgreSQL10
+	pgAdmin4 Installation Directory: C:\Program Files\PostgreSQL10\pgAdmin 4
+	Stack Builder Installation Directory: C:\Program Files\PostgreSQL10
+
+2. CREATING A DATABASE AT HEROKU
+
+	C:\Users\jrmoc\cs313-php>heroku addons:create heroku-postgresql:hobby-dev
+	Creating heroku-postgresql:hobby-dev on ⬢ limitless-reef-52998... free
+	Database has been created and is available
+ 	! This database is empty. If upgrading, you can transfer
+ 	! data from another database with pg:copy
+	Created postgresql-sinuous-52855 as DATABASE_URL
+	Use heroku addons:docs heroku-postgresql to view documentation
+	
+	C:\Users\jrmoc\cs313-php>heroku config -s
+DATABASE_URL='postgres://banlrrbxofeeyl:b29f09943f8e04f6ee1f937d93a999e2d814673bd068a7c3d2db748bbcf292c9@ec2-54-243-147-162.compute-1.amazonaws.com:5432/	deti3aun0k8hi'
+	
+	C:\Users\jrmoc\cs313-php>heroku pg:info
+	=== DATABASE_URL
+	Plan:                  Hobby-dev
+	Status:                Available
+	Connections:           0/20
+	PG Version:            10.5
+	Created:               2018-10-09 19:13 UTC
+	Data Size:             7.6 MB
+	Tables:                0
+	Rows:                  0/10000 (In compliance)
+	Fork/Follow:           Unsupported
+	Rollback:              Unsupported
+	Continuous Protection: Off
+	Add-on:                postgresql-sinuous-52855
+
+3. CONNECTING TO A DATABASE AT HEROKU
+
+C:\Users\jrmoc>heroku pg:psql -a limitless-reef-52998
+--> Connecting to postgresql-sinuous-52855
+psql (10.5)
+WARNING: Console code page (850) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
