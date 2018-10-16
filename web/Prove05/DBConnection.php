@@ -29,6 +29,13 @@ catch (PDOException $ex)
 
 echo "you have a db connection to: ". $dbUrl;
 
+$stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
+$stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
+$stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+echo $rows;
+
 // function getCustomer($LastName, $FirstName){
 // $stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
 // $stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
