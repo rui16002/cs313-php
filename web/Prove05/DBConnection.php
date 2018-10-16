@@ -35,9 +35,17 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $rows;
 }
 
+function getCustomers(){
+global $db;
+$stmt = $db->prepare('SELECT * FROM Customers');
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $rows;
+}
+
 echo "Testing functions<br>";
 echo "<br>";
-$rows = getCustomer('Rubolino', 'Barbara');
+$rows = getCustomers();
 foreach($rows as $x => $x_value) {
     echo "Key=" . $x . ", Value=" . $x_value;
     echo "<br>";
