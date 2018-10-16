@@ -51,6 +51,7 @@ foreach($rows as $x => $x_value) {
     echo "row=" . $x . ", Value=" . $y . " = " . $y_value;
     echo "<br>";
 }
+}
 
 
 // function getMenuItems($type){
