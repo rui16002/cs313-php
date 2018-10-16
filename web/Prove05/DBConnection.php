@@ -45,14 +45,7 @@ return $rows;
 
 echo "Testing functions<br>";
 echo "<br>";
-$rows = getCustomers();
-foreach($rows as $x => $x_value) {
-  foreach($x as $y => $y_value) {
-    echo "row=" . $x . ", Value=" . $y . " = " . $y_value;
-    echo "<br>";
-}
-}
-
+print_r(getCustomers());
 
 // function getMenuItems($type){
 // $stmt = $db->prepare('SELECT * FROM Menuitems WHERE Type=:type');
