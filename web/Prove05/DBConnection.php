@@ -47,7 +47,7 @@ echo "Testing functions<br>";
 echo "<br>";
 $rows = getCustomers();
 foreach($rows as $x => $x_value) {
-  foreach($x_value as $y => $y_value) {
+  foreach($x as $y => $y_value) {
     echo "row=" . $x . ", Value=" . $y . " = " . $y_value;
     echo "<br>";
 }
