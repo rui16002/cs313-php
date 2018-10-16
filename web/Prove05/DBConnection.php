@@ -34,7 +34,12 @@ $stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
 $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo $rows;
+echo "<br>";
+echo "<br>";
+foreach($rows as $x => $x_value) {
+    echo "Key=" . $x . ", Value=" . $x_value;
+    echo "<br>";
+}
 
 // function getCustomer($LastName, $FirstName){
 // $stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
