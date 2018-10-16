@@ -27,26 +27,22 @@ catch (PDOException $ex)
   die();
 }
 
-echo "you have a db connection to: ". $dbUrl;
-
+function getCustomer($LastName, $FirstName){
+global $db;
 $stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
-$stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
-$stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
-$stmt->execute();
+$stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $rows;
+}
+
+echo "Testing functions<br>";
 echo "<br>";
-echo "<br>";
+$rows = getCustomer('Rubolino', 'Barbara');
 foreach($rows as $x => $x_value) {
     echo "Key=" . $x . ", Value=" . $x_value;
     echo "<br>";
 }
 
-// function getCustomer($LastName, $FirstName){
-// $stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
-// $stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
-// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// return $rows;
-// }
 
 // function getMenuItems($type){
 // $stmt = $db->prepare('SELECT * FROM Menuitems WHERE Type=:type');
