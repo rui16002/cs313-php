@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prove 05</title>
+</head>
+<body>
 <?php
 try
 {
@@ -21,19 +27,22 @@ catch (PDOException $ex)
   die();
 }
 
-function getCustomer($LastName, $FirstName){
-$stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
-$stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-return $rows;
-}
+echo "you have a db connection to: ". $dbUrl;
 
-function getMenuItems($type){
-$stmt = $db->prepare('SELECT * FROM Menuitems WHERE Type=:type');
-$stmt->execute(array(':Type' => $type));
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-return $rows;
-}
+// function getCustomer($LastName, $FirstName){
+// $stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
+// $stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
+// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// return $rows;
+// }
 
-echo getMenuItems(1);
+// function getMenuItems($type){
+// $stmt = $db->prepare('SELECT * FROM Menuitems WHERE Type=:type');
+// $stmt->execute(array(':Type' => $type));
+// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// return $rows;
+// }
+
 ?>
+</body>
+</html>
