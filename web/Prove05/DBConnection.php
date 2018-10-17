@@ -43,6 +43,14 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $rows;
 }
 
+function getMenuitems(){
+global $db;
+$stmt = $db->prepare('SELECT MIT.Type, Name, Description, Price, Available FROM Menuitems MI INNER JOIN MenuitemTypes MIT ON MI.Type = MIT.Type');
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $rows;
+}
+
 echo "Testing functions<br>";
 echo "<br>";
 print_r(getCustomers());

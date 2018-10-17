@@ -8,6 +8,10 @@
      .jumbotron {
       margin-bottom: 0;
     }
+
+    .page-header {
+     padding-bottom: 0px; 
+     margin: 0px; }
    
     /* Add a gray background color and some padding to the footer */
     footer {
@@ -34,7 +38,7 @@
     }
 
     .logo {
-      width:200px;
+      width:50px;
     }
     
     .panel-default {

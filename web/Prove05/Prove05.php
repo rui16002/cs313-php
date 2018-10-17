@@ -14,111 +14,119 @@ session_start();
   <script src="Prove05.js"></script>
   <link rel="stylesheet" href="Prove05.css">
 
+  <!--?php require 'DBConnection.php';?-->
+  <?php
+function printClients(){
+  echo'<div class="media">';
+  echo'<div class="media-left">';
+  echo'<img src="img_avatar1.png" class="media-object" style="width:60px">';
+  echo'</div>';
+  echo'<div class="media-body">';
+  echo'<h4 class="media-heading">John Doe</h4>';
+  echo'<p>';
+  echo'<strong>Email:</strong> john@email.com<br>';
+  echo'<strong>Teléfono:</strong> 73487838744';
+  echo'</p>';
+  echo'</div>';
+  echo'</div>';
+}
+  ?>
+}
+
 </head>
 <body>
 <div class="page-header">
- <img src="logo.jpg" class="img-responsive logo" alt="Logo">
+ <img src="cover.jpg" class="img-responsive cover" alt="Cover">
 </div>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
+      <img src="logo.jpg" class="logo img-thumbnail" alt="Logo">
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#" onclick="displayContent('entrantes');">Entrantes</a></li>
-        <li><a href="#" onclick="displayContent('principales');">Principales</a></li>
-        <li><a href="#" onclick="displayContent('bebidas');">Bebidas</a></li>
-        <li><a href="#" onclick="displayContent('postres');">Postres</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
-        <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" onclick="displayContent('cart');"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">0</span> Carrito</a></li>
-      </ul>
-    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
+      <li class="dropdown"><a href="#" onclick="displayContent('productos');">Productos</a></li>
+      <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
+    </ul>
   </div>
 </nav>
 
-<?php require 'DBConnection.php';?>
-
-<div id="clientes" class="clientes section">
+<div id="clientes" class="clientes container">
+  <form class="form-inline" action="">
+  <div class="input-group">
+    <span class="input-group-addon">Nombre</span>
+    <input type="text" class="form-control" id="firstName">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Apellido</span>
+    <input type="text" class="form-control" id="lastName">
+  </div>
+  <button class="btn btn-default" type="submit">
+    <i class="glyphicon glyphicon-search"></i>
+  </button>
+</form>
+<div id="clientes-container">
+</div>
+<?php printClients(); ?>
 </div>
 
 <div id="ordenes" class="ordenes section">
+    <form class="form-inline" action="">
+  <div class="input-group">
+    <span class="input-group-addon">Nombre</span>
+    <input type="text" class="form-control" id="firstName">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Apellido</span>
+    <input type="text" class="form-control" id="lastName">
+  </div>
+    <div class="input-group">
+    <span class="input-group-addon">Fecha</span>
+    <input type="date" class="form-control" id="date">
+  </div>
+  <button class="btn btn-default" type="submit">
+    <i class="glyphicon glyphicon-search"></i>
+  </button>
+</form>
+<div id="ordenes-container">
+  <?php printOrders(); ?>
+</div>
 </div>
 
-<div id="entrantes" class="entrantes section">
-  <div class="container">    
-  <div class="row">
-    <?php 
-      printItems(getMenuItems(1), "apple");
-      ?>
-  </div>    
+<div id="productos" class="productos section">
+  <form class="form-inline" action="">
+  <div class="input-group">
+  <span class="input-group-addon">Tipo</span>
+  <select class="form-control" id="type">
+    <option>Entrantes</option>
+    <option>Principales</option>
+    <option>Bebidas</option>
+    <option>Postres</option>
+  </select>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Nombre</span>
+    <input type="text" class="form-control" id="menuItemName">
+  </div>
+  <div class="input-group">
+    <label class="checkbox-inline"><input type="checkbox" value="">Disponible</label>
+  </div>
+  <button class="btn btn-default" type="submit">
+    <i class="glyphicon glyphicon-search"></i>
+  </button>
+</form>
+<div id="productos-container" class="productos section">
+   <div class="panel-group">
+  <div class="panel panel-default">
+    <div class="panel-heading">Panel Heading</div>
+    <div class="panel-body">Panel Content</div>
+    <div class="panel-footer">Panel Footer</div>
   </div>
 </div>
-<div id="principales" class="principales section">
-  <div class="container">    
-  <div class="row">
-    <?php 
-      printItems(getMenuItems(2), "cutlery");
-      ?>
-  </div>    
-  </div>
-</div>  
-<div id="bebidas" class="bebidas section">
-  <div class="container">    
-  <div class="row">
-    <?php
-      printItems(getMenuItems(3), "glass");
-      ?>
-  </div>    
-  </div>
 </div>
-<div id="postres" class="postres section">
-  <div class="container">    
-  <div class="row">
-    <?php 
-      printItems(getMenuItems(4), "ice-lolly-tasted");
-      ?>
-  </div>    
-  </div>
 </div>
 
-<div id="cart" class="cart section">
-  <div class="container">    
-   <div class="row">
-    <div class="col-sm-12 form-title">
-     <h3>Complete la compra</h3>
-    </div>
-    <div class="col-sm-6">
-      <h4>Su compra</h4>   
-       <div class="row" id="shopping_cart">     
-      </div>
-      <h5>Click sobre un item para quitar</h5>
-    </div>
-    <div class="col-sm-3">
-      <h4>Información de envio</h4>
-  <?php include 'form.php'; ?>
-</div>
-    <div class="col-sm-3">
-      <h4>Resultado de la compra</h4>
-      <div id="purchaseResult">
-        <h5>Aun tienes hambre</h5>
-        <img class='img-responsive' alt='Image' src='hungry.jpg'>
-      </div>
-</div>
-</div>
-</div>
-</div>
-<br>
 <br>
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>  
@@ -127,7 +135,7 @@ session_start();
     <button type="button" class="btn btn-danger">Suscribirse</button>
   </form>
 </footer>
-<script type="text/javascript">displayContent("principales");</script>
+<script type="text/javascript">displayContent("clientes");</script>
     </div>
 </body>
 </html>
