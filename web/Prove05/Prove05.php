@@ -30,8 +30,22 @@ function printClients(){
   echo'</div>';
   echo'</div>';
 }
-  ?>
+
+function printOrders(){
+  
 }
+
+function printProducts(){
+  echo '<div class="panel-group">';
+  echo '<div class="panel panel-default">';
+  echo '<div class="panel-heading">Type</div>';
+  echo '<div class="panel-body">Name<br>Description</div>';
+  echo '<div class="panel-footer">Price available</div>';
+  echo '</div>';
+  echo '</div>';
+}
+
+?>
 
 </head>
 <body>
@@ -117,13 +131,7 @@ function printClients(){
   </button>
 </form>
 <div id="productos-container" class="productos section">
-   <div class="panel-group">
-  <div class="panel panel-default">
-    <div class="panel-heading">Panel Heading</div>
-    <div class="panel-body">Panel Content</div>
-    <div class="panel-footer">Panel Footer</div>
-  </div>
-</div>
+<?php printProducts(); ?>
 </div>
 </div>
 
