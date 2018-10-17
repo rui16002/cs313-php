@@ -74,7 +74,7 @@ echo "Testing functions<br>";
 echo "<br>";
 print_r(getCustomersByName('Rubolino','Barbara'));
 echo "<br>";
-print_r(getOrdersByNameDate('Rubolino','Barbara','15-10-2018'));
+print_r(getOrdersByNameDate('Rubolino','Barbara','2018-10-15'));
 echo "<br>";
 print_r(getMenuitemsByTypeNameAvailable('Entrada','Nachos', true));
 
