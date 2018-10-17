@@ -48,7 +48,7 @@ SELECT old.LastName, old.FirstName, old.OrderDate, mi.Name, mi.Description, mi.P
   ON ol.CustomerID = c.CustomerID) cd 
   INNER JOIN Orders o ON cd.OrderID = o.OrderID) old 
   INNER JOIN Menuitems mi ON old.MenuitemID = mi.MenuitemID 
-  WHERE old.LastName=:LastName AND old.FirstName=:FirstName AND old.Date=:OrderDate';
+  WHERE old.LastName=:LastName AND old.FirstName=:FirstName AND old.OrderDate=:OrderDate';
 $stmt = $db->prepare($query);
 $stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
 $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
