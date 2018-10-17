@@ -60,13 +60,13 @@ function printProducts(){
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
-      <li class="dropdown"><a href="#" onclick="displayContent('productos');">Productos</a></li>
+      <li><a href="#" onclick="displayContent('productos');">Productos</a></li>
       <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
     </ul>
   </div>
 </nav>
 
-<div id="clientes" class="clientes container">
+<div id="clientes" class="container-fluid text-center">
   <form class="form-inline" action="">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
@@ -85,7 +85,7 @@ function printProducts(){
 <?php printClients(); ?>
 </div>
 
-<div id="ordenes" class="ordenes section">
+<div id="ordenes" class="container-fluid text-center">
     <form class="form-inline" action="">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
@@ -108,11 +108,12 @@ function printProducts(){
 </div>
 </div>
 
-<div id="productos" class="productos section">
+<div id="productos" class="container-fluid text-center">
   <form class="form-inline" action="">
   <div class="input-group">
   <span class="input-group-addon">Tipo</span>
   <select class="form-control" id="type">
+    <option>- Seleccionar -</option>
     <option>Entrantes</option>
     <option>Principales</option>
     <option>Bebidas</option>
@@ -130,18 +131,14 @@ function printProducts(){
     <i class="glyphicon glyphicon-search"></i>
   </button>
 </form>
-<div id="productos-container" class="productos section">
+<div id="productos-container">
 <?php printProducts(); ?>
 </div>
 </div>
 
 <br>
 <footer class="container-fluid text-center">
-  <p>Based on example in W3School</p>  
-  <form class="form-inline">Promociones:
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Suscribirse</button>
-  </form>
+  <p>Based on example in W3School</p>
 </footer>
 <script type="text/javascript">displayContent("clientes");</script>
     </div>

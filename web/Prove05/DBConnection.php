@@ -27,25 +27,41 @@ catch (PDOException $ex)
   die();
 }
 
-function getCustomer($LastName, $FirstName){
+function getCustomersByName($LastName, $FirstName){
 global $db;
-$stmt = $db->prepare('SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName');
-$stmt->execute(array(':LastName' => $LastName, ':FirstName' => $FirstName));
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-return $rows;
-}
-
-function getCustomers(){
-global $db;
-$stmt = $db->prepare('SELECT * FROM Customers');
+$query = 'SELECT * FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName';
+$stmt = $db->prepare($query);
+$stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
+$stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $rows;
 }
 
-function getMenuitems(){
+function getOrdersByNameDate($FirstName, $LastName, $OrderDate){
 global $db;
-$stmt = $db->prepare('SELECT MIT.Type, Name, Description, Price, Available FROM Menuitems MI INNER JOIN MenuitemTypes MIT ON MI.Type = MIT.Type');
+$query = 'SELECT old.LastName, old.FirstName, old.Date, mi.Name, mi.Description, mi.Price, mi.Available
+FROM
+(SELECT * FROM
+(SELECT * FROM Orderlists ol 
+  INNER JOIN Customers c 
+  ON ol.CustomerID = c.CustomerID) cd INNER JOIN Orders o ON cd.OrderID = o.OrderID) old INNER JOIN Menuitems mi ON old.MenuitemID = mi.MenuitemID WHERE LastName=:LastName AND FirstName=:FirstName AND old.Date=:OrderDate';
+$stmt = $db->prepare($query);
+$stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
+$stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
+$stmt->bindValue(':OrderDate', $OrderDate, PDO::PARAM_STR);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+return $rows;
+}
+
+function getMenuitemsByTypeNameAvailable($type, $name, $available){
+global $db;
+$query = 'SELECT MIT.Type, Name, Description, Price, Available FROM Menuitems MI INNER JOIN MenuitemTypes MIT ON MI.Type = MIT.MenuitemTypeID WHERE MIT.Type=:MenuitemType AND Name=:Name AND Available=:Available';
+$stmt = $db->prepare($query);
+$stmt->bindValue(':MenuitemType', $type, PDO::PARAM_STR);
+$stmt->bindValue(':Name', $name, PDO::PARAM_STR);
+$stmt->bindValue(':Available', $available, PDO::PARAM_BOOL);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 return $rows;
@@ -53,14 +69,12 @@ return $rows;
 
 echo "Testing functions<br>";
 echo "<br>";
-print_r(getCustomers());
+print_r(getCustomersByName('Rubolino','Barbara'));
+echo "<br>";
+print_r(getOrdersByNameDate('Rubolino','Barbara','05-05-2018'));
+echo "<br>";
+print_r(getMenuitemsByTypeNameAvailable('Entrada','Nachos', true));
 
-// function getMenuItems($type){
-// $stmt = $db->prepare('SELECT * FROM Menuitems WHERE Type=:type');
-// $stmt->execute(array(':Type' => $type));
-// $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// return $rows;
-// }
 
 ?>
 </body>
