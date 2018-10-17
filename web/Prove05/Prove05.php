@@ -42,7 +42,7 @@ function printOrder($LastName, $FirstName, $OrderDate, $ProdName, $ProdDescripti
    echo '<span class="text-right glyphicon glyphicon-remove-sign">'; 
   }
   echo '</div>';
-  echo '<div class="panel-body"><strong>'.$ProdName'</strong><br>'.$ProdDescription.'<br>'.$ProdPrice.'</div>';
+  echo '<div class="panel-body"><strong>'.$ProdName.'</strong><br>'.$ProdDescription.'<br>'.$ProdPrice.'</div>';
   echo '<div class="panel-footer">'.$firstName.' '.$lastName.'</div>';
   echo '</div>';
   echo '</div>';
