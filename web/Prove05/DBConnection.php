@@ -45,7 +45,7 @@ FROM
 (SELECT * FROM
 (SELECT * FROM Orderlists ol 
   INNER JOIN Customers c 
-  ON ol.CustomerID = c.CustomerID) cd INNER JOIN Orders o ON cd.OrderID = o.OrderID) old INNER JOIN Menuitems mi ON old.MenuitemID = mi.MenuitemID WHERE LastName=:LastName AND FirstName=:FirstName AND old.Date=:OrderDate';
+  ON ol.CustomerID = c.CustomerID) cd INNER JOIN Orders o ON cd.OrderID = o.OrderID) old INNER JOIN Menuitems mi ON old.MenuitemID = mi.MenuitemID WHERE old.LastName=:LastName AND old.FirstName=:FirstName AND old.Date=:OrderDate';
 $stmt = $db->prepare($query);
 $stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
 $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
@@ -71,7 +71,7 @@ echo "Testing functions<br>";
 echo "<br>";
 print_r(getCustomersByName('Rubolino','Barbara'));
 echo "<br>";
-print_r(getOrdersByNameDate('Rubolino','Barbara','05-05-2018'));
+print_r(getOrdersByNameDate('Rubolino','Barbara','2018-10-17'));
 echo "<br>";
 print_r(getMenuitemsByTypeNameAvailable('Entrada','Nachos', true));
 
