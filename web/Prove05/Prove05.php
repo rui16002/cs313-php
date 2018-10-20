@@ -15,27 +15,7 @@ session_start();
   <link rel="stylesheet" href="Prove05.css">
 
   <?php require 'DBConnection.php';?>
- 
-</head>
-<body>
-<div class="page-header">
- <img src="cover.jpg" class="img-responsive cover" alt="Cover">
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <img src="logo.jpg" class="logo img-thumbnail" alt="Logo">
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
-      <li><a href="#" onclick="displayContent('productos');">Productos</a></li>
-      <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
-    </ul>
-  </div>
-</nav>
-
- <?php
+  <?php
 function printClients($rows){
   foreach ($rows as $row)
   {
@@ -101,9 +81,6 @@ function test_input($data) {
   return $data;
 }
 
-$clientsReady=false;
-$productsReady=false;
-$ordersReady=false;
 static $contentDisplayed = "clientes";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -113,47 +90,48 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       $firstName = test_input($_POST['c-firstName']);
       $lastName = test_input($_POST['c-lastName']);
       $clientRows = getCustomersByName($lastName, $firstName);
-      if(count($clientRows) <= 0)
-      {
-        echo "<span>No se encontraron clientes que coincidan con la busqueda...</span>";
-      }
-      else {
-        $clientsReady=true;
-        $contentDisplayed = "clientes";
-      }
     }
     elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])) {
       $firstName = test_input($_POST['o-firstName']);
       $lastName = test_input($_POST['o-lastName']);
       $orderDate = test_input($_POST['o-date']);
       $orderRows = getOrdersByNameDate($firstName, $lastName, $orderDate);
-      if(count($orderRows) <= 0)
-      {
-        echo "<span>No se encontraron ordenes que coincidan con la busqueda...</span>";
-      }
-      else {
-        $ordersReady=true;
-        $contentDisplayed = "ordenes";
-      }
     }
     elseif (isset($_POST['p-type'])&&isset($_POST['p-itemName'])&&isset($_POST['p-available'])) {
       $type = test_input($_POST['p-type']);
       $itemName = test_input($_POST['p-itemName']);
-      $available = test_input($_POST['p-available']);
-      echo '<div>'.$available.'</div>';
-      $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $available);
-      if(count($productRows) <= 0)
+      $check = test_input($_POST['p-available']);
+      if($check == "available"){
+        $check = true;
+      }
+      else
       {
-        echo "<span>No se encontraron productos que coincidan con la busqueda...</span>";
+        $check = false;
       }
-      else {
-        $productsReady=true;
-        $contentDisplayed = "productos";
-      }
+      $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $check);
     }
   }    
 
 ?>
+ 
+</head>
+<body>
+<div class="page-header">
+ <img src="cover.jpg" class="img-responsive cover" alt="Cover">
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="logo.jpg" class="logo img-thumbnail" alt="Logo">
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
+      <li><a href="#" onclick="displayContent('productos');">Productos</a></li>
+      <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div id="clientes" class="container-fluid">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -172,9 +150,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <div id="clientes-container">
 </div>
 <?php 
-if (clientsReady) {
-    printClients($clientRows);
-  }
+  if(count($clientRows) <= 0)
+      {
+        echo "<span>No se encontraron clientes que coincidan con la busqueda...</span>";
+      }
+      else {
+        printClients($clientRows);
+        $contentDisplayed = "clientes";
+      }
 ?>
 </div>
 
@@ -198,9 +181,14 @@ if (clientsReady) {
 </form>
 <div id="ordenes-container">
 <?php 
-if (ordersReady) {
-    printOrders($orderRows);
-  }
+    if(count($orderRows) <= 0)
+      {
+        echo "<span>No se encontraron ordenes que coincidan con la busqueda...</span>";
+      }
+      else {
+        printOrders($orderRows);
+        $contentDisplayed = "ordenes";
+      }
 ?>
 </div>
 </div>
@@ -222,7 +210,7 @@ if (ordersReady) {
     <input type="text" class="form-control" id="p-itemName" name="p-itemName">
   </div>
   <div class="input-group">
-    <label class="checkbox-inline"><input type="checkbox" value="" id="p-available" name="p-available">Disponible</label>
+    <label class="checkbox-inline"><input type="checkbox" value="available" id="p-available" name="p-available">Disponible</label>
   </div>
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
@@ -230,9 +218,14 @@ if (ordersReady) {
 </form>
 <div id="productos-container">
 <?php 
-if (productsReady) {
-    printProducts($productRows);
-  }
+    if(count($productRows) <= 0)
+      {
+        echo "<span>No se encontraron productos que coincidan con la busqueda...</span>";
+      }
+      else {
+        printProducts($productRows);
+        $contentDisplayed = "productos";
+      }
 ?>
 </div>
 </div>
