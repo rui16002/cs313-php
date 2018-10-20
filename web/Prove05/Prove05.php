@@ -144,11 +144,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
-    <input type="text" class="form-control" id="c-firstName">
+    <input type="text" class="form-control" id="c-firstName" name="c-firstName">
   </div>
   <div class="input-group">
     <span class="input-group-addon">Apellido</span>
-    <input type="text" class="form-control" id="c-lastName">
+    <input type="text" class="form-control" id="c-lastName" name="c-lastName">
   </div>
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
@@ -163,15 +163,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
-    <input type="text" class="form-control" id="o-firstName">
+    <input type="text" class="form-control" id="o-firstName" name="o-firstName">
   </div>
   <div class="input-group">
     <span class="input-group-addon">Apellido</span>
-    <input type="text" class="form-control" id="o-lastName">
+    <input type="text" class="form-control" id="o-lastName" name="o-lastName">
   </div>
     <div class="input-group">
     <span class="input-group-addon">Fecha</span>
-    <input type="date" class="form-control" id="o-date">
+    <input type="date" class="form-control" id="o-date" name="o-date">
   </div>
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
@@ -186,7 +186,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
   <span class="input-group-addon">Tipo</span>
-  <select class="form-control" id="p-type">
+  <select class="form-control" id="p-type" name="p-type">
     <option>- Seleccionar -</option>
     <option>Entrantes</option>
     <option>Principales</option>
@@ -196,10 +196,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   </div>
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
-    <input type="text" class="form-control" id="p-itemName">
+    <input type="text" class="form-control" id="p-itemName" name="p-itemName">
   </div>
   <div class="input-group">
-    <label class="checkbox-inline"><input type="checkbox" value="" id="p-available">Disponible</label>
+    <label class="checkbox-inline"><input type="checkbox" value="" id="p-available" name="p-available">Disponible</label>
   </div>
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
