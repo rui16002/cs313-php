@@ -98,16 +98,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       $firstName = test_input($_POST['c-firstName']);
       $lastName = test_input($_POST['c-lastName']);
-      echo $firstName."<br>";
-      echo $lastName."<br>";
-      print_r($rows);
       $rows = getCustomersByName($lastName, $firstName);
       if(count($rows) <= 0)
       {
         echo "No se encontraron clientes que coincidan con la busqueda...";
       }
       else {
-        print_r($rows);
+        foreach ($rows as $row)
+        {
+         printClient($row['FirstName'], $row['LastName'], $row['Email'], $row['Phone']);
+        }
       }
     }
     elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])) {
