@@ -86,10 +86,11 @@ function test_input($data) {
   return $data;
 }
 
-static $contentDisplayed = "clientes";
+$contentDisplayed = "clientes";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
+    $contentDisplayed = $POST['currentContent'];
     if(isset($_POST['c-firstName'])&&isset($_POST['c-lastName'])) 
     {
       $firstName = test_input($_POST['c-firstName']);
@@ -148,6 +149,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     <span class="input-group-addon">Apellido</span>
     <input type="text" class="form-control" id="c-lastName" name="c-lastName">
   </div>
+  <input id="currentContent" name="currentContent" type="hidden" value="clientes">
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
   </button>
@@ -161,7 +163,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         printClients($clientRows);
-        $contentDisplayed = "clientes";
       }
 ?>
 </div>
@@ -180,6 +181,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     <span class="input-group-addon">Fecha</span>
     <input type="date" class="form-control" id="o-date" name="o-date">
   </div>
+  <input id="currentContent" name="currentContent" type="hidden" value="ordenes">
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
   </button>
@@ -192,7 +194,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         printOrders($orderRows);
-        $contentDisplayed = "ordenes";
       }
 ?>
 </div>
@@ -217,6 +218,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   <div class="input-group">
     <label class="checkbox-inline"><input type="checkbox" value="available" id="p-available" name="p-available">Disponible</label>
   </div>
+  <input id="currentContent" name="currentContent" type="hidden" value="productos">
   <button class="btn btn-default" type="submit">
     <i class="glyphicon glyphicon-search"></i>
   </button>
@@ -229,7 +231,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         printProducts($productRows);
-        $contentDisplayed = "productos";
       }
 ?>
 </div>
