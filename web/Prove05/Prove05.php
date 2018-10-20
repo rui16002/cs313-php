@@ -75,24 +75,23 @@ function printOrders($rows){
 }
 
 function printProducts($rows){
-  print_r($rows);
-  //foreach ($rows as $row)
-  //{
-    //echo '<div class="panel-group">';
-    //echo '<div class="panel panel-default">';
-    //echo '<div class="panel-heading"><div>';
-    //if ($row['available']) {
-      //echo '<span class="glyphicon glyphicon-ok-sign">';
-    //}
-    //else {
-     //echo '<span class="glyphicon glyphicon-remove-sign">'; 
-    //}
-    //echo '</div><div> '.$row['type'].'</div></div>';
-    //echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
-    //echo '<div class="panel-footer">'.$row['price'].' €</div>';
-    //echo '</div>';
-    //echo '</div>';
-  //}
+  foreach ($rows as $row)
+  {
+    echo '<div class="panel-group">';
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading"><div>';
+    if ($row['available']) {
+      echo '<span class="glyphicon glyphicon-ok-sign">';
+    }
+    else {
+     echo '<span class="glyphicon glyphicon-remove-sign">'; 
+    }
+    echo '</div><div> '.$row['type'].'</div></div>';
+    echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
+    echo '<div class="panel-footer">'.$row['price'].' €</div>';
+    echo '</div>';
+    echo '</div>';
+  }
 }
 
 function test_input($data) {
@@ -147,6 +146,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         echo "<span>No se encontraron productos que coincidan con la busqueda...</span>";
       }
       else {
+        echo $type;
         $productsReady=true;
         $contentDisplayed = "productos";
       }
