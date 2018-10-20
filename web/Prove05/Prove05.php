@@ -94,11 +94,13 @@ function test_input($data) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
-    echo "REQUEST_METHOD == POST: True";
     if(isset($_POST['c-firstName'])&&isset($_POST['c-lastName'])) 
     {
       $firstName = test_input($_POST['c-firstName']);
       $lastName = test_input($_POST['c-lastName']);
+      echo $firstName."<br>";
+      echo $lastName."<br>";
+      print_r($rows);
       $rows = getCustomersByName($lastName, $firstName);
       if(count($rows) <= 0)
       {
