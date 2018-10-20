@@ -139,7 +139,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 ?>
 
 <div id="clientes" class="container-fluid">
-  <form class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
     <input type="text" class="form-control" id="c-firstName">
@@ -158,7 +158,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 
 <div id="ordenes" class="container-fluid">
-    <form class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
     <span class="input-group-addon">Nombre</span>
     <input type="text" class="form-control" id="o-firstName">
@@ -181,7 +181,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 
 <div id="productos" class="container-fluid">
-  <form class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
   <div class="input-group">
   <span class="input-group-addon">Tipo</span>
   <select class="form-control" id="p-type">
