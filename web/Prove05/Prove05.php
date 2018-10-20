@@ -67,7 +67,7 @@ function printOrders($rows){
      echo '<span class="glyphicon glyphicon-remove-sign">'; 
     }
     echo '</div><div> '.$row['orderdate'].'</div></div>';
-    echo '<div class="panel-body"><strong>'.$row['name'].'</strong><br>'.$row['description'].'<br>'.$row['price'].'</div>';
+    echo '<div class="panel-body"><strong>'.$row['name'].'</strong><br>'.$row['description'].'<br>'.$row['price'].' €</div>';
     echo '<div class="panel-footer">'.$row['firstname'].' '.$row['lastname'].'</div>';
     echo '</div>';
     echo '</div>';
@@ -75,23 +75,24 @@ function printOrders($rows){
 }
 
 function printProducts($rows){
-  foreach ($rows as $row)
-  {
-    echo '<div class="panel-group">';
-    echo '<div class="panel panel-default">';
-    echo '<div class="panel-heading"><div>';
-    if ($row['available']) {
-      echo '<span class="glyphicon glyphicon-ok-sign">';
-    }
-    else {
-     echo '<span class="glyphicon glyphicon-remove-sign">'; 
-    }
-    echo '</div><div> '.$row['type'].'</div></div>';
-    echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
-    echo '<div class="panel-footer">'.$row['price'].'</div>';
-    echo '</div>';
-    echo '</div>';
-  }
+  print_r($rows);
+  //foreach ($rows as $row)
+  //{
+    //echo '<div class="panel-group">';
+    //echo '<div class="panel panel-default">';
+    //echo '<div class="panel-heading"><div>';
+    //if ($row['available']) {
+      //echo '<span class="glyphicon glyphicon-ok-sign">';
+    //}
+    //else {
+     //echo '<span class="glyphicon glyphicon-remove-sign">'; 
+    //}
+    //echo '</div><div> '.$row['type'].'</div></div>';
+    //echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
+    //echo '<div class="panel-footer">'.$row['price'].' €</div>';
+    //echo '</div>';
+    //echo '</div>';
+  //}
 }
 
 function test_input($data) {
