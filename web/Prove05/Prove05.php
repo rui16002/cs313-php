@@ -39,16 +39,19 @@ function printOrders($rows){
   {
     echo '<div class="panel-group">';
     echo '<div class="panel panel-default">';
-    echo '<div class="panel-heading"><div>';
+    echo '<div class="panel-heading text-center"><div>';
     if ($row['available']) {
-      echo '<span class="glyphicon glyphicon-ok-sign">';
+      echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
     }
     else {
-     echo '<span class="glyphicon glyphicon-remove-sign">'; 
+     echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
     }
     echo '</div><div> '.$row['orderdate'].'</div></div>';
-    echo '<div class="panel-body"><strong>'.$row['name'].'</strong><br>'.$row['description'].'<br>'.$row['price'].' €</div>';
-    echo '<div class="panel-footer">'.$row['firstname'].' '.$row['lastname'].'</div>';
+    echo '<div class="panel-body">';
+    echo '<strong>'.$row['name'].'</strong><br>';
+    echo '<em>'.$row['description'].'</em><br>';
+    echo '<p class="bg-info"'.$row['price'].' €</p></div>';
+    echo '<div class="panel-footer text-center">'.$row['firstname'].' '.$row['lastname'].'</div>';
     echo '</div>';
     echo '</div>';
   }
@@ -59,16 +62,18 @@ function printProducts($rows){
   {
     echo '<div class="panel-group">';
     echo '<div class="panel panel-default">';
-    echo '<div class="panel-heading"><div>';
+    echo '<div class="panel-heading text-center"><div>';
     if ($row['available']) {
-      echo '<span class="glyphicon glyphicon-ok-sign">';
+      echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
     }
     else {
-     echo '<span class="glyphicon glyphicon-remove-sign">'; 
+     echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
     }
     echo '</div><div> '.$row['type'].'</div></div>';
-    echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
-    echo '<div class="panel-footer">'.$row['price'].' €</div>';
+    echo '<div class="panel-body">';
+    echo '<strong>'.$row['name'].'</strong><br>';
+    echo '<em>'.$row['description'].'</em></div>';
+    echo '<div class="panel-footer text-right">'.$row['price'].' €</div>';
     echo '</div>';
     echo '</div>';
   }
@@ -91,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       $lastName = test_input($_POST['c-lastName']);
       $clientRows = getCustomersByName($lastName, $firstName);
     }
-    elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])) {
+    elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])&&(!(empty($_POST['o-date'])))) {
       $firstName = test_input($_POST['o-firstName']);
       $lastName = test_input($_POST['o-lastName']);
       $orderDate = test_input($_POST['o-date']);
@@ -152,7 +157,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <?php 
   if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0))
       {
-        echo "<span>No se encontraron clientes que coincidan con la busqueda...</span>";
+        echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
       }
       else {
         printClients($clientRows);
@@ -183,7 +188,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <?php 
     if(count($orderRows) <= 0)
       {
-        echo "<span>No se encontraron ordenes que coincidan con la busqueda...</span>";
+        echo "<div class='NoMatch'><span>No se encontraron ordenes que coincidan con la busqueda...</span></div>";
       }
       else {
         printOrders($orderRows);
@@ -220,7 +225,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <?php 
     if(count($productRows) <= 0)
       {
-        echo "<span>No se encontraron productos que coincidan con la busqueda...</span>";
+        echo "<div class='NoMatch'><span>No se encontraron productos que coincidan con la busqueda...</span></div>";
       }
       else {
         printProducts($productRows);
