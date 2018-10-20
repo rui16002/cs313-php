@@ -36,19 +36,22 @@ session_start();
 </nav>
 
  <?php
-function printClient($firstName, $lastName, $email, $phone){
-  echo'<div class="media">';
-  echo'<div class="media-left">';
-  echo'<img src="img_avatar1.png" class="media-object" style="width:70px">';
-  echo'</div>';
-  echo'<div class="media-body">';
-  echo'<h4 class="media-heading">'.$firstName.' '.$lastName.'</h4>';
-  echo'<p>';
-  echo'<strong>Email:</strong>'.$email.'<br>';
-  echo'<strong>Teléfono:</strong>'.$phone;
-  echo'</p>';
-  echo'</div>';
-  echo'</div>';
+function printClients($rows){
+  foreach ($rows as $row)
+  {
+    echo'<div class="media">';
+    echo'<div class="media-left">';
+    echo'<img src="img_avatar1.png" class="media-object" style="width:70px">';
+    echo'</div>';
+    echo'<div class="media-body">';
+    echo'<h4 class="media-heading">'.$row['firstname'].' '.$row['lastname'].'</h4>';
+    echo'<p>';
+    echo'<strong>Email:</strong>'.$row['email'].'<br>';
+    echo'<strong>Teléfono:</strong>'.$row['phone'];
+    echo'</p>';
+    echo'</div>';
+    echo'</div>';
+  }
 }
 
 function printOrder($LastName, $FirstName, $OrderDate, $ProdName, $ProdDescription, $ProdPrice, $ProdAvailable){
@@ -92,6 +95,8 @@ function test_input($data) {
   return $data;
 }
 
+$clientsReady=false;
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
     if(isset($_POST['c-firstName'])&&isset($_POST['c-lastName'])) 
@@ -104,16 +109,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         echo "No se encontraron clientes que coincidan con la busqueda...";
       }
       else {
-        print_r($rows);
-        foreach ($rows as $row)
-        {
-          echo $row['customerid'].'<br>';
-          echo $row['firstname'].'<br>';
-          echo $row['lastname'].'<br>';
-          echo $row['email'].'<br>';
-          echo $row['phone'].'<br>';
-         printClient($row['firstname'], $row['lastname'], $row['email'], $row['phone']);
-        }
+        $clientsReady=true;
       }
     }
     elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])) {
@@ -162,7 +158,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </form>
 <div id="clientes-container">
 </div>
-<?php ?>
+<?php 
+if (clientsReady) {
+    printClients($rows);
+  }
+?>
 </div>
 
 <div id="ordenes" class="container-fluid">
