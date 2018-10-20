@@ -79,7 +79,6 @@ function printProducts($rows){
   {
     echo '<div class="panel-group">';
     echo '<div class="panel panel-default">';
-    echo '<div class="panel-heading">'.$row['type'];
     echo '<div class="panel-heading"><div>';
     if ($row['available']) {
       echo '<span class="glyphicon glyphicon-ok-sign">';
@@ -105,6 +104,7 @@ function test_input($data) {
 $clientsReady=false;
 $productsReady=false;
 $ordersReady=false;
+static $contentDisplayed = "clientes";
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
@@ -119,6 +119,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         $clientsReady=true;
+        $contentDisplayed = "clientes";
       }
     }
     elseif (isset($_POST['o-firstName'])&&isset($_POST['o-lastName'])&&isset($_POST['o-date'])) {
@@ -132,6 +133,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         $ordersReady=true;
+        $contentDisplayed = "ordenes";
       }
     }
     elseif (isset($_POST['p-type'])&&isset($_POST['p-itemName'])&&isset($_POST['p-available'])) {
@@ -145,6 +147,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       }
       else {
         $productsReady=true;
+        $contentDisplayed = "productos";
       }
     }
   }    
@@ -237,7 +240,7 @@ if (productsReady) {
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
-<script type="text/javascript">displayContent("clientes");</script>
+<script type="text/javascript">displayContent(<?php echo $contentDisplayed; ?>);</script>
     </div>
 </body>
 </html>
