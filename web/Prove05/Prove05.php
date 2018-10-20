@@ -138,9 +138,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     elseif (isset($_POST['p-type'])&&isset($_POST['p-itemName'])&&isset($_POST['p-available'])) {
       $type = test_input($_POST['p-type']);
-              echo $type;
       $itemName = test_input($_POST['p-itemName']);
       $available = test_input($_POST['p-available']);
+      echo '<div>'.$available.'</div>';
       $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $available);
       if(count($productRows) <= 0)
       {
@@ -210,6 +210,7 @@ if (ordersReady) {
   <div class="input-group">
   <span class="input-group-addon">Tipo</span>
   <select class="form-control" id="p-type" name="p-type">
+    <option>- Seleccionar -</option>
     <option>Entrada</option>
     <option>Plato principal</option>
     <option>Bebida</option>
