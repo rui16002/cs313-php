@@ -94,6 +94,7 @@ function test_input($data) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
+    echo "REQUEST_METHOD == POST: True";
     if(isset($_POST['c-firstName'])&&isset($_POST['c-lastName'])) 
     {
       $firstName = test_input($_POST['c-firstName']);
