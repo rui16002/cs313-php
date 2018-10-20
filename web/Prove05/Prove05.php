@@ -54,38 +54,44 @@ function printClients($rows){
   }
 }
 
-function printOrder($LastName, $FirstName, $OrderDate, $ProdName, $ProdDescription, $ProdPrice, $ProdAvailable){
-  echo '<div class="panel-group">';
-  echo '<div class="panel panel-default">';
-  echo '<div class="panel-heading">'.$OrderDate;
-  if ($available) {
-    echo '<span class="text-right glyphicon glyphicon-ok-sign">';
+function printOrders($rows){
+  foreach ($rows as $row)
+  {
+    echo '<div class="panel-group">';
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading">'.$row['orderdate'];
+    if ($row['available']) {
+      echo '<span class="text-right glyphicon glyphicon-ok-sign">';
+    }
+    else {
+     echo '<span class="text-right glyphicon glyphicon-remove-sign">'; 
+    }
+    echo '</div>';
+    echo '<div class="panel-body"><strong>'.$row['name'].'</strong><br>'.$row['description'].'<br>'.$row['price'].'</div>';
+    echo '<div class="panel-footer">'.$row['firstname'].' '.$row['lastname'].'</div>';
+    echo '</div>';
+    echo '</div>';
   }
-  else {
-   echo '<span class="text-right glyphicon glyphicon-remove-sign">'; 
-  }
-  echo '</div>';
-  echo '<div class="panel-body"><strong>'.$ProdName.'</strong><br>'.$ProdDescription.'<br>'.$ProdPrice.'</div>';
-  echo '<div class="panel-footer">'.$firstName.' '.$lastName.'</div>';
-  echo '</div>';
-  echo '</div>';
 }
 
-function printProduct($type, $name, $description, $price, $available){
-  echo '<div class="panel-group">';
-  echo '<div class="panel panel-default">';
-  echo '<div class="panel-heading">'.$type;
-  if ($available) {
-    echo '<span class="text-right glyphicon glyphicon-ok-sign">';
+function printProduct($rows){
+  foreach ($rows as $row)
+  {
+    echo '<div class="panel-group">';
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading">'.$row['type'];
+    if ($row['available']) {
+      echo '<span class="text-right glyphicon glyphicon-ok-sign">';
+    }
+    else {
+      echo '<span class="text-right glyphicon glyphicon-remove-sign">'; 
+    }
+    echo '</div>';
+    echo '<div class="panel-body">'.$row['name'].'<br>'.$row['description'].'</div>';
+    echo '<div class="panel-footer">'.$row['price'].'</div>';
+    echo '</div>';
+    echo '</div>';
   }
-  else {
-    echo '<span class="text-right glyphicon glyphicon-remove-sign">'; 
-  }
-  echo '</div>';
-  echo '<div class="panel-body">'.$name.'<br>'.$description.'</div>';
-  echo '<div class="panel-footer">'.$price.'</div>';
-  echo '</div>';
-  echo '</div>';
 }
 
 function test_input($data) {
@@ -96,6 +102,8 @@ function test_input($data) {
 }
 
 $clientsReady=false;
+$productsReady=false;
+$ordersReady=false;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
@@ -103,8 +111,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       $firstName = test_input($_POST['c-firstName']);
       $lastName = test_input($_POST['c-lastName']);
-      $rows = getCustomersByName($lastName, $firstName);
-      if(count($rows) <= 0)
+      $clientRows = getCustomersByName($lastName, $firstName);
+      if(count($clientRows) <= 0)
       {
         echo "No se encontraron clientes que coincidan con la busqueda...";
       }
@@ -116,26 +124,26 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       $firstName = test_input($_POST['o-firstName']);
       $lastName = test_input($_POST['o-lastName']);
       $orderDate = test_input($_POST['o-date']);
-      $rows = getOrdersByNameDate($firstName, $lastName, $orderDate);
-      if(count($rows) <= 0)
+      $orderRows = getOrdersByNameDate($firstName, $lastName, $orderDate);
+      if(count($orderRows) <= 0)
       {
         echo "No se encontraron ordenes que coincidan con la busqueda...";
       }
       else {
-        print_r($rows);
+        $ordersReady=true;
       }
     }
     elseif (isset($_POST['p-type'])&&isset($_POST['p-itemName'])&&isset($_POST['p-available'])) {
       $type = test_input($_POST['p-type']);
       $itemName = test_input($_POST['p-itemName']);
       $available = test_input($_POST['p-available']);
-      $rows = getMenuitemsByTypeNameAvailable($type, $itemName, $available);
-      if(count($rows) <= 0)
+      $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $available);
+      if(count($productRows) <= 0)
       {
         echo "No se encontraron productos que coincidan con la busqueda...";
       }
       else {
-        print_r($rows);
+        $productsReady=true;
       }
     }
   }    
@@ -160,7 +168,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 <?php 
 if (clientsReady) {
-    printClients($rows);
+    printClients($clientRows);
   }
 ?>
 </div>
@@ -184,7 +192,11 @@ if (clientsReady) {
   </button>
 </form>
 <div id="ordenes-container">
-  <?php ?>
+<?php 
+if (ordersReady) {
+    printOrders($orderRows);
+  }
+?>
 </div>
 </div>
 
@@ -212,7 +224,11 @@ if (clientsReady) {
   </button>
 </form>
 <div id="productos-container">
-<?php ?>
+<?php 
+if (productsReady) {
+    printProducts($productRows);
+  }
+?>
 </div>
 </div>
 
