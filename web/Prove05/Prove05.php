@@ -15,7 +15,27 @@ session_start();
   <link rel="stylesheet" href="Prove05.css">
 
   <?php require 'DBConnection.php';?>
-  <?php
+ 
+</head>
+<body>
+<div class="page-header">
+ <img src="cover.jpg" class="img-responsive cover" alt="Cover">
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="logo.jpg" class="logo img-thumbnail" alt="Logo">
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
+      <li><a href="#" onclick="displayContent('productos');">Productos</a></li>
+      <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <?php
 function printClient($firstName, $lastName, $email, $phone){
   echo'<div class="media">';
   echo'<div class="media-left">';
@@ -116,25 +136,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   }    
 
 ?>
-
-</head>
-<body>
-<div class="page-header">
- <img src="cover.jpg" class="img-responsive cover" alt="Cover">
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <img src="logo.jpg" class="logo img-thumbnail" alt="Logo">
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#" onclick="displayContent('clientes');">Clientes</a></li>
-      <li><a href="#" onclick="displayContent('productos');">Productos</a></li>
-      <li><a href="#" onclick="displayContent('ordenes');">Ordenes</a></li>
-    </ul>
-  </div>
-</nav>
 
 <div id="clientes" class="container-fluid">
   <form class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
