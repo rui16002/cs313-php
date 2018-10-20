@@ -104,6 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         echo "No se encontraron clientes que coincidan con la busqueda...";
       }
       else {
+        print_r($rows);
         foreach ($rows as $row)
         {
           echo $row['FirstName'].'<br>';
