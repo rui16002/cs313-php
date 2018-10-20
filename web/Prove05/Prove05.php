@@ -240,7 +240,7 @@ if (productsReady) {
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
-<script type="text/javascript">displayContent(<?php echo $contentDisplayed; ?>);</script>
+<script type="text/javascript">displayContent(<?php echo "'".$contentDisplayed."'"; ?>);</script>
     </div>
 </body>
 </html>
