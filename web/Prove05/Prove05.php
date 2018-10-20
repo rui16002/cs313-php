@@ -50,7 +50,7 @@ function printOrders($rows){
     echo '<div class="panel-body">';
     echo '<strong>'.$row['name'].'</strong><br>';
     echo '<em>'.$row['description'].'</em><br>';
-    echo '<p class="bg-info"'.$row['price'].' €</p></div>';
+    echo '<p class="bg-info text-center">'.$row['price'].' €</p></div>';
     echo '<div class="panel-footer text-center">'.$row['firstname'].' '.$row['lastname'].'</div>';
     echo '</div>';
     echo '</div>';
@@ -69,11 +69,11 @@ function printProducts($rows){
     else {
      echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
     }
-    echo '</div><div> '.$row['type'].'</div></div>';
+    echo '</div><strong>'.$row['type'].'</strong></div>';
     echo '<div class="panel-body">';
     echo '<strong>'.$row['name'].'</strong><br>';
     echo '<em>'.$row['description'].'</em></div>';
-    echo '<div class="panel-footer text-right">'.$row['price'].' €</div>';
+    echo '<div class="panel-footer text-right"><span class="badge">'.$row['price'].' €</span></div>';
     echo '</div>';
     echo '</div>';
   }
