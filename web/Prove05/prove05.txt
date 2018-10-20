@@ -1,0 +1,36 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application:
+https://limitless-reef-52998.herokuapp.com/Prove05/Prove05.php
+
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/rui16002/cs313-php/tree/master/web/Prove05
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+
+Mine is a simple page to look for clients, products, and orders for a restaurant, by using the forms you will be able to see the details of
+the products, clients, and orders found.
+All the items are mandatories in the form, without them the page does not return results.
+you can try to look for any value set in the db, you can find the db script in cs313-php\db\myDb.sql 
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+I am still trying to see how to make the user return to the same active section after submiting the form, it always returns to the first one.
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+Unlike reviious weeks, I was able to work a lot more effectively, One of the group members showed us how to use heroku console and that helped me a lot to triage errors in my code.
+
+6. Why should you create a separate user account for your application to access the database?
+It is a "Best practice" for security reasons.
+
+7. Please select the category you feel best describes your assignment:
+A - Some attempt was made
+B - Developing, but significantly deficient
+C - Slightly deficient, but still mostly adequate
+X D - Meets requirements
+E - Shows creativity and excels above and beyond requirements
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+As described in the assignment, we needed to create a page to access the database and interacted with forms, displaying results based
+on form inputs.
+
