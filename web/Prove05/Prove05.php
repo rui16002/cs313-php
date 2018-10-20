@@ -138,6 +138,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     elseif (isset($_POST['p-type'])&&isset($_POST['p-itemName'])&&isset($_POST['p-available'])) {
       $type = test_input($_POST['p-type']);
+              echo $type;
       $itemName = test_input($_POST['p-itemName']);
       $available = test_input($_POST['p-available']);
       $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $available);
@@ -146,7 +147,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         echo "<span>No se encontraron productos que coincidan con la busqueda...</span>";
       }
       else {
-        echo $type;
         $productsReady=true;
         $contentDisplayed = "productos";
       }
