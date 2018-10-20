@@ -150,7 +150,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <div id="clientes-container">
 </div>
 <?php 
-  if(count($clientRows) <= 0)
+  if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0))
       {
         echo "<span>No se encontraron clientes que coincidan con la busqueda...</span>";
       }
