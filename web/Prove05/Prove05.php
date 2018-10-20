@@ -211,10 +211,10 @@ if (ordersReady) {
   <span class="input-group-addon">Tipo</span>
   <select class="form-control" id="p-type" name="p-type">
     <option>- Seleccionar -</option>
-    <option>Entrantes</option>
-    <option>Principales</option>
-    <option>Bebidas</option>
-    <option>Postres</option>
+    <option>Entrada</option>
+    <option>Plato principal</option>
+    <option>Bebida</option>
+    <option>Postre</option>
   </select>
   </div>
   <div class="input-group">
