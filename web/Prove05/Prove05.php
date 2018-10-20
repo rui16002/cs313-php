@@ -186,7 +186,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </form>
 <div id="ordenes-container">
 <?php 
-    if(count($orderRows) <= 0)
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($orderRows) <= 0))
       {
         echo "<div class='NoMatch'><span>No se encontraron ordenes que coincidan con la busqueda...</span></div>";
       }
@@ -223,7 +223,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </form>
 <div id="productos-container">
 <?php 
-    if(count($productRows) <= 0)
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0))
       {
         echo "<div class='NoMatch'><span>No se encontraron productos que coincidan con la busqueda...</span></div>";
       }
