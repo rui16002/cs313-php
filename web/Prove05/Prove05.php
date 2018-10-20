@@ -106,6 +106,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       else {
         foreach ($rows as $row)
         {
+          echo $row['FirstName'].'<br>';
+          echo $row['LastName'].'<br>';
+          echo $row['Email'].'<br>';
+          echo $row['Phone'].'<br>';
          printClient($row['FirstName'], $row['LastName'], $row['Email'], $row['Phone']);
         }
       }
