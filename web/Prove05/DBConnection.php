@@ -42,7 +42,7 @@ catch (Exception $ex)
   // Please be aware that you don't want to output the Exception message in
   // a production environment
   //echo "Error with DB. Details: $ex";
-  echo "Ups, I couldn't add the Customer, I am sorry."
+  echo "Ups, I couldn't add the Customer, I am sorry.";
   die();
 }
 }
@@ -61,7 +61,7 @@ $stmt->execute();
 }
 catch (Exception $ex)
 {
-  echo "Ups, I couldn't update the Customer info, I am sorry."
+  echo "Ups, I couldn't update the Customer info, I am sorry.";
   die();
 }
 }
@@ -141,7 +141,7 @@ return $menuItemId;
 }
 catch (Exception $ex)
 {
-  echo "Ups, I couldn't add the new item to the menu, I am sorry."
+  echo "Ups, I couldn't add the new item to the menu, I am sorry.";
   die();
 }
 }
@@ -157,7 +157,7 @@ $stmt->execute();
 }
 catch (Exception $ex)
 {
-  echo "Ups, I couldn't add the new item to the menu, I am sorry."
+  echo "Ups, I couldn't add the new item to the menu, I am sorry.";
   die();
 }
 }
