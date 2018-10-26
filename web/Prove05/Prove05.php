@@ -1,7 +1,7 @@
 
-<!--?php
+<?php
 session_start();
-?-->
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,41 +31,9 @@ function printClients($rows){
     echo'</p>';
     echo'</div>';
     echo'<div class="media-right">';
-    echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditClient">';
+    echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditClient" onclick="editClient($row)">';
     echo'<span class="glyphicon glyphicon-edit"></span>';
     echo'</button>';
-    echo'</div>';
-    echo'</div>';
-    echo'<div id="EditClient" class="modal fade" role="dialog" style="display: none;">';
-    echo'<div class="modal-dialog">';
-    echo'<div class="modal-content">';
-    echo'<div class="modal-header">';
-    echo'<button type="button" class="close" data-dismiss="modal">×</button>';
-    echo'<h4 class="modal-title">Editar Cliente</h4>';
-    echo'</div>';
-    echo'<div class="modal-body">';
-    echo'<form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER[\'php_self\']);?>"';
-    echo'<div class="input-group">';
-    echo'<span class="input-group-addon">Nombre</span>';
-    echo'<input type="text" class="form-control" id="c-firstName" name="c-firstName" value="<?php echo $name;?>">';
-    echo'</div>';
-    echo'<div class="input-group">';
-    echo'<span class="input-group-addon">Apellido</span>';
-    echo'<input type="text" class="form-control" id="c-lastName" name="c-lastName" value="<?php echo $name;?>">';
-    echo'</div>';
-    echo'<div class="input-group">';
-    echo'<span class="input-group-addon">Teléfono</span>';
-    echo'<input type="text" class="form-control" id="c-lastName" name="c-lastName" value="<?php echo $name;?>">';
-    echo'</div>';
-    echo'<br>';
-    echo'<span class="bg-warning">Debe rellenar todos los campos</span>';
-    echo'</form>';
-    echo'</div>';
-    echo'<div class="modal-footer">';
-    echo'<button type="submit" class="btn btn-default">Modificar</button>';
-    echo'<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>';
-    echo'</div>';
-    echo'</div>';
     echo'</div>';
     echo'</div>';
   }
@@ -122,8 +90,14 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-
-$contentDisplayed = "clientes";
+if (isset($_SESSION['lastContent'])){
+$contentDisplayed = $_SESSION['lastContent'];
+}
+else
+{
+  $contentDisplayed = "clientes";
+}
+//set last content via AJAX
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
@@ -202,6 +176,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         printClients($clientRows);
       }
 ?>
+ <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h4 class="modal-title">Editar Cliente</h4>
+     </div>
+     <div class="modal-body">
+     <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+     <div class="input-group">
+      <span class="input-group-addon">Nombre</span>
+      <input type="text" class="form-control" name="clientEditForm_firstName" value="<?php echo $clientEditForm_firstName;?>">
+     </div>
+     <div class="input-group">
+      <span class="input-group-addon">Apellido</span>
+      <input type="text" class="form-control" name="clientEditForm_LastName" value="<?php echo $clientEditForm_LastName;?>">
+     </div>
+     <div class="input-group">
+      <span class="input-group-addon">Teléfono</span>
+      <input type="text" class="form-control" name="clientEditForm_Phone" value="<?php echo $clientEditForm_Phone;?>">
+     </div>
+     <br>
+     <span class="bg-warning">Debe rellenar todos los campos</span>
+     </form>
+     </div>
+    <div class="modal-footer">
+     <button type="submit" class="btn btn-default">Modificar</button>
+     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+    </div>
+    </div>
+  </div>
+ </div>
 </div>
 
 <div id="ordenes" class="container-fluid">
