@@ -75,9 +75,17 @@ function printProducts($rows){
      echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
     }
     echo '</div><strong>'.$row['type'].'</strong></div>';
-    echo '<div class="panel-body">';
+    echo '<div class="panel-body row">';
+    echo '<div class="col-sm-6">';
     echo '<strong>'.$row['name'].'</strong><br>';
     echo '<em>'.$row['description'].'</em></div>';
+    echo '</div>';
+    echo '<div class="col-sm-6 text-right">';
+    echo '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditProduct" onclick="editProduct($row)">';
+    echo '<span class="glyphicon glyphicon-edit"></span>';
+    echo '</button>';
+    echo '</div>';
+    echo '</div>';
     echo '<div class="panel-footer text-right"><span class="badge">'.$row['price'].' €</span></div>';
     echo '</div>';
     echo '</div>';
@@ -187,15 +195,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
      <div class="input-group">
       <span class="input-group-addon">Nombre</span>
-      <input type="text" class="form-control" name="clientEditForm_firstName" value="<?php echo $clientEditForm_firstName;?>">
+      <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
      </div>
      <div class="input-group">
       <span class="input-group-addon">Apellido</span>
-      <input type="text" class="form-control" name="clientEditForm_LastName" value="<?php echo $clientEditForm_LastName;?>">
+      <input type="text" class="form-control" id="editClient_LastName" name="editClient_LastName" value="">
      </div>
      <div class="input-group">
       <span class="input-group-addon">Teléfono</span>
-      <input type="text" class="form-control" name="clientEditForm_Phone" value="<?php echo $clientEditForm_Phone;?>">
+      <input type="text" class="form-control" id="editClient_Phone" name="editClient_Phone" value="">
      </div>
      <br>
      <span class="bg-warning">Debe rellenar todos los campos</span>
@@ -278,6 +286,53 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         printProducts($productRows);
       }
 ?>
+
+ <div id="EditProduct" class="modal fade" role="dialog" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h4 class="modal-title">Editar Producto</h4>
+     </div>
+     <div class="modal-body">
+     <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+       <div class="input-group">
+       <span class="input-group-addon">Tipo</span>
+       <select class="form-control" id="editProduct_Type" name="editProduct_Type">
+         <option>- Seleccionar -</option>
+         <option>Entrada</option>
+         <option>Plato principal</option>
+         <option>Bebida</option>
+         <option>Postre</option>
+       </select>
+       </div>
+       <div class="input-group">
+         <span class="input-group-addon">Nombre</span>
+         <input type="text" class="form-control" id="editProduct_Name" name="editProduct_Name" value="">
+       </div>
+       <div class="input-group">
+         <span class="input-group-addon">Descripción</span>
+         <input type="text" class="form-control" id="editProduct_Description" name="editProduct_Description" value="">
+       </div>
+       <div class="input-group">
+         <span class="input-group-addon">Precio</span>
+         <input type="text" class="form-control" id="editProduct_Price" name="editProduct_Price" value="">
+       </div>
+       <div class="input-group">
+         <label class="checkbox-inline"><input type="checkbox" value="available" id="editProduct_Available" name="editProduct_Available">Disponible</label>
+       </div>
+       <br>
+       <span class="bg-warning">Debe rellenar todos los campos</span>
+     </form>
+     </div>
+    <div class="modal-footer">
+     <button type="submit" class="btn btn-default">Modificar</button>
+     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+    </div>
+    </div>
+  </div>
+ </div>
+
 </div>
 </div>
 

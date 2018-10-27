@@ -14,3 +14,13 @@ function editClient($client)
 {
 
 }
+
+function editProduct($product)
+{
+
+}
+
+function editOrder($order)
+{
+
+}
