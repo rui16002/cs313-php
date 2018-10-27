@@ -194,6 +194,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $description = test_input($_POST['editProduct_Description']);
     $price = floatval(test_input($_POST['editProduct_Price']));
     $available = (test_input($_POST['editProduct_Available'])=='Available');
+    echo $id;
+    echo $type;
+    echo $name;
+    echo $description;
+    echo $price;
+    echo $available;
     updateMenuitem($id, $type, $name, $description, $price, $available);
   }
 
