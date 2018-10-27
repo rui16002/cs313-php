@@ -199,11 +199,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
   if(isset($_POST['addProduct_Type'])&&isset($_POST['addProduct_Name'])&&isset($_POST['addProduct_Description'])&&isset($_POST['addProduct_Price'])&&isset($_POST['addProduct_Available'])) 
   {
-    $type = intval(test_input($_POST['addProduct_Type']));
+    $type = intval(test_input($_POST['addProduct_Type']) + 1);
     $name = test_input($_POST['addProduct_Name']);
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
-    $available = test_input($_POST['addProduct_Available']);
+    $available = (test_input($_POST['addProduct_Available'])=='on');
     echo $type;
     echo $name;
     echo $description;
