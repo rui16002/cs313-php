@@ -126,12 +126,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $check);
   }
-  else
+/*  else
   {
     $clientRows = getCustomers();
     $orderRows = getOrders();
     $productRows = getMenuitems();
-  }
+  }*/
 }    
 
 ?>
