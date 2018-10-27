@@ -192,8 +192,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $type = intval(test_input($_POST['editProduct_Type']));
     $name = test_input($_POST['editProduct_Name']);
     $description = test_input($_POST['editProduct_Description']);
-    $price = intval(test_input($_POST['editProduct_Price']));
-    $available = test_input($_POST['editProduct_Available']);
+    $price = test_input($_POST['editProduct_Price']);
+    $available = (test_input($_POST['editProduct_Available'])=='Available');
     updateMenuitem($id, $type, $name, $description, $price, $available);
   }
 
@@ -204,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = test_input($_POST['addProduct_Name']);
     $description = test_input($_POST['addProduct_Description']);
     $price = intval(test_input($_POST['addProduct_Price']));
-    $available = test_input($_POST['addProduct_Available']);
+    $available = (test_input($_POST['addProduct_Available'])=='Available');
     addNewMenuItem($id, $type, $name, $description, $price, $available);
   }
 
