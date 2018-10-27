@@ -199,12 +199,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
   if(isset($_POST['addProduct_Type'])&&isset($_POST['addProduct_Name'])&&isset($_POST['addProduct_Description'])&&isset($_POST['addProduct_Price'])&&isset($_POST['addProduct_Available'])) 
   {
-    $type = intval(test_input($_POST['addProduct_Type']) + 1);
+    $type = test_input($_POST['addProduct_Type']);
     $name = test_input($_POST['addProduct_Name']);
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
     $available = (test_input($_POST['addProduct_Available'])=='on');
-    addNewMenuItem($type, $name, $description, $price, $available);
+    echo $type;
+    echo $name;
+    echo $description;
+    echo $price;
+    echo $available;
+
+    //addNewMenuItem($type, $name, $description, $price, $available);
   }
 
 }
