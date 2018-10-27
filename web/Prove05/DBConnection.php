@@ -46,6 +46,12 @@ function addNewCustomer($LastName, $FirstName, $Email, $Phone){
 
 function updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone){
   global $db;
+echo $id;
+echo $NewLastName;
+echo $NewFirstName;
+echo $NewEmail;
+echo $NewPhone;
+
   try{
 //Validate inputs before updating
     $query = 'UPDATE Customers SET LastName=:NewLastName, FirstName=:NewFirstName, Email=:NewEmail, Phone=:NewPhone WHERE CustomerID=:id';
