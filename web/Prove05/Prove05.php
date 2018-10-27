@@ -16,10 +16,7 @@ session_start();
 
   <?php require 'DBConnection.php';?>
   <?php
-  if (!(isset($_SESSION['lastContent']))) {
-    $_SESSION['lastContent'] = 'clientes';
-  }
-  
+
   function printClients($rows){
     foreach ($rows as $row)
     {
@@ -353,7 +350,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
-<script type="text/javascript">displayContent(<?php $_SESSION['lastContent']?>);</script>
+<script type="text/javascript">displayContent(<?php echo $_SESSION['lastContent']; ?>);</script>
 </div>
 </body>
 </html>
