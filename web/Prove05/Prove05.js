@@ -37,6 +37,7 @@ function editProduct(id, type, name, description, price, available)
 		document.getElementById("editProduct_Available").checked = true;
 	else
 		document.getElementById("editProduct_Available").checked = false;
+	document.getElementById("editProduct_Available").value = document.getElementById("editProduct_Available").checked;
 }
 
 function editOrder(order)

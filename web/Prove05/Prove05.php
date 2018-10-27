@@ -193,24 +193,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = test_input($_POST['editProduct_Name']);
     $description = test_input($_POST['editProduct_Description']);
     $price = floatval(test_input($_POST['editProduct_Price']));
-    $available = (test_input($_POST['editProduct_Available'])=='Available');
+    $available = test_input($_POST['editProduct_Available']);
     echo $id;
     echo $type;
     echo $name;
     echo $description;
     echo $price;
     echo $available;
-    updateMenuitem($id, $type, $name, $description, $price, $available);
+    //updateMenuitem($id, $type, $name, $description, $price, $available);
   }
 
   if(isset($_POST['addProduct_Type'])&&isset($_POST['addProduct_Name'])&&isset($_POST['addProduct_Description'])&&isset($_POST['addProduct_Price'])&&isset($_POST['addProduct_Available'])) 
   {
-    $id = intval(test_input($_POST['addProduct_id']));
     $type = intval(test_input($_POST['addProduct_Type']));
     $name = test_input($_POST['addProduct_Name']);
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
-    $available = (test_input($_POST['addProduct_Available'])=='available');
+    $available = test_input($_POST['addProduct_Available']);
     addNewMenuItem($id, $type, $name, $description, $price, $available);
   }
 
