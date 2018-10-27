@@ -24,19 +24,24 @@ session_start();
   function printClients($rows){
     foreach ($rows as $row)
     {
+      $firstname = $row['firstname'];
+      $lastname = $row['lastname'];
+      $email = $row['email'];
+      $phone = $row['phone'];
+      $editClientCall = 'editClient("'.$firstname.'","'.$lastname.'","'.$email.'","'.$phone.'");';
       echo'<div class="media">';
       echo'<div class="media-left">';
       echo'<img src="img_avatar1.png" class="media-object" style="width:70px">';
       echo'</div>';
       echo'<div class="media-body">';
-      echo'<h4 class="media-heading">'.$row['firstname'].' '.$row['lastname'].'</h4>';
+      echo'<h4 class="media-heading">'.$firstname.' '.$lastname.'</h4>';
       echo'<p>';
-      echo'<strong>Email:</strong>'.$row['email'].'<br>';
-      echo'<strong>Teléfono:</strong>'.$row['phone'].'';
+      echo'<strong>Email:</strong>'.$email.'<br>';
+      echo'<strong>Teléfono:</strong>'.$phone;
       echo'</p>';
       echo'</div>';
       echo'<div class="media-right">';
-      echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditClient" onclick="editClient($row)">';
+      echo'<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditClient" onclick="'.$editClientCall.'">';
       echo'<span class="glyphicon glyphicon-edit"></span>';
       echo'</button>';
       echo'</div>';
@@ -199,36 +204,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   }
   ?>
   <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Editar Cliente</h4>
-      </div>
-      <div class="modal-body">
-       <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+    <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Editar Cliente</h4>
+        </div>
+        <div class="modal-body">
          <div class="input-group">
           <span class="input-group-addon">Nombre</span>
           <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
         </div>
         <div class="input-group">
           <span class="input-group-addon">Apellido</span>
-          <input type="text" class="form-control" id="editClient_LastName" name="editClient_LastName" value="">
+          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Email</span>
+          <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
         </div>
         <div class="input-group">
           <span class="input-group-addon">Teléfono</span>
-          <input type="text" class="form-control" id="editClient_Phone" name="editClient_Phone" value="">
+          <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
         </div>
         <br>
         <span class="bg-warning">Debe rellenar todos los campos</span>
-      </form>
-    </div>
-    <div class="modal-footer">
-     <button type="submit" class="btn btn-default">Modificar</button>
-     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+      <div class="modal-footer">
+       <button type="submit" class="btn btn-default">Modificar</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+     </div>
    </div>
  </div>
-</div>
+</form>
 </div>
 </div>
 
@@ -354,7 +363,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
-<script type="text/javascript">displayContent(<?php echo $_SESSION['lastContent']; ?>);</script>
+<script type="text/javascript">displayContent(<?php echo "'".$_SESSION['lastContent']."'"; ?>);</script>
 </div>
 </body>
 </html>

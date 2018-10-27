@@ -17,17 +17,27 @@ function currentTab(tab) {
 	xmlhttp.send();
 }
 
-function editClient($client)
+function editClient(firstName, lastName, email, phone)
 {
-
+	document.getElementById("editClient_firstName").setAttribute("value", firstName);
+	document.getElementById("editClient_lastName").setAttribute("value", lastName);
+	document.getElementById("editClient_email").setAttribute("value", email);
+	document.getElementById("editClient_phone").setAttribute("value", phone);
 }
 
-function editProduct($product)
+function editProduct(name, description, price, available)
 {
-
+	document.getElementById("editProduct_Name").setAttribute("value", name);
+	document.getElementById("editProduct_Description").setAttribute("value", description);
+	document.getElementById("editProduct_Price").setAttribute("value", price);
+	if (available) {
+		document.getElementById("editProduct_Available").checked = true;
+		else
+			document.getElementById("editProduct_Available").checked = false;
+	}
 }
 
-function editOrder($order)
+function editOrder(order)
 {
 
 }
