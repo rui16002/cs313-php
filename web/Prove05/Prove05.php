@@ -194,13 +194,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $description = test_input($_POST['editProduct_Description']);
     $price = floatval(test_input($_POST['editProduct_Price']));
     $available = test_input($_POST['editProduct_Available']);
-    echo $id;
-    echo $type;
-    echo $name;
-    echo $description;
-    echo $price;
-    echo $available;
-    //updateMenuitem($id, $type, $name, $description, $price, $available);
+    updateMenuitem($id, $type, $name, $description, $price, $available);
   }
 
   if(isset($_POST['addProduct_Type'])&&isset($_POST['addProduct_Name'])&&isset($_POST['addProduct_Description'])&&isset($_POST['addProduct_Price'])&&isset($_POST['addProduct_Available'])) 
@@ -381,30 +375,39 @@ else {
 </div>
 
 <div id="productos" class="container-fluid">
-  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <div class="input-group">
-      <span class="input-group-addon">Tipo</span>
-      <select class="form-control" id="p-type" name="p-type">
-        <option>- Seleccionar -</option>
-        <option>Entrada</option>
-        <option>Plato principal</option>
-        <option>Bebida</option>
-        <option>Postre</option>
-      </select>
+  <div class="row">
+    <div class="col-sm-10">
+      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="input-group">
+          <span class="input-group-addon">Tipo</span>
+          <select class="form-control" id="p-type" name="p-type">
+            <option>- Seleccionar -</option>
+            <option>Entrada</option>
+            <option>Plato principal</option>
+            <option>Bebida</option>
+            <option>Postre</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" id="p-itemName" name="p-itemName">
+        </div>
+        <div class="input-group">
+          <label class="checkbox-inline"><input type="checkbox" value="available" id="p-available" name="p-available">Disponible</label>
+        </div>
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+        <br>
+        <span class="bg-warning">Debe rellenar todos los campos</span>
+      </form>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon">Nombre</span>
-      <input type="text" class="form-control" id="p-itemName" name="p-itemName">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#AddClient">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
     </div>
-    <div class="input-group">
-      <label class="checkbox-inline"><input type="checkbox" value="available" id="p-available" name="p-available">Disponible</label>
-    </div>
-    <button class="btn btn-default" type="submit">
-      <i class="glyphicon glyphicon-search"></i>
-    </button>
-    <br>
-    <span class="bg-warning">Debe rellenar todos los campos</span>
-  </form>
+  </div>
   <div id="productos-container">
     <?php 
     if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0) && $_SESSION['lastContent'] == 'productos')
@@ -426,7 +429,7 @@ else {
           </div>
           <div class="modal-body">
             <input type="hidden" class="form-control" id="editProduct_id" name="editProduct_id" value="">
-           <div class="input-group">
+            <div class="input-group">
              <span class="input-group-addon">Tipo</span>
              <select class="form-control" id="editProduct_Type" name="editProduct_Type" value="" required>
                <option>- Seleccionar -</option>
@@ -446,10 +449,10 @@ else {
            </div>
            <div class="input-group">
              <span class="input-group-addon">Precio</span>
-             <input type="number" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
+             <input type="number" step="0.1" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
            </div>
            <div class="input-group">
-             <label class="checkbox-inline"><input type="checkbox" value="" id="editProduct_Available" name="editProduct_Available" required>Disponible</label>
+             <label class="checkbox-inline"><input type="checkbox" value="" id="editProduct_Available" name="editProduct_Available">Disponible</label>
            </div>
            <br>
            <span class="bg-warning">Debe rellenar todos los campos</span>
