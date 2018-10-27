@@ -30,11 +30,10 @@ function editProduct(name, description, price, available)
 	document.getElementById("editProduct_Name").setAttribute("value", name);
 	document.getElementById("editProduct_Description").setAttribute("value", description);
 	document.getElementById("editProduct_Price").setAttribute("value", price);
-	if (available) {
+	if (available)
 		document.getElementById("editProduct_Available").checked = true;
-		else
-			document.getElementById("editProduct_Available").checked = false;
-	}
+	else
+		document.getElementById("editProduct_Available").checked = false;
 }
 
 function editOrder(order)
