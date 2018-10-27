@@ -379,7 +379,7 @@ else {
   </form>
   <div id="productos-container">
     <?php 
-    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0) $_SESSION['lastContent'] == 'productos')
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0) && $_SESSION['lastContent'] == 'productos')
     {
       echo "<div class='NoMatch'><span>No se encontraron productos que coincidan con la busqueda...</span></div>";
     }
