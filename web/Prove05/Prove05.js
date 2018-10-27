@@ -17,8 +17,9 @@ function currentTab(tab) {
 	xmlhttp.send();
 }
 
-function editClient(firstName, lastName, email, phone)
+function editClient(id, firstName, lastName, email, phone)
 {
+	document.getElementById("editClient_id").setAttribute("value", id);
 	document.getElementById("editClient_firstName").setAttribute("value", firstName);
 	document.getElementById("editClient_lastName").setAttribute("value", lastName);
 	document.getElementById("editClient_email").setAttribute("value", email);
