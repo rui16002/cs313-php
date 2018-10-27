@@ -204,7 +204,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
     $available = test_input($_POST['addProduct_Available']);
-    addNewMenuItem($type, $name, $description, $price, $available);
+    echo $type;
+    echo $name;
+    echo $description;
+    echo $price;
+    echo $available;
+
+    //addNewMenuItem($type, $name, $description, $price, $available);
   }
 
 }
