@@ -29,8 +29,8 @@ function editClient(id, firstName, lastName, email, phone)
 function editProduct(id, type, name, description, price, available)
 {
 	document.getElementById("editProduct_id").setAttribute("value", id);
-	document.getElementById("editProduct_Type").value = type;
-	document.getElementById("editProduct_Type").setAttribute("value", (document.getElementById("editProduct_Type").selectedIndex - 1));
+	document.getElementById("editProduct_Type").setAttribute("value", type);
+	document.getElementById("editProduct_Type").value = (document.getElementById("editProduct_Type").selectedIndex - 1);
 	document.getElementById("editProduct_Name").setAttribute("value", name);
 	document.getElementById("editProduct_Description").setAttribute("value", description);
 	document.getElementById("editProduct_Price").setAttribute("value", price);
