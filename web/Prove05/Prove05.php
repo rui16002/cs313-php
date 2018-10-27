@@ -28,7 +28,7 @@ session_start();
       $lastname = $row['lastname'];
       $email = $row['email'];
       $phone = $row['phone'];
-      $editClientCall = 'editClient("'.$firstname.'","'.$lastname.'","'.$email.'","'.$phone.'");';
+      $editClientCall = "editClient('".$firstname."','".$lastname."','".$email."','".$phone."');";
       echo'<div class="media">';
       echo'<div class="media-left">';
       echo'<img src="img_avatar1.png" class="media-object" style="width:70px">';
