@@ -34,13 +34,12 @@ function addNewCustomer($LastName, $FirstName, $Email, $Phone){
     $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
     $stmt->execute();
 // get the new id
-    $customerId = $db->lastInsertId("customers_id_seq");
+    $customerId = $db->lastInsertId("customers_customerid_seq");
     return $customerId;
   }
   catch (Exception $ex)
   {
     echo "Ups, I couldn't add the Customer, I am sorry.";
-    echo $ex;
     die();
   }
 }

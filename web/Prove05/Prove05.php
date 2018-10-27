@@ -237,7 +237,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <div id="clientes-container">
 </div>
 <?php 
-if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0))
+if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0) && $_SESSION['lastContent'] == 'clientes')
 {
   echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
 }
@@ -258,11 +258,11 @@ else {
         <input type="hidden" id="editClient_id" name="editClient_id" value="">
         <div class="input-group">
           <span class="input-group-addon">Nombre</span>
-          <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
+          <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="" required>
         </div>
         <div class="input-group">
           <span class="input-group-addon">Apellido</span>
-          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
+          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="" required>
         </div>
         <div class="input-group">
           <span class="input-group-addon">Email</span>
@@ -272,8 +272,6 @@ else {
           <span class="input-group-addon">Teléfono</span>
           <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
         </div>
-        <br>
-        <span class="bg-warning">Debe rellenar todos los campos</span>
       </div>
       <div class="modal-footer">
        <button type="submit" class="btn btn-default">Modificar</button>
@@ -381,7 +379,7 @@ else {
   </form>
   <div id="productos-container">
     <?php 
-    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0))
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($productRows) <= 0) $_SESSION['lastContent'] == 'productos')
     {
       echo "<div class='NoMatch'><span>No se encontraron productos que coincidan con la busqueda...</span></div>";
     }
@@ -391,17 +389,17 @@ else {
     ?>
 
     <div id="EditProduct" class="modal fade" role="dialog" style="display: none;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4 class="modal-title">Editar Producto</h4>
-        </div>
-        <div class="modal-body">
-         <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="modal-title">Editar Producto</h4>
+          </div>
+          <div class="modal-body">
            <div class="input-group">
              <span class="input-group-addon">Tipo</span>
-             <select class="form-control" id="editProduct_Type" name="editProduct_Type">
+             <select class="form-control" id="editProduct_Type" name="editProduct_Type" value="" required>
                <option>- Seleccionar -</option>
                <option>Entrada</option>
                <option>Plato principal</option>
@@ -411,7 +409,7 @@ else {
            </div>
            <div class="input-group">
              <span class="input-group-addon">Nombre</span>
-             <input type="text" class="form-control" id="editProduct_Name" name="editProduct_Name" value="">
+             <input type="text" class="form-control" id="editProduct_Name" name="editProduct_Name" value="" required>
            </div>
            <div class="input-group">
              <span class="input-group-addon">Descripción</span>
@@ -419,21 +417,22 @@ else {
            </div>
            <div class="input-group">
              <span class="input-group-addon">Precio</span>
-             <input type="number" class="form-control" id="editProduct_Price" name="editProduct_Price" value="">
+             <input type="number" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
            </div>
            <div class="input-group">
-             <label class="checkbox-inline"><input type="checkbox" value="available" id="editProduct_Available" name="editProduct_Available">Disponible</label>
+             <label class="checkbox-inline"><input type="checkbox" value="available" id="editProduct_Available" name="editProduct_Available" required>Disponible</label>
            </div>
            <br>
            <span class="bg-warning">Debe rellenar todos los campos</span>
-         </form>
-       </div>
-       <div class="modal-footer">
-         <button type="submit" class="btn btn-default">Modificar</button>
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+
+         </div>
+         <div class="modal-footer">
+           <button type="submit" class="btn btn-default">Modificar</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+         </div>
        </div>
      </div>
-   </div>
+   </form>
  </div>
 
 </div>
