@@ -204,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $name = test_input($_POST['addProduct_Name']);
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
-    $available = (test_input($_POST['addProduct_Available'])=='Available');
+    $available = (test_input($_POST['addProduct_Available'])=='available');
     addNewMenuItem($id, $type, $name, $description, $price, $available);
   }
 
@@ -444,7 +444,7 @@ else {
              <input type="number" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
            </div>
            <div class="input-group">
-             <label class="checkbox-inline"><input type="checkbox" value="available" id="editProduct_Available" name="editProduct_Available" required>Disponible</label>
+             <label class="checkbox-inline"><input type="checkbox" value="" id="editProduct_Available" name="editProduct_Available" required>Disponible</label>
            </div>
            <br>
            <span class="bg-warning">Debe rellenar todos los campos</span>

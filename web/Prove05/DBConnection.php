@@ -111,7 +111,7 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
 function updateMenuitem($id, $NewType, $NewName, $NewDescription, $NewPrice, $NewAvailable){
   global $db;
   try{
-    $query = 'UPDATE Menuitems SET :NewType, :NewName, :NewDescription, :NewPrice, :NewAvailable WHERE ItemID=:id';
+    $query = 'UPDATE Menuitems SET ItemTypeID=:NewType, Name=:NewName, Description=:NewDescription, Price=:NewPrice, Available=:NewAvailable WHERE ItemID=:id';
     $stmt = $db->prepare($query);
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->bindValue(':NewType', $NewType, PDO::PARAM_INT);
