@@ -44,18 +44,17 @@ function addNewCustomer($LastName, $FirstName, $Email, $Phone){
   }
 }
 
-function updateCustomer($LastName, $FirstName, $NewLastName, $NewFirstName, $NewEmail, $NewPhone){
+function updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone){
   global $db;
   try{
 //Validate inputs before updating
-    $query = 'UPDATE Customers SET LastName=:NewLastName, FirstName=:NewFirstName, Email=:NewEmail, Phone=:NewPhone WHERE LastName=:LastName AND FirstName=:FirstName;';
+    $query = 'UPDATE Customers SET LastName=:NewLastName, FirstName=:NewFirstName, Email=:NewEmail, Phone=:NewPhone WHERE CustomerID=:id';
     $stmt = $db->prepare($query);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->bindValue(':NewLastName', $NewLastName, PDO::PARAM_STR);
     $stmt->bindValue(':NewFirstName', $NewFirstName, PDO::PARAM_STR);
     $stmt->bindValue(':NewEmail', $NewEmail, PDO::PARAM_STR);
     $stmt->bindValue(':NewPhone', $NewPhone, PDO::PARAM_INT);
-    $stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
-    $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);
     $stmt->execute();
   }
   catch (Exception $ex)
@@ -67,7 +66,7 @@ function updateCustomer($LastName, $FirstName, $NewLastName, $NewFirstName, $New
 
 function getCustomers(){
   global $db;
-  $query = 'SELECT LastName, FirstName, Email, Phone FROM Customers';
+  $query = 'SELECT CustomerID, LastName, FirstName, Email, Phone FROM Customers';
   $stmt = $db->prepare($query);
   $stmt->execute();
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -76,7 +75,7 @@ function getCustomers(){
 
 function getCustomersByName($LastName, $FirstName){
   global $db;
-  $query = 'SELECT LastName, FirstName, Email, Phone FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName';
+  $query = 'SELECT CustomerID, LastName, FirstName, Email, Phone FROM Customers WHERE LastName=:LastName AND FirstName=:FirstName';
   $stmt = $db->prepare($query);
   $stmt->bindValue(':LastName', $LastName, PDO::PARAM_STR);
   $stmt->bindValue(':FirstName', $FirstName, PDO::PARAM_STR);

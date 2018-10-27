@@ -25,8 +25,9 @@ function editClient(firstName, lastName, email, phone)
 	document.getElementById("editClient_phone").setAttribute("value", phone);
 }
 
-function editProduct(name, description, price, available)
+function editProduct(type, name, description, price, available)
 {
+	document.getElementById("editProduct_Type").setAttribute("value", type);
 	document.getElementById("editProduct_Name").setAttribute("value", name);
 	document.getElementById("editProduct_Description").setAttribute("value", description);
 	document.getElementById("editProduct_Price").setAttribute("value", price);

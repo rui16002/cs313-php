@@ -24,11 +24,12 @@ session_start();
   function printClients($rows){
     foreach ($rows as $row)
     {
+      $id = $row['id'];
       $firstname = $row['firstname'];
       $lastname = $row['lastname'];
       $email = $row['email'];
       $phone = $row['phone'];
-      $editClientCall = "editClient('".$firstname."','".$lastname."','".$email."','".$phone."');";
+      $editClientCall = "editClient('".$id."','".$firstname."','".$lastname."','".$email."','".$phone."');";
       echo'<div class="media">';
       echo'<div class="media-left">';
       echo'<img src="img_avatar1.png" class="media-object" style="width:70px">';
@@ -52,28 +53,34 @@ session_start();
   function printProducts($rows){
     foreach ($rows as $row)
     {
+      $type = $row['type'];
+      $name = $row['name'];
+      $description = $row['description'];
+      $price = $row['price'];
+      $available = $row['available'];
+      $editProductCall = "editProduct('".$type."','".$name."','".$description."','".$price."','".$available."');";
       echo '<div class="panel-group">';
       echo '<div class="panel panel-default">';
       echo '<div class="panel-heading text-center"><div>';
-      if ($row['available']) {
+      if ($available) {
         echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
       }
       else {
        echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
      }
-     echo '</div><strong>'.$row['type'].'</strong></div>';
+     echo '</div><strong>'.$type.'</strong></div>';
      echo '<div class="panel-body row">';
      echo '<div class="col-sm-6">';
-     echo '<strong>'.$row['name'].'</strong><br>';
-     echo '<em>'.$row['description'].'</em>';
+     echo '<strong>'.$name.'</strong><br>';
+     echo '<em>'.$description.'</em>';
      echo '</div>';
      echo '<div class="col-sm-6 text-right">';
-     echo '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditProduct" onclick="editProduct($row)">';
+     echo '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditProduct" onclick="'.$editProductCall.'">';
      echo '<span class="glyphicon glyphicon-edit"></span>';
      echo '</button>';
      echo '</div>';
      echo '</div>';
-     echo '<div class="panel-footer text-right"><span class="badge">'.$row['price'].' €</span></div>';
+     echo '<div class="panel-footer text-right"><span class="badge">'.$price.' €</span></div>';
      echo '</div>';
      echo '</div>';
    }
@@ -81,33 +88,41 @@ session_start();
 
  function printOrders($rows){
   if (!(empty($rows))) {
-    echo rows[0]['available'];
-    echo rows[0]['orderdate'];
-    echo rows[0]['firstname'];
-    echo rows[0]['lastname'];
+    echo $rows[0]['orderdate']."<br>";
+    echo $rows[0]['firstname']."<br>";
+    echo $rows[0]['lastname']."<br>";
     foreach ($rows as $row)
     {
-      echo row['name'];
-      echo row['description'];
+      echo $row['available']." ";
+      echo $row['name']." ";
+      echo $row['description']." ";
+      echo $row['price']." ";
     }
   }
   foreach ($rows as $row)
   {
+    $available = $row['available'];
+    $orderdate = $row['orderdate'];
+    $name = $row['name'];
+    $description = $row['description'];
+    $price = $row['price'];
+    $firstname = $row['firstname'];
+    $lastname = $row['lastname'];
     echo '<div class="panel-group">';
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading text-center"><div>';
-    if ($row['available']) {
+    if ($available) {
       echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
     }
     else {
      echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
    }
-   echo '</div><div> '.$row['orderdate'].'</div></div>';
+   echo '</div><div> '.$orderdate.'</div></div>';
    echo '<div class="panel-body">';
-   echo '<strong>'.$row['name'].'</strong><br>';
-   echo '<em>'.$row['description'].'</em><br>';
-   echo '<p class="bg-info text-center">'.$row['price'].' €</p></div>';
-   echo '<div class="panel-footer text-center">'.$row['firstname'].' '.$row['lastname'].'</div>';
+   echo '<strong>'.$name.'</strong><br>';
+   echo '<em>'.$description.'</em><br>';
+   echo '<p class="bg-info text-center">'.$price.' €</p></div>';
+   echo '<div class="panel-footer text-center">'.$firstname.' '.$lastname.'</div>';
    echo '</div>';
    echo '</div>';
  }
@@ -122,6 +137,7 @@ function test_input($data) {
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+  //Search Functionality
   if(isset($_POST['c-firstName'])&&isset($_POST['c-lastName'])) 
   {
     $firstName = test_input($_POST['c-firstName']);
@@ -153,6 +169,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $orderRows = getOrders();
     $productRows = getMenuitems();
   }*/
+
+  //Edit and add functionality
+    if(isset($_POST['editClient_id'])&&isset($_POST['editClient_firstName'])&&isset($_POST['editClient_lastName'])&&isset($_POST['editClient_email'])&&isset($_POST['editClient_phone'])) 
+  {
+    $id = test_input($_POST['editClient_id']);
+    $firstName = test_input($_POST['editClient_firstName']);
+    $lastName = test_input($_POST['editClient_lastName']);
+    $email = test_input($_POST['editClient_email']);
+    $phone = test_input($_POST['editClient_phone']);
+    updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
 }    
 
 ?>
@@ -212,6 +238,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
           <h4 class="modal-title">Editar Cliente</h4>
         </div>
         <div class="modal-body">
+          <input type="hidden" id="editClient_id" name="editClient_id" value="">
          <div class="input-group">
           <span class="input-group-addon">Nombre</span>
           <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
@@ -339,7 +366,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
            </div>
            <div class="input-group">
              <span class="input-group-addon">Precio</span>
-             <input type="text" class="form-control" id="editProduct_Price" name="editProduct_Price" value="">
+             <input type="number" class="form-control" id="editProduct_Price" name="editProduct_Price" value="">
            </div>
            <div class="input-group">
              <label class="checkbox-inline"><input type="checkbox" value="available" id="editProduct_Available" name="editProduct_Available">Disponible</label>
