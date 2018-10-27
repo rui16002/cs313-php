@@ -39,29 +39,6 @@ function printClients($rows){
   }
 }
 
-function printOrders($rows){
-  foreach ($rows as $row)
-  {
-    echo '<div class="panel-group">';
-    echo '<div class="panel panel-default">';
-    echo '<div class="panel-heading text-center"><div>';
-    if ($row['available']) {
-      echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
-    }
-    else {
-     echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
-    }
-    echo '</div><div> '.$row['orderdate'].'</div></div>';
-    echo '<div class="panel-body">';
-    echo '<strong>'.$row['name'].'</strong><br>';
-    echo '<em>'.$row['description'].'</em><br>';
-    echo '<p class="bg-info text-center">'.$row['price'].' €</p></div>';
-    echo '<div class="panel-footer text-center">'.$row['firstname'].' '.$row['lastname'].'</div>';
-    echo '</div>';
-    echo '</div>';
-  }
-}
-
 function printProducts($rows){
   foreach ($rows as $row)
   {
@@ -92,20 +69,39 @@ function printProducts($rows){
   }
 }
 
+function printOrders($rows){
+  foreach ($rows as $row)
+  {
+    echo '<div class="panel-group">';
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading text-center"><div>';
+    if ($row['available']) {
+      echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
+    }
+    else {
+     echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
+    }
+    echo '</div><div> '.$row['orderdate'].'</div></div>';
+    echo '<div class="panel-body">';
+    echo '<strong>'.$row['name'].'</strong><br>';
+    echo '<em>'.$row['description'].'</em><br>';
+    echo '<p class="bg-info text-center">'.$row['price'].' €</p></div>';
+    echo '<div class="panel-footer text-center">'.$row['firstname'].' '.$row['lastname'].'</div>';
+    echo '</div>';
+    echo '</div>';
+  }
+}
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-if (isset($_SESSION['lastContent'])){
-$contentDisplayed = $_SESSION['lastContent'];
+
+if (!(isset($_SESSION['lastContent']))) {
+  $_SESSION['lastContent'] = 'clientes';
 }
-else
-{
-  $contentDisplayed = "clientes";
-}
-//set last content via AJAX
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
@@ -340,7 +336,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
-<script type="text/javascript">displayContent(<?php echo "'".$contentDisplayed."'"; ?>);</script>
+<script type="text/javascript">displayContent(<?php echo "'".$_SESSION['lastContent']."'"; ?>);</script>
     </div>
 </body>
 </html>
