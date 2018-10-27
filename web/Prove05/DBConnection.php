@@ -47,11 +47,6 @@ function addNewCustomer($LastName, $FirstName, $Email, $Phone){
 function updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone){
   global $db;
   try{
-    error_log($id);
-    error_log($NewLastName);
-    error_log($NewFirstName);
-    error_log($NewEmail);
-    error_log($NewPhone);
 //Validate inputs before updating
     $query = 'UPDATE Customers SET LastName=:NewLastName, FirstName=:NewFirstName, Email=:NewEmail, Phone=:NewPhone WHERE CustomerID=:id';
     $stmt = $db->prepare($query);

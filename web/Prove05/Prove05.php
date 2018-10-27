@@ -176,6 +176,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     updateCustomer($id, $lastName, $firstName, $email, $phone);
   }
 
+  if(isset($_POST['addClient_firstName'])&&isset($_POST['addClient_lastName'])&&isset($_POST['addClient_email'])&&isset($_POST['addClient_phone'])) 
+  {
+    $firstName = test_input($_POST['addClient_firstName']);
+    $lastName = test_input($_POST['addClient_lastName']);
+    $email = test_input($_POST['addClient_email']);
+    $phone = intval(test_input($_POST['addClient_phone']));
+    addNewCustomer($lastName, $firstName, $email, $phone);
+  }
+
 }
 
 ?>
@@ -236,6 +245,7 @@ else {
   printClients($clientRows);
 }
 ?>
+<!-- EDIT CLIENT MODAL -->
 <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
     <div class="modal-dialog">
@@ -267,6 +277,42 @@ else {
       </div>
       <div class="modal-footer">
        <button type="submit" class="btn btn-default">Modificar</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</form>
+</div>
+
+<!-- ADD CLIENT MODAL -->
+<div id="EditClient" class="modal fade" role="dialog" style="display: none;">
+  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Agregar Cliente</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" id="addClient_firstName" name="addClient_firstName" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Apellido</span>
+          <input type="text" class="form-control" id="addClient_lastName" name="addClient_lastName" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Email</span>
+          <input type="email" class="form-control" id="addClient_email" name="addClient_email">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Teléfono</span>
+          <input type="tel" class="form-control" id="addClient_phone" name="addClient_phone">
+        </div>
+      </div>
+      <div class="modal-footer">
+       <button type="submit" class="btn btn-default">Agregar</button>
        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
      </div>
    </div>
