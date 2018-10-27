@@ -89,7 +89,7 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
   global $db;
   try{
 //Validate inputs before inserting
-    $query = 'INSERT INTO Menuitems (ItemTypeID, Name, Description, Price, Available) VALUES (Type=:Type, Name=:Name, Description=:Description, Price=:Price, Available:Available)';
+    $query = 'INSERT INTO Menuitems (ItemTypeID, Name, Description, Price, Available) VALUES (SELECT ItemTypeID FROM ItemTypes WHERE Type=:Type, Name=:Name, Description=:Description, Price=:Price, Available:Available)';
     $stmt = $db->prepare($query);
     $stmt->bindValue(':Type', $Type, PDO::PARAM_INT);
     $stmt->bindValue(':Name', $Name, PDO::PARAM_STR);
