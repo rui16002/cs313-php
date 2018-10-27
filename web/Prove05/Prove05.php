@@ -178,7 +178,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $lastName = test_input($_POST['editClient_lastName']);
     $email = test_input($_POST['editClient_email']);
     $phone = intval(test_input($_POST['editClient_phone']));
-    //updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
+    updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
 }   
 
 }
