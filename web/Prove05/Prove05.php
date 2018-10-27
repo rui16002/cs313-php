@@ -53,12 +53,13 @@ session_start();
   function printProducts($rows){
     foreach ($rows as $row)
     {
+      $id = $row['id'];
       $type = $row['type'];
       $name = $row['name'];
       $description = $row['description'];
       $price = $row['price'];
       $available = $row['available'];
-      $editProductCall = "editProduct('".$type."','".$name."','".$description."','".$price."','".$available."');";
+      $editProductCall = "editProduct('".$id."','".$type."','".$name."','".$description."','".$price."','".$available."');";
       echo '<div class="panel-group">';
       echo '<div class="panel panel-default">';
       echo '<div class="panel-heading text-center"><div>';
