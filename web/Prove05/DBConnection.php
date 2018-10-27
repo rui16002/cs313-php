@@ -89,7 +89,7 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
   global $db;
   try{
 //Validate inputs before inserting
-    $query = 'INSERT INTO Menuitems (ItemTypeID, Name, Description, Price, Available) VALUES (:Type, :Name, :Description, :Price, :Available);';
+    $query = 'INSERT INTO Menuitems (ItemTypeID, Name, Description, Price, Available) VALUES (:Type, :Name, :Description, :Price, :Available)';
     $stmt = $db->prepare($query);
     $stmt->bindValue(':Type', $Type, PDO::PARAM_INT);
     $stmt->bindValue(':Name', $Name, PDO::PARAM_STR);
@@ -98,7 +98,7 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
     $stmt->bindValue(':Available', $Available, PDO::PARAM_BOOL);
     $stmt->execute();
 // get the new id
-    $menuItemId = $db->lastInsertId("Menuitems_id_seq");
+    $menuItemId = $db->lastInsertId("menuitems_itemid_seq");
     return $menuItemId;
   }
   catch (Exception $ex)
@@ -108,13 +108,17 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
   }
 }
 
-function updateMenuitem($Type, $Name, $NewType, $NewName, $NewDescription, $NewPrice, $NewAvailable){
+function updateMenuitem($id, $NewType, $NewName, $NewDescription, $NewPrice, $NewAvailable){
   global $db;
   try{
-    $query = 'UPDATE Menuitems SET :NewType, :NewName, :NewDescription, :NewPrice, :NewAvailable WHERE ItemTypeID=:Type AND Name=:Name;';
+    $query = 'UPDATE Menuitems SET :NewType, :NewName, :NewDescription, :NewPrice, :NewAvailable WHERE ItemID=:id';
     $stmt = $db->prepare($query);
-    $stmt->bindValue(':Type', $Type, PDO::PARAM_INT);
-    $stmt->bindValue(':Name', $Name, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':NewType', $NewType, PDO::PARAM_INT);
+    $stmt->bindValue(':NewName', $NewName, PDO::PARAM_STR);
+    $stmt->bindValue(':NewDescription', $NewDescription, PDO::PARAM_STR);
+    $stmt->bindValue(':NewPrice', strval($NewPrice), PDO::PARAM_STR);
+    $stmt->bindValue(':NewAvailable', $NewAvailable, PDO::PARAM_BOOL);
     $stmt->execute();
   }
   catch (Exception $ex)

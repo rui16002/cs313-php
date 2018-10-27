@@ -185,6 +185,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     addNewCustomer($lastName, $firstName, $email, $phone);
   }
 
+  if(isset($_POST['editProduct_id'])&&isset($_POST['editProduct_Type'])&&isset($_POST['editProduct_Name'])&&isset($_POST['editProduct_Description'])&&isset($_POST['editProduct_Price'])&&isset($_POST['editProduct_Available']))
+  {
+    $id = intval(test_input($_POST['editProduct_id']));
+    $type = intval(test_input($_POST['editProduct_Type']));
+    $name = test_input($_POST['editProduct_Name']);
+    $description = test_input($_POST['editProduct_Description']);
+    $price = intval(test_input($_POST['editProduct_Price']));
+    $available = test_input($_POST['editProduct_Available']);
+    updateMenuitem($id, $type, $name, $description, $price, $available);
+  }
+
+  if(isset($_POST['addProduct_Type'])&&isset($_POST['addProduct_Name'])&&isset($_POST['addProduct_Description'])&&isset($_POST['addProduct_Price'])&&isset($_POST['addProduct_Available'])) 
+  {
+    $id = intval(test_input($_POST['addProduct_id']));
+    $type = intval(test_input($_POST['addProduct_Type']));
+    $name = test_input($_POST['addProduct_Name']);
+    $description = test_input($_POST['addProduct_Description']);
+    $price = intval(test_input($_POST['addProduct_Price']));
+    $available = test_input($_POST['addProduct_Available']);
+    addNewMenuItem($id, $type, $name, $description, $price, $available);
+  }
+
 }
 
 ?>
@@ -397,6 +419,7 @@ else {
             <h4 class="modal-title">Editar Producto</h4>
           </div>
           <div class="modal-body">
+            <input type="hidden" class="form-control" id="editProduct_id" name="editProduct_id" value="">
            <div class="input-group">
              <span class="input-group-addon">Tipo</span>
              <select class="form-control" id="editProduct_Type" name="editProduct_Type" value="" required>
