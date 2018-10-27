@@ -24,11 +24,16 @@ session_start();
   function printClients($rows){
     foreach ($rows as $row)
     {
-      $id = $row['CustomerID'];
+      $id = $row['customerid'];
       $firstname = $row['firstname'];
       $lastname = $row['lastname'];
       $email = $row['email'];
       $phone = $row['phone'];
+      echo $id;
+echo $firstname;
+echo $lastname;
+echo $email;
+echo $phone;
       $editClientCall = "editClient('".$id."','".$firstname."','".$lastname."','".$email."','".$phone."');";
       echo'<div class="media">';
       echo'<div class="media-left">';
