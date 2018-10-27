@@ -24,7 +24,7 @@ session_start();
   function printClients($rows){
     foreach ($rows as $row)
     {
-      $id = $row['id'];
+      $id = $row['CustomerID'];
       $firstname = $row['firstname'];
       $lastname = $row['lastname'];
       $email = $row['email'];
@@ -173,17 +173,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   //Edit and add functionality
     if(isset($_POST['editClient_id'])&&isset($_POST['editClient_firstName'])&&isset($_POST['editClient_lastName'])&&isset($_POST['editClient_email'])&&isset($_POST['editClient_phone'])) 
   {
-    $id = test_input($_POST['editClient_id']);
+    $id = intval(test_input($_POST['editClient_id']));
     $firstName = test_input($_POST['editClient_firstName']);
     $lastName = test_input($_POST['editClient_lastName']);
     $email = test_input($_POST['editClient_email']);
-    $phone = test_input($_POST['editClient_phone']);
+    $phone = intval(test_input($_POST['editClient_phone']));
     //updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
-    echo $id;
-    echo $firstName;
-    echo $lastName;
-    echo $email;
-    echo $phone;
 }   
 
 }
