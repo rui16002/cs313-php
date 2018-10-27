@@ -154,7 +154,7 @@ function getOrders(){
 global $db;
 $query = '
 SELECT old.LastName, old.FirstName, old.OrderDate, mi.Name, mi.Description, mi.Price, mi.Available FROM
-(SELECT cd.LastName, cd.FirstName, cd.Email, cd.Phone, cd.OrderDate, cd.OrderID FROM
+(SELECT cd.LastName, cd.FirstName, cd.Email, cd.Phone, cd.OrderDate, cd.OrderID, ol.ItemID FROM
 (SELECT c.LastName, c.FirstName, c.Email, c.Phone, o.OrderDate, o.OrderID FROM Orders o
   INNER JOIN Customers c 
   ON o.CustomerID = c.CustomerID) cd
@@ -170,7 +170,7 @@ function getOrdersByNameDate($FirstName, $LastName, $OrderDate){
 global $db;
 $query = '
 SELECT old.LastName, old.FirstName, old.OrderDate, mi.Name, mi.Description, mi.Price, mi.Available FROM
-(SELECT cd.LastName, cd.FirstName, cd.Email, cd.Phone, cd.OrderDate, cd.OrderID FROM
+(SELECT cd.LastName, cd.FirstName, cd.Email, cd.Phone, cd.OrderDate, cd.OrderID, ol.ItemID FROM
 (SELECT c.LastName, c.FirstName, c.Email, c.Phone, o.OrderDate, o.OrderID FROM Orders o
   INNER JOIN Customers c 
   ON o.CustomerID = c.CustomerID) cd

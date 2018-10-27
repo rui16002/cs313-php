@@ -78,7 +78,7 @@ function printProducts($rows){
     echo '<div class="panel-body row">';
     echo '<div class="col-sm-6">';
     echo '<strong>'.$row['name'].'</strong><br>';
-    echo '<em>'.$row['description'].'</em></div>';
+    echo '<em>'.$row['description'].'</em>';
     echo '</div>';
     echo '<div class="col-sm-6 text-right">';
     echo '<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#EditProduct" onclick="editProduct($row)">';
