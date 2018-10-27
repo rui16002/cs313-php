@@ -182,7 +182,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $lastName = test_input($_POST['addClient_lastName']);
     $email = test_input($_POST['addClient_email']);
     $phone = intval(test_input($_POST['addClient_phone']));
-    addNewCustomer($lastName, $firstName, $email, $phone);
+    echo $firstname;
+    echo $lastName;
+    echo $email;
+    echo $phone;
+    //addNewCustomer($lastName, $firstName, $email, $phone);
   }
 
 }
@@ -285,7 +289,7 @@ else {
 </div>
 
 <!-- ADD CLIENT MODAL -->
-<div id="EditClient" class="modal fade" role="dialog" style="display: none;">
+<div id="AddClient" class="modal fade" role="dialog" style="display: none;">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
     <div class="modal-dialog">
       <div class="modal-content">
