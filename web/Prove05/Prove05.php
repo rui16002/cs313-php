@@ -182,11 +182,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $lastName = test_input($_POST['addClient_lastName']);
     $email = test_input($_POST['addClient_email']);
     $phone = intval(test_input($_POST['addClient_phone']));
-    echo $firstname;
-    echo $lastName;
-    echo $email;
-    echo $phone;
-    //addNewCustomer($lastName, $firstName, $email, $phone);
+    addNewCustomer($lastName, $firstName, $email, $phone);
   }
 
 }

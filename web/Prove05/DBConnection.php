@@ -40,6 +40,7 @@ function addNewCustomer($LastName, $FirstName, $Email, $Phone){
   catch (Exception $ex)
   {
     echo "Ups, I couldn't add the Customer, I am sorry.";
+    echo $ex;
     die();
   }
 }
