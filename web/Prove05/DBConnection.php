@@ -60,6 +60,7 @@ function updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone){
   catch (Exception $ex)
   {
     echo "Ups, I couldn't update the Customer info, I am sorry.";
+    echo $ex;
     die();
   }
 }
