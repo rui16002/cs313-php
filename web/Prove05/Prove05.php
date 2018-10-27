@@ -179,7 +179,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $email = test_input($_POST['editClient_email']);
     $phone = test_input($_POST['editClient_phone']);
     updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
-}    
+}   
+ 
+}
 
 ?>
 
