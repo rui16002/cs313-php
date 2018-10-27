@@ -88,40 +88,35 @@ session_start();
 
  function printOrders($rows){
   if (!(empty($rows))) {
-    echo $rows[0]['orderdate']."<br>";
-    echo $rows[0]['firstname']."<br>";
-    echo $rows[0]['lastname']."<br>";
-    foreach ($rows as $row)
-    {
-      echo $row['available']." ";
-      echo $row['name']." ";
-      echo $row['description']." ";
-      echo $row['price']." ";
-    }
-  }
-  foreach ($rows as $row)
-  {
-    $available = $row['available'];
-    $orderdate = $row['orderdate'];
-    $name = $row['name'];
-    $description = $row['description'];
-    $price = $row['price'];
-    $firstname = $row['firstname'];
-    $lastname = $row['lastname'];
+    $orderdate = $rows[0]['orderdate'];    
+    $firstname = $rows[0]['firstname'];
+    $lastname = $rows[0]['lastname'];
     echo '<div class="panel-group">';
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading text-center"><div>';
-    if ($available) {
-      echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
-    }
-    else {
-     echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
+    echo '</div><div> '.$orderdate.'</div></div>';
+    echo '<div class="panel-body row">';
+    foreach ($rows as $row){
+      $name = $row['name'];
+      $description = $row['description'];
+      $price = $row['price'];
+      $available = $row['available'];
+      echo '<div class="col-sm-6">';
+      echo '<strong>'.$name.'</strong><br>';
+      echo '<em>'.$description.'</em><br>';
+      echo '</div>';
+      echo '<div class="col-sm-4">';
+      echo '<p class="bg-info text-center">'.$price.' €</p></div>';
+      echo '</div>';
+      echo '<div class="col-sm-2">';
+      if ($available) {
+        echo '<span class="glyphicon glyphicon-ok-sign rightaligned">';
+      }
+      else {
+       echo '<span class="glyphicon glyphicon-remove-sign rightaligned">'; 
+     }
+     echo '</div>';
    }
-   echo '</div><div> '.$orderdate.'</div></div>';
-   echo '<div class="panel-body">';
-   echo '<strong>'.$name.'</strong><br>';
-   echo '<em>'.$description.'</em><br>';
-   echo '<p class="bg-info text-center">'.$price.' €</p></div>';
    echo '<div class="panel-footer text-center">'.$firstname.' '.$lastname.'</div>';
    echo '</div>';
    echo '</div>';
@@ -179,7 +174,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $email = test_input($_POST['editClient_email']);
     $phone = intval(test_input($_POST['editClient_phone']));
     updateCustomer($id, $lastName, $firstName, $email, $phone);
-  }   
+  }
 
 }
 
@@ -205,68 +200,78 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </nav>
 
 <div id="clientes" class="container-fluid">
-  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <div class="input-group">
-      <span class="input-group-addon">Nombre</span>
-      <input type="text" class="form-control" id="c-firstName" name="c-firstName">
+  <div class="row">
+    <div class="col-sm-10">
+      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" id="c-firstName" name="c-firstName">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Apellido</span>
+          <input type="text" class="form-control" id="c-lastName" name="c-lastName">
+        </div>
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+        <br>
+        <span class="bg-warning">Debe rellenar todos los campos</span>
+      </form>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon">Apellido</span>
-      <input type="text" class="form-control" id="c-lastName" name="c-lastName">
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#AddClient">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
     </div>
-    <button class="btn btn-default" type="submit">
-      <i class="glyphicon glyphicon-search"></i>
-    </button>
-    <br>
-    <span class="bg-warning">Debe rellenar todos los campos</span>
-  </form>
-  <div id="clientes-container">
   </div>
-  <?php 
-  if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0))
-  {
-    echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
-  }
-  else {
-    printClients($clientRows);
-  }
-  ?>
-  <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
-    <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
-      <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h4 class="modal-title">Editar Cliente</h4>
+</div>
+<div id="clientes-container">
+</div>
+<?php 
+if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0))
+{
+  echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
+}
+else {
+  printClients($clientRows);
+}
+?>
+<div id="EditClient" class="modal fade" role="dialog" style="display: none;">
+  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+    <div class="modal-dialog">
+      <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Editar Cliente</h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editClient_id" name="editClient_id" value="">
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
         </div>
-        <div class="modal-body">
-          <input type="hidden" id="editClient_id" name="editClient_id" value="">
-          <div class="input-group">
-            <span class="input-group-addon">Nombre</span>
-            <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">Apellido</span>
-            <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">Email</span>
-            <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">Teléfono</span>
-            <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
-          </div>
-          <br>
-          <span class="bg-warning">Debe rellenar todos los campos</span>
+        <div class="input-group">
+          <span class="input-group-addon">Apellido</span>
+          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
         </div>
-        <div class="modal-footer">
-         <button type="submit" class="btn btn-default">Modificar</button>
-         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-       </div>
+        <div class="input-group">
+          <span class="input-group-addon">Email</span>
+          <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Teléfono</span>
+          <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
+        </div>
+        <br>
+        <span class="bg-warning">Debe rellenar todos los campos</span>
+      </div>
+      <div class="modal-footer">
+       <button type="submit" class="btn btn-default">Modificar</button>
+       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
      </div>
    </div>
- </form>
+ </div>
+</form>
 </div>
 </div>
 
