@@ -418,7 +418,7 @@ else {
       printProducts($productRows);
     }
     ?>
-
+<!-- EDIT PRODUCT MODAL -->
     <div id="EditProduct" class="modal fade" role="dialog" style="display: none;">
       <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <div class="modal-dialog">
@@ -456,6 +456,52 @@ else {
            </div>
            <br>
            <span class="bg-warning">Debe rellenar todos los campos</span>
+
+         </div>
+         <div class="modal-footer">
+           <button type="submit" class="btn btn-default">Modificar</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+         </div>
+       </div>
+     </div>
+   </form>
+ </div>
+
+ <!-- ADD PRODUCT MODAL -->
+    <div id="AddProduct" class="modal fade" role="dialog" style="display: none;">
+      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+           <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="modal-title">Agregar Producto</h4>
+          </div>
+          <div class="modal-body">
+            <div class="input-group">
+             <span class="input-group-addon">Tipo</span>
+             <select class="form-control" id="addProduct_Type" name="addProduct_Type" required>
+               <option>- Seleccionar -</option>
+               <option>Entrada</option>
+               <option>Plato principal</option>
+               <option>Bebida</option>
+               <option>Postre</option>
+             </select>
+           </div>
+           <div class="input-group">
+             <span class="input-group-addon">Nombre</span>
+             <input type="text" class="form-control" id="addProduct_Name" name="addProduct_Name" required>
+           </div>
+           <div class="input-group">
+             <span class="input-group-addon">Descripción</span>
+             <input type="text" class="form-control" id="addProduct_Description" name="addProduct_Description">
+           </div>
+           <div class="input-group">
+             <span class="input-group-addon">Precio</span>
+             <input type="number" step="0.1" class="form-control" id="addProduct_Price" name="addProduct_Price" required>
+           </div>
+           <div class="input-group">
+             <label class="checkbox-inline"><input type="checkbox" id="addProduct_Available" name="addProduct_Available">Disponible</label>
+           </div>
 
          </div>
          <div class="modal-footer">
