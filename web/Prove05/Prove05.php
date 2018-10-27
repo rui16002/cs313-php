@@ -171,20 +171,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   }*/
 
   //Edit and add functionality
-    if(isset($_POST['editClient_id'])&&isset($_POST['editClient_firstName'])&&isset($_POST['editClient_lastName'])&&isset($_POST['editClient_email'])&&isset($_POST['editClient_phone'])) 
+  if(isset($_POST['editClient_id'])&&isset($_POST['editClient_firstName'])&&isset($_POST['editClient_lastName'])&&isset($_POST['editClient_email'])&&isset($_POST['editClient_phone'])) 
   {
     $id = intval(test_input($_POST['editClient_id']));
     $firstName = test_input($_POST['editClient_firstName']);
     $lastName = test_input($_POST['editClient_lastName']);
     $email = test_input($_POST['editClient_email']);
     $phone = intval(test_input($_POST['editClient_phone']));
-    echo $id."<br>";
-    echo $firstName."<br>";
-    echo $lastName."<br>";
-    echo $email."<br>";
-    echo $phone."<br>";
-    //updateCustomer($id, $NewLastName, $NewFirstName, $NewEmail, $NewPhone);
-}   
+    updateCustomer($id, $lastName, $firstName, $email, $phone);
+  }   
 
 }
 
@@ -246,32 +241,32 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         </div>
         <div class="modal-body">
           <input type="hidden" id="editClient_id" name="editClient_id" value="">
-         <div class="input-group">
-          <span class="input-group-addon">Nombre</span>
-          <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
+          <div class="input-group">
+            <span class="input-group-addon">Nombre</span>
+            <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Apellido</span>
+            <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Teléfono</span>
+            <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
+          </div>
+          <br>
+          <span class="bg-warning">Debe rellenar todos los campos</span>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon">Apellido</span>
-          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Email</span>
-          <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Teléfono</span>
-          <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
-        </div>
-        <br>
-        <span class="bg-warning">Debe rellenar todos los campos</span>
-      </div>
-      <div class="modal-footer">
-       <button type="submit" class="btn btn-default">Modificar</button>
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <div class="modal-footer">
+         <button type="submit" class="btn btn-default">Modificar</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+       </div>
      </div>
    </div>
- </div>
-</form>
+ </form>
 </div>
 </div>
 
