@@ -3,9 +3,8 @@ function displayContent(whichone) {
   document.getElementById("clientes").setAttribute("style", "display: none");
   document.getElementById("ordenes").setAttribute("style", "display: none");
   document.getElementById("productos").setAttribute("style", "display: none");
-  if (whichone==="undefined") whichone = "clientes";
-  document.getElementById(whichone).setAttribute("style", "display: block"); 
   setCurrentTab(whichone);
+  document.getElementById(currentTab).setAttribute("style", "display: block"); 
 }
 
 function setCurrentTab(tab) {

@@ -1,7 +1,7 @@
 
-<?php
+<!--?php
 session_start();
-?>
+?-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +70,17 @@ session_start();
  }
 
  function printOrders($rows){
+  if (!(empty($rows))) {
+    echo rows[0]['available'];
+    echo rows[0]['orderdate'];
+    echo rows[0]['firstname'];
+    echo rows[0]['lastname'];
+    foreach ($rows as $row)
+    {
+      echo row['name'];
+      echo row['description'];
+    }
+  }
   foreach ($rows as $row)
   {
     echo '<div class="panel-group">';
