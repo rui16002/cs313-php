@@ -104,6 +104,7 @@ function addNewMenuitem($Type, $Name, $Description, $Price, $Available){
   catch (Exception $ex)
   {
     echo "Ups, I couldn't add the new item to the menu, I am sorry.";
+    echo $ex;
     die();
   }
 }
@@ -124,7 +125,6 @@ function updateMenuitem($id, $NewType, $NewName, $NewDescription, $NewPrice, $Ne
   catch (Exception $ex)
   {
     echo "Ups, I couldn't add the new item to the menu, I am sorry.";
-    echo $ex;
     die();
   }
 }

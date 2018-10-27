@@ -204,7 +204,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     $description = test_input($_POST['addProduct_Description']);
     $price = floatval(test_input($_POST['addProduct_Price']));
     $available = test_input($_POST['addProduct_Available']);
-    addNewMenuItem($id, $type, $name, $description, $price, $available);
+    addNewMenuItem($type, $name, $description, $price, $available);
   }
 
 }
@@ -403,7 +403,7 @@ else {
       </form>
     </div>
     <div class="col-sm-2">
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#AddClient">
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#AddProduct">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
     </div>
@@ -505,7 +505,7 @@ else {
 
          </div>
          <div class="modal-footer">
-           <button type="submit" class="btn btn-default">Modificar</button>
+           <button type="submit" class="btn btn-default">Agregar</button>
            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
          </div>
        </div>
