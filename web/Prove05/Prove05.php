@@ -17,6 +17,10 @@ session_start();
   <?php require 'DBConnection.php';?>
   <?php
 
+  if (!(isset($_SESSION['lastContent']))) {
+    $_SESSION['lastContent'] = 'clientes';
+  }
+
   function printClients($rows){
     foreach ($rows as $row)
     {
