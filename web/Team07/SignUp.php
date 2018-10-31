@@ -17,8 +17,8 @@
 		$username = test_input($_POST['username']);
 		$password = test_input($_POST['password']);
 		$password2 = test_input($_POST['password2']);
-		$passwordhash = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
-		if(($password==$password2)&&(valid($password)))
+		$passwordhash = password_hash($password, PASSWORD_DEFAULT);
+		if((strcmp($password, $password2)==0)&&(valid($password)))
 		{
 			if (insertUser($username, $passwordhash)!= ""){
 				header('Location: ' . 'SignIn.php');
