@@ -1,0 +1,65 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Project Title / One sentence description:
+El Disbarat restaurant administration page.
+
+2. The Heroku URL for your web application:
+https://limitless-reef-52998.herokuapp.com/Prove05/Prove05.php
+
+3. The GitHub URL for your source code repository:
+https://github.com/rui16002/cs313-php/tree/master/web/Prove05
+
+4. A link to the SQL file that contains the commands used to create your tables (e.g. a link to the myDb.sql file at GitHub, or something similar).
+https://github.com/rui16002/cs313-php/tree/master/db
+
+5. Please provide a brief description of what your project does and how to use the application. Make sure to include any required information like a username and password.
+A page to search, edit and add new customers, products and orders from El disbarat restaurant.
+A username and password is not required.
+In order to edit a client or product, you need to search for it first
+If you want to add one you may do so by clicking the blue plus button near the search form
+
+6. Briefly describe any pieces of the assignment that are not yet working correctly.
+Edit and add are not yet available for orders.
+
+--------------------------------
+Project Self-assessment
+--------------------------------
+
+For each of the following requirements, please replace the "(YES/NO)" with either "YES" or "NO" as to whether or not your work met this requirement.
+
+Requirements
+------------
+(YES) 1. Your web application is running in Heroku.
+(YES) 2. Your latest source code is in GitHub.
+(YES) 3. Your web application uses data stored in the session.
+(YES) 4. Your web application uses a PostgreSQL database at Heroku.
+(YES) 5. Your database schema includes foreign key references.
+(YES) 6. Your web application includes an SQL SELECT query that joins multiple tables.
+(YES) 7. Your web application includes an SQL UPDATE or INSERT statement.
+
+For each of the following criteria, please replace the "(A-E)" with either the "A", "B", "C", "D", or "E" category you feel best describes your work.
+
+Categories
+----------
+A - Some attempt was made.
+B - Developing, but significantly deficient.
+C - Slightly deficient, but still mostly adequate.
+D - Meets requirements.
+E - Shows creativity and excels above and beyond requirements.
+
+Criteria
+----------
+(D) 1. Professional look and feel.
+(D) 2. Accomplishes a meaningful/interesting task.
+(D) 3. Demonstrates skill with HTML, CSS, and JavaScript.
+(D) 4. Demonstrates skill with PHP.
+(D) 5. Demonstrates good database design principles.
+(D) 6. Demonstrates skill in database retrieval.
+(D) 7. Demonstrates skill in database modification.
+(D) 8. Demonstrates mastery of client-side/server-side coordination and communication.
+(D) 9. Overall project evaluation.
+
+10. Finally, please provide an overall description/justification of the categories you selected.
+I met requirements for each week, There is is nothing fancy or innovative worth for an E in my work.
+Although I attempted to complete each assignment the best I could.
+

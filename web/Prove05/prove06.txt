@@ -1,0 +1,35 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your web application:
+https://limitless-reef-52998.herokuapp.com/Prove05/Prove05.php
+
+2. Copy and paste the URL for your source code repository (e.g., GitHub):
+https://github.com/rui16002/cs313-php/tree/master/web/Prove05
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+User is able to edit, client information as well as adding newones, user is also able to edit and add new products using the blue plus button
+In order to be able to edit, the item to be edited needs to be found first. once found the item has a blue edit button on the right.
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+validating user inputs are yet in progress, some native validation was added but still it needs validation.
+order editing and adding is still pending
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+This time I relied a lot more on logs that helped me triage defect quicker.
+
+6. What is a benefit of having a foreign key constraint?
+referential integrity and performance are the main benefits of foreign key contraints. W3School says it prevents invalid data to be entered
+
+
+7. Please select the category you feel best describes your assignment:
+A - Some attempt was made
+B - Developing, but significantly deficient
+C - Slightly deficient, but still mostly adequate
+X D - Meets requirements
+E - Shows creativity and excels above and beyond requirements
+
+
+8. Provide a brief justification (1-2 sentences) for selecting that category.
+We were asked to add our app the ability ti edit and add using database sql statements along with php, we had the option to add the
+hability to delete records, in my case, it was more interesting to enable or disable records depending on its availability.
+
