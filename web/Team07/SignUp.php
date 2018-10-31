@@ -8,13 +8,15 @@
 	function valid($password){
 		if (!preg_match("/^[a-zA-Z ]{6,}[0-9]+$/",$password)) {
       $error = "At least 7 character long and one number is required"; 
+      return false;
     }
+    return true;
 	}
 
 	if(isset($_POST['username'])&&isset($_POST['password'])&&isset($_POST['password2'])){
 		$username = test_input($_POST['username']);
 		$password = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
-		if(($_POST['password']==$_POST['password2'])&&(sizeof($_POST['password'])>6))
+		if(($_POST['password']==$_POST['password2'])&&(valid($_POST['password'])))
 		{
 			if (insertUser($username, $password)!= ""){
 				header('Location: ' . 'SignIn.php');
