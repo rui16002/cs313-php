@@ -6,7 +6,6 @@ session_start();
 <head>
 	<title>Team 07</title>
 	<?php require 'DBConnection.php'; ?>
-	<?php header('Location: ' . 'Welcome.php'); ?>
 	<?php
 
 	if(isset($_POST['username'])&&isset($_POST['password'])){
@@ -15,14 +14,11 @@ session_start();
 		insertUser($username, $password);
 		if (password_verify($password, getHash($username))) {
 			$_SESSION['username'] = $username;
+			header('Location: ' . 'Welcome.php');
+			die();
 		} else {
 			echo 'Invalid password.';
 		}
-
-	if(isset($_SESSION['username'])){
-		die();
-	}
-
 	}
 	?>
 </head>

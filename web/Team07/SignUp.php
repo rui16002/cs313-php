@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
 	<title>Team 07</title>
-	<?php header('Location: ' . 'SignIn.php'); ?>
-
  <?php
  require 'DBConnection.php';
 
   if(isset($_POST['username'])&&isset($_POST['password'])){
   	$username = test_input($_POST['username']);
-  	$password = password_hash(test_input($_POST['password']));
+  	$password = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
   	if (insertUser($username, $password)!= ""){
+  		header('Location: ' . 'SignIn.php');
   		die();
+  	}
+  	else
+  	{
+  	header("Location: signUp.php");
+	die();
   	}
   }
 
