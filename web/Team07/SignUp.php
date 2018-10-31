@@ -7,10 +7,9 @@
 
 	function valid($password){
 		if (!preg_match("/^[a-zA-Z ]{6,}[0-9]+$/",$password)) {
-      $error = "At least 7 character long and one number is required"; 
-      return false;
-    }
-    return true;
+			return false;
+		}
+		return true;
 	}
 
 	if(isset($_POST['username'])&&isset($_POST['password'])&&isset($_POST['password2'])){
@@ -28,7 +27,7 @@
 		else
 		{
 			header("Location: SignUp.php");
-			echo "passwords don't match";
+			$error = "passwords don't match or not valid. At least 7 characters long, no symbols and one number is required";
 			die();
 		}
 	}
@@ -44,16 +43,30 @@
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon">Password</span>
-			<input type="password" class="form-control" id="password" name="password">
-			  <span style="color:red;">* <?php echo $error;?></span>
+			<input type="password" class="form-control" id="password" pattern='[a-zA-Z ]{6,}[0-9]+' name="password" title="At least 7 characters long, no symbols and one number is required">
+			<span id='passerror1' style="color:red;">* <?php echo $error;?></span>
 		</div>		
 		<div class="input-group">
 			<span class="input-group-addon">Password verify</span>
-			<input type="password" class="form-control" id="password2" name="password2">
-			  <span style="color:red;">* <?php echo $error;?></span>
+			<input type="password" class="form-control" id="password2" pattern='[a-zA-Z ]{6,}[0-9]+' name="password2" title="At least 7 characters long, no symbols and one number is required" onfocusout="validateMatch()">
+			<span id='passerror2' style="color:red;">* <?php echo $error;?></span>
 		</div>
 		<button class="btn btn-default" type="submit">Create</button>
 	</form>
+
+
+	<script>
+		function validateMatch() {
+			var pass1 = document.getElementById("password").text;
+			var pass2 = document.getElementById("password2").text;
+			if (!(pass1 === pass2)){
+				document.getElementById(id='passerror1').innerHTML("* passwords don't match or not valid. At least 7 characters long, no symbols and one number is required");
+				document.getElementById(id='passerror2').innerHTML("* passwords don't match or not valid. At least 7 characters long, no symbols and one number is required");
+			}
+
+		}
+	</script>
+	
 </body>
 </html>
 
