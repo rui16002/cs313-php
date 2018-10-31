@@ -10,7 +10,8 @@ session_start();
 
 	if(isset($_POST['username'])&&isset($_POST['password'])){
 		$username = test_input($_POST['username']);
-		$password = password_hash(test_input($_POST['password']));
+		$password = test_input($_POST['password']);
+
 		if (password_verify($password, getHash($username))) {
 			$_SESSION['username'] = $username;
 			header('Location: ' . 'Welcome.php');
