@@ -57,7 +57,7 @@ function getHash($username){
     $stmt->bindValue(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
   $row = $stmt->fetch();
-  return $row['password'];
+  return $row['userpassword'];
   }
   catch (Exception $ex)
   {
