@@ -23,7 +23,7 @@
 		}
 		else
 		{
-			header("Location: signUp.php");
+			header("Location: SignUp.php");
 			echo "passwords don't match";
 			die();
 		}
