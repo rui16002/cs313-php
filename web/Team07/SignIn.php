@@ -14,8 +14,7 @@ session_start();
 		$password = password_hash(test_input($_POST['password']));
 		insertUser($username, $password);
 		if (password_verify($password, getHash($username))) {
-			echo 'Password is valid!';
-			$_SESSION['username']=$username;
+			$_SESSION['username'] = $username;
 		} else {
 			echo 'Invalid password.';
 		}

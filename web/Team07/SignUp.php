@@ -6,11 +6,13 @@
 
  <?php
  require 'DBConnection.php';
- 
+
   if(isset($_POST['username'])&&isset($_POST['password'])){
   	$username = test_input($_POST['username']);
   	$password = password_hash(test_input($_POST['password']));
-  	insertUser($username, $password);
+  	if (insertUser($username, $password)!= ""){
+  		die();
+  	}
   }
 
   ?>
@@ -30,5 +32,4 @@
 	</form>
 </body>
 </html>
-<?php die(); ?>
 
