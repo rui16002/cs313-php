@@ -48,7 +48,7 @@
 		</div>		
 		<div class="input-group">
 			<span class="input-group-addon">Password verify</span>
-			<input type="password" class="form-control" id="password2" pattern='[a-zA-Z ]{6,}[0-9]+' name="password2" title="At least 7 characters long, no symbols and one number is required" onfocusout="validateMatch()">
+			<input type="password" class="form-control" id="password2" pattern='[a-zA-Z ]{6,}[0-9]+' name="password2" title="At least 7 characters long, no symbols and one number is required">
 			<span id='passerror2' style="color:red;">* <?php echo $error;?></span>
 		</div>
 		<button class="btn btn-default" type="submit">Create</button>
@@ -56,15 +56,18 @@
 
 
 	<script>
-		function validateMatch() {
-			var pass1 = document.getElementById("password").text;
-			var pass2 = document.getElementById("password2").text;
-			if (!(pass1 === pass2)){
-				document.getElementById(id='passerror1').innerHTML("* passwords don't match or not valid. At least 7 characters long, no symbols and one number is required");
-				document.getElementById(id='passerror2').innerHTML("* passwords don't match or not valid. At least 7 characters long, no symbols and one number is required");
-			}
 
+			var password = document.getElementById("password");
+			var confirm_password = document.getElementById("password2");
+		function validatePassword() {
+				if(password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Passwords Don't Match");
+				} else {
+					confirm_password.setCustomValidity('');
+				}
 		}
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
 	</script>
 	
 </body>
