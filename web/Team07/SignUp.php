@@ -15,10 +15,12 @@
 
 	if(isset($_POST['username'])&&isset($_POST['password'])&&isset($_POST['password2'])){
 		$username = test_input($_POST['username']);
-		$password = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
-		if(($_POST['password']==$_POST['password2'])&&(valid($_POST['password'])))
+		$password = test_input($_POST['password']);
+		$password2 = test_input($_POST['password2']);
+		$passwordhash = password_hash(test_input($_POST['password']), PASSWORD_DEFAULT);
+		if(($password==$password2)&&(valid($password)))
 		{
-			if (insertUser($username, $password)!= ""){
+			if (insertUser($username, $passwordhash)!= ""){
 				header('Location: ' . 'SignIn.php');
 				die();
 			}
