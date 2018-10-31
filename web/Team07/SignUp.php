@@ -43,12 +43,12 @@
 		</div>
 		<div class="input-group">
 			<span class="input-group-addon">Password</span>
-			<input type="password" class="form-control" id="password" pattern='[a-zA-Z ]{6,}[0-9]+' name="password" title="At least 7 characters long, no symbols and one number is required">
+			<input type="password" class="form-control" id="password" pattern='[a-zA-Z ]{6,}[0-9]+' name="password" title="At least 7 characters long, no symbols and one number is required. Password and confirm password must match">
 			<span id='passerror1' style="color:red;">* <?php echo $error;?></span>
 		</div>		
 		<div class="input-group">
-			<span class="input-group-addon">Password verify</span>
-			<input type="password" class="form-control" id="password2" pattern='[a-zA-Z ]{6,}[0-9]+' name="password2" title="At least 7 characters long, no symbols and one number is required">
+			<span class="input-group-addon">Confirm password</span>
+			<input type="password" class="form-control" id="password2" pattern='[a-zA-Z ]{6,}[0-9]+' name="password2" title="At least 7 characters long, no symbols and one number is required. Password and confirm password must match">
 			<span id='passerror2' style="color:red;">* <?php echo $error;?></span>
 		</div>
 		<button class="btn btn-default" type="submit">Create</button>
@@ -56,15 +56,14 @@
 
 
 	<script>
-
-			var password = document.getElementById("password");
-			var confirm_password = document.getElementById("password2");
+		var password = document.getElementById("password");
+		var confirm_password = document.getElementById("password2");
 		function validatePassword() {
-				if(password.value != confirm_password.value) {
-					confirm_password.setCustomValidity("Passwords Don't Match");
-				} else {
-					confirm_password.setCustomValidity('');
-				}
+			if(password.value != confirm_password.value) {
+				confirm_password.setCustomValidity("Passwords Don't Match");
+			} else {
+				confirm_password.setCustomValidity('');
+			}
 		}
 		password.onchange = validatePassword;
 		confirm_password.onkeyup = validatePassword;
