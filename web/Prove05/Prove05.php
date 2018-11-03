@@ -159,12 +159,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     }
     $productRows = getMenuitemsByTypeNameAvailable($type, $itemName, $check);
   }
-/*  else
-  {
-    $clientRows = getCustomers();
-    $orderRows = getOrders();
-    $productRows = getMenuitems();
-  }*/
 
   //Edit and add functionality
   if(isset($_POST['editClient_id'])&&isset($_POST['editClient_firstName'])&&isset($_POST['editClient_lastName'])&&isset($_POST['editClient_email'])&&isset($_POST['editClient_phone'])) 
@@ -257,16 +251,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   </div>
 </div>
 <div id="clientes-container">
+  <?php 
+  if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0) && $_SESSION['lastContent'] == 'clientes')
+  {
+    echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
+  }
+  else {
+    printClients($clientRows);
+  }
+  ?>
 </div>
-<?php 
-if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0) && $_SESSION['lastContent'] == 'clientes')
-{
-  echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
-}
-else {
-  printClients($clientRows);
-}
-?>
 <!-- EDIT CLIENT MODAL -->
 <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
