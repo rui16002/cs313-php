@@ -473,25 +473,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </div>
 
 <div id="ordenes" class="container-fluid">
-  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <div class="input-group">
-      <span class="input-group-addon">Nombre</span>
-      <input type="text" class="form-control" id="o-firstName" name="o-firstName">
+  <div class="row">
+    <div class="col-sm-12">
+      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" id="o-firstName" name="o-firstName">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Apellido</span>
+          <input type="text" class="form-control" id="o-lastName" name="o-lastName">
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Fecha</span>
+          <input type="date" class="form-control" id="o-date" name="o-date">
+        </div>
+        <button class="btn btn-default" type="submit">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+        <br>
+        <span class="bg-warning">Debe rellenar todos los campos</span>
+      </form>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon">Apellido</span>
-      <input type="text" class="form-control" id="o-lastName" name="o-lastName">
-    </div>
-    <div class="input-group">
-      <span class="input-group-addon">Fecha</span>
-      <input type="date" class="form-control" id="o-date" name="o-date">
-    </div>
-    <button class="btn btn-default" type="submit">
-      <i class="glyphicon glyphicon-search"></i>
-    </button>
-    <br>
-    <span class="bg-warning">Debe rellenar todos los campos</span>
-  </form>
+  </div>
   <div id="ordenes-container">
     <?php 
     if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($orderRows) <= 0))
