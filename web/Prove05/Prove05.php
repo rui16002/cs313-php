@@ -249,55 +249,55 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       </button>
     </div>
   </div>
-</div>
-<div id="clientes-container">
-  <?php 
-  if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0) && $_SESSION['lastContent'] == 'clientes')
-  {
-    echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
-  }
-  else {
-    printClients($clientRows);
-  }
-  ?>
-</div>
-<!-- EDIT CLIENT MODAL -->
-<div id="EditClient" class="modal fade" role="dialog" style="display: none;">
-  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
-    <div class="modal-dialog">
-      <div class="modal-content">
-       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h4 class="modal-title">Editar Cliente</h4>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" id="editClient_id" name="editClient_id" value="">
-        <div class="input-group">
-          <span class="input-group-addon">Nombre</span>
-          <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="" required>
+
+  <div id="clientes-container">
+    <?php 
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($clientRows) <= 0) && $_SESSION['lastContent'] == 'clientes')
+    {
+      echo "<div class='NoMatch'><span>No se encontraron clientes que coincidan con la busqueda...</span></div>";
+    }
+    else {
+      printClients($clientRows);
+    }
+    ?>
+  </div>
+
+  <!-- EDIT CLIENT MODAL -->
+  <div id="EditClient" class="modal fade" role="dialog" style="display: none;">
+    <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Editar Cliente</h4>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon">Apellido</span>
-          <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="" required>
+        <div class="modal-body">
+          <input type="hidden" id="editClient_id" name="editClient_id" value="">
+          <div class="input-group">
+            <span class="input-group-addon">Nombre</span>
+            <input type="text" class="form-control" id="editClient_firstName" name="editClient_firstName" value="" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Apellido</span>
+            <input type="text" class="form-control" id="editClient_lastName" name="editClient_lastName" value="" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Teléfono</span>
+            <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
+          </div>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon">Email</span>
-          <input type="email" class="form-control" id="editClient_email" name="editClient_email" value="">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Teléfono</span>
-          <input type="tel" class="form-control" id="editClient_phone" name="editClient_phone" value="">
-        </div>
-      </div>
-      <div class="modal-footer">
-       <button type="submit" class="btn btn-default">Modificar</button>
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <div class="modal-footer">
+         <button type="submit" class="btn btn-default">Modificar</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+       </div>
      </div>
    </div>
- </div>
-</form>
+ </form>
 </div>
-
 <!-- ADD CLIENT MODAL -->
 <div id="AddClient" class="modal fade" role="dialog" style="display: none;">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER['php_self']);?>">
@@ -333,39 +333,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
  </div>
 </form>
 </div>
-</div>
-
-<div id="ordenes" class="container-fluid">
-  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    <div class="input-group">
-      <span class="input-group-addon">Nombre</span>
-      <input type="text" class="form-control" id="o-firstName" name="o-firstName">
-    </div>
-    <div class="input-group">
-      <span class="input-group-addon">Apellido</span>
-      <input type="text" class="form-control" id="o-lastName" name="o-lastName">
-    </div>
-    <div class="input-group">
-      <span class="input-group-addon">Fecha</span>
-      <input type="date" class="form-control" id="o-date" name="o-date">
-    </div>
-    <button class="btn btn-default" type="submit">
-      <i class="glyphicon glyphicon-search"></i>
-    </button>
-    <br>
-    <span class="bg-warning">Debe rellenar todos los campos</span>
-  </form>
-  <div id="ordenes-container">
-    <?php 
-    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($orderRows) <= 0))
-    {
-      echo "<div class='NoMatch'><span>No se encontraron ordenes que coincidan con la busqueda...</span></div>";
-    }
-    else {
-      printOrders($orderRows);
-    }
-    ?>
-  </div>
 </div>
 
 <div id="productos" class="container-fluid">
@@ -412,57 +379,55 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
       printProducts($productRows);
     }
     ?>
-    <!-- EDIT PRODUCT MODAL -->
-    <div id="EditProduct" class="modal fade" role="dialog" style="display: none;">
-      <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <div class="modal-dialog">
-          <div class="modal-content">
-           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
-            <h4 class="modal-title">Editar Producto</h4>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" class="form-control" id="editProduct_id" name="editProduct_id" value="">
-            <div class="input-group">
-             <span class="input-group-addon">Tipo</span>
-             <select class="form-control" id="editProduct_Type" name="editProduct_Type" value="" required>
-               <option>- Seleccionar -</option>
-               <option>Entrada</option>
-               <option>Plato principal</option>
-               <option>Bebida</option>
-               <option>Postre</option>
-             </select>
-           </div>
-           <div class="input-group">
-             <span class="input-group-addon">Nombre</span>
-             <input type="text" class="form-control" id="editProduct_Name" name="editProduct_Name" value="" required>
-           </div>
-           <div class="input-group">
-             <span class="input-group-addon">Descripción</span>
-             <input type="text" class="form-control" id="editProduct_Description" name="editProduct_Description" value="">
-           </div>
-           <div class="input-group">
-             <span class="input-group-addon">Precio</span>
-             <input type="number" step="0.1" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
-           </div>
-           <div class="input-group">
-             <label class="checkbox-inline"><input type="checkbox" value="" id="editProduct_Available" name="editProduct_Available">Disponible</label>
-           </div>
-           <br>
-           <span class="bg-warning">Debe rellenar todos los campos</span>
+  </div>
 
+  <!-- EDIT PRODUCT MODAL -->
+  <div id="EditProduct" class="modal fade" role="dialog" style="display: none;">
+    <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">Editar Producto</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" class="form-control" id="editProduct_id" name="editProduct_id" value="">
+          <div class="input-group">
+           <span class="input-group-addon">Tipo</span>
+           <select class="form-control" id="editProduct_Type" name="editProduct_Type" value="" required>
+             <option>- Seleccionar -</option>
+             <option>Entrada</option>
+             <option>Plato principal</option>
+             <option>Bebida</option>
+             <option>Postre</option>
+           </select>
          </div>
-         <div class="modal-footer">
-           <button type="submit" class="btn btn-default">Modificar</button>
-           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+         <div class="input-group">
+           <span class="input-group-addon">Nombre</span>
+           <input type="text" class="form-control" id="editProduct_Name" name="editProduct_Name" value="" required>
+         </div>
+         <div class="input-group">
+           <span class="input-group-addon">Descripción</span>
+           <input type="text" class="form-control" id="editProduct_Description" name="editProduct_Description" value="">
+         </div>
+         <div class="input-group">
+           <span class="input-group-addon">Precio</span>
+           <input type="number" step="0.1" class="form-control" id="editProduct_Price" name="editProduct_Price" value="" required>
+         </div>
+         <div class="input-group">
+           <label class="checkbox-inline"><input type="checkbox" value="" id="editProduct_Available" name="editProduct_Available">Disponible</label>
          </div>
        </div>
+       <div class="modal-footer">
+         <button type="submit" class="btn btn-default">Modificar</button>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+       </div>
      </div>
-   </form>
- </div>
-
- <!-- ADD PRODUCT MODAL -->
- <div id="AddProduct" class="modal fade" role="dialog" style="display: none;">
+   </div>
+ </form>
+</div>
+<!-- ADD PRODUCT MODAL -->
+<div id="AddProduct" class="modal fade" role="dialog" style="display: none;">
   <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -496,7 +461,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
        <div class="input-group">
          <label class="checkbox-inline"><input type="checkbox" id="addProduct_Available" name="addProduct_Available">Disponible</label>
        </div>
-
      </div>
      <div class="modal-footer">
        <button type="submit" class="btn btn-default">Agregar</button>
@@ -506,11 +470,41 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
  </div>
 </form>
 </div>
-
-</div>
 </div>
 
-<br>
+<div id="ordenes" class="container-fluid">
+  <form method="post" class="form-inline text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <div class="input-group">
+      <span class="input-group-addon">Nombre</span>
+      <input type="text" class="form-control" id="o-firstName" name="o-firstName">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">Apellido</span>
+      <input type="text" class="form-control" id="o-lastName" name="o-lastName">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon">Fecha</span>
+      <input type="date" class="form-control" id="o-date" name="o-date">
+    </div>
+    <button class="btn btn-default" type="submit">
+      <i class="glyphicon glyphicon-search"></i>
+    </button>
+    <br>
+    <span class="bg-warning">Debe rellenar todos los campos</span>
+  </form>
+  <div id="ordenes-container">
+    <?php 
+    if(($_SERVER['REQUEST_METHOD'] == 'POST') && (count($orderRows) <= 0))
+    {
+      echo "<div class='NoMatch'><span>No se encontraron ordenes que coincidan con la busqueda...</span></div>";
+    }
+    else {
+      printOrders($orderRows);
+    }
+    ?>
+  </div>
+</div>
+
 <footer class="container-fluid text-center">
   <p>Based on example in W3School</p>
 </footer>
